@@ -1,13 +1,13 @@
-CREATE TABLE `board` (
-  `bid` varchar(60) NOT NULL,
-  `cate_cd` varchar(20) NOT NULL COMMENT '게시글 카테고리',
-  `title` varchar(200) NOT NULL COMMENT '제목',
-  `content` text NOT NULL COMMENT '게시글',
-  `tag` varchar(1000) DEFAULT NULL COMMENT '태그',
-  `view_cnt` int(11) NOT NULL DEFAULT 0 COMMENT '카운트',
-  `reg_cd` varchar(45) NOT NULL COMMENT '작성자',
-  `reg_dt` date NOT NULL COMMENT '작성일',
-  `mod_cd` varchar(45) NOT NULL COMMENT '작성자',
-  `mod_dt` date NOT NULL COMMENT '수정일',
-  PRIMARY KEY (`bid`)
+CREATE TABLE shch.board (
+  bid varchar(60) NOT NULL,
+  cate_cd varchar(20) NOT NULL COMMENT '게시글 카테고리',
+  title varchar(200) NOT NULL COMMENT '제목',
+  content text NOT NULL COMMENT '게시글',
+  tag varchar(1000) DEFAULT NULL COMMENT '태그',
+  view_cnt int(11) NOT NULL DEFAULT 0 COMMENT '카운트',
+  reg_cd varchar(45) NOT NULL COMMENT '작성자',
+  reg_dt date NOT NULL COMMENT '작성일',
+  mod_cd varchar(45) NOT NULL COMMENT '작성자',
+  mod_dt date NOT NULL COMMENT '수정일',
+  PRIMARY KEY (bid)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8

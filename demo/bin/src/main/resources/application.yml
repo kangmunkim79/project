@@ -1,0 +1,32 @@
+server:
+  port: 80
+---
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+---
+spring.profiles: logging-info
+logging:
+  file: d:/shch/logs/log-file.log
+  level:
+    org.thymeleaf: INFO
+    org.springframework.web: INFO
+    org.hibernate.SQL: INFO
+    org.quartz.core: INFO
+    org.h2.server.web: INFO
+---
+spring.profiles: logging-debug
+logging:
+  file: d:/shch/logs/log-file.log
+  level:
+    org.thymeleaf: DEBUG
+    org.springframework.web: DEBUG
+    org.hibernate.SQL: DEBUG
+    org.quartz.core: DEBUG
+    org.h2.server.web: DEBUG
+---
+spring.profiles: logging-daily
+logging:
+  config: classpath:logback-spring.xml

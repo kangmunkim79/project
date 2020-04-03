@@ -1,0 +1,4 @@
+CREATE TABLE `user_login_hist_seq` (
+  `seqno` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`seqno`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8

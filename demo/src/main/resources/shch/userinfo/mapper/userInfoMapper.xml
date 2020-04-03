@@ -10,8 +10,97 @@
         SELECT authorityname FROM USER_AUTH WHERE username = #{username}
     </select>
 
-    <select id="getUserAll" resultType="com.shch.demo.userinfo.dto.UserInfo">
-        SELECT * FROM USER_INFO
-    </select>
+	<select id="getUserInfo" resultType="com.shch.demo.userinfo.dto.UserInfo"> 
+		SELECT userno
+		     , usertype
+		     , username as uid
+		     , username
+		     , name
+             , email
+             , deptcd
+             , poscd
+             , tel
+             , addr
+             , addrdtl
+             , useflag
+             , langcd
+             , lastlogindt
+             , lastloginip
+             , regcd
+             , regdt
+             , modcd
+             , moddt 
+		FROM USER_INFO 
+		WHERE userno = #{userno} 
+	</select> 
+	
+	<select id="getUserList" resultType="com.shch.demo.userinfo.dto.UserInfo"> 
+		SELECT userno
+		     , usertype
+		     , username as uid
+		     , username
+		     , name
+             , email
+             , deptcd
+             , poscd
+             , tel
+             , addr
+             , addrdtl
+             , useflag
+             , langcd
+             , lastlogindt
+             , lastloginip
+             , regcd
+             , regdt
+             , modcd
+             , moddt 
+		FROM USER_INFO 
+	</select> 
+	
+	<insert id="insertUser" parameterType="com.shch.demo.userinfo.dto.UserInfo"> 
+		INSERT INTO USER_INFO (
+			   userno
+		     , usertype
+		     , username
+		     , name
+             , email
+             , deptcd
+             , poscd
+             , tel
+             , addr
+             , addrdtl
+             , useflag
+             , langcd
+             , regcd
+             , regdt		
+		) VALUES ( 
+			   #{userno}
+		     , #{usertype}
+		     , #{uid}
+		     , #{name}
+             , #{email}
+             , #{deptcd}
+             , #{poscd}
+             , #{tel}
+             , #{addr}
+             , #{addrdtl}
+             , 'Y'
+             , 'KO'
+             , #{username}
+             , sysdate()	
+		) 
+	</insert> 
+	
+	<update id="updateUser" parameterType="com.shch.demo.userinfo.dto.UserInfo"> 
+		UPDATE USER_INFO SET 
+			name = #{name} 
+		  , password = #{password} 
+		  , email = #{email} 
+		WHERE userno = #{userno} 
+	</update> 
+	
+	<delete id="deleteUser" parameterType="int"> 
+		DELETE FROM USER_INFO WHERE userno = #{userno} 
+	</delete>
     
 </mapper>

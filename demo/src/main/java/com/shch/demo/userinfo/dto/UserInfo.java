@@ -8,9 +8,11 @@ public class UserInfo {
 	
 	private String userno;
 	private String usertype;
+	private String uid;
 	private String username;
 	private String name;
 	private String password;
+	private String repassword;
 	private String email;
 	private String deptcd;
 	private String poscd;
@@ -40,6 +42,12 @@ public class UserInfo {
 	public void setUsertype(String usertype) {
 		this.usertype = usertype;
 	}
+	public String getUid() {
+		return uid;
+	}
+	public void setUid(String uid) {
+		this.uid = uid;
+	}
 	public String getUsername() {
 		return username;
 	}
@@ -57,6 +65,12 @@ public class UserInfo {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public String getRepassword() {
+		return repassword;
+	}
+	public void setRepassword(String repassword) {
+		this.repassword = repassword;
 	}
 	public String getEmail() {
 		return email;

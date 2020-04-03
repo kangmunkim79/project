@@ -14,8 +14,24 @@ public class UserInfoService {
 	@Autowired
 	UserInfoMapper userInfoMapper;
     
-	public List<UserInfo> getUserAll() throws Exception{
-	    return userInfoMapper.getUserAll();
+	public List<UserInfo> getUserList() throws Exception { 
+		return userInfoMapper.getUserList(); 
+	} 
+
+	public UserInfo getUserInfo(String username) throws Exception { 
+		return userInfoMapper.getUserInfo(username); 
+	} 
+
+	public void insertUser(UserInfo userInfo) throws Exception { 
+		userInfoMapper.insertUser(userInfo); 
 	}
 	
+	public void updateUser(UserInfo userInfo) throws Exception { 
+		userInfoMapper.updateUser(userInfo); 
+	}
+
+	public void deleteUser(String username) throws Exception { 
+		userInfoMapper.deleteUser(username); 
+	}
+
 }
