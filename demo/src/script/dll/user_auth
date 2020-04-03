@@ -1,0 +1,4 @@
+CREATE TABLE `user_auth` (
+  `username` varchar(20) DEFAULT NULL,
+  `authorityname` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
