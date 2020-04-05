@@ -46,6 +46,13 @@ $(document).on('click', '#btnList', function(e){
 				<div class="mb-3">
 					<label for="content">내용</label>
 					<form:textarea path="content" id="content" class="form-control" rows="5" placeholder="내용을 입력해 주세요" />
+					<script>
+					    ClassicEditor
+					        .create( document.querySelector( '#content' ) )
+					        .catch( error => {
+					            console.error( error );
+					        } );
+					</script>
 				</div>
 				<div class="mb-3">
 					<label for="tag">TAG</label>
@@ -59,6 +66,4 @@ $(document).on('click', '#btnList', function(e){
 		</div>
 	</article>
 </body>
-<!-- ckeditor5 -->
-<script src="${pageContext.request.contextPath}/resources/common/ckeditor5/ckeditor.js"></script>
 </html>

@@ -2,7 +2,7 @@
  * @license Copyright (c) 2003-2020, CKSource - Frederico Knabben. All rights reserved.
  * For licensing, see LICENSE.md.
  */
-! function(t) {
+!function(t) {
     t.en = Object.assign(t.en || {}, {
         a: "Cannot upload file:",
         b: "Image toolbar",
@@ -21427,8 +21427,3 @@ function(t, e) {
     }]).default
 }));
 //# sourceMappingURL=ckeditor.js.map
-ClassicEditor.create(document.querySelector('#content')).then(editor => {
-    console.log(editor);
-}).catch(error => {
-    console.error(error);
-});
