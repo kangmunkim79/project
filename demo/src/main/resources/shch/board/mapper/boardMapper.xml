@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shch.demo.board.mapper.BoardMapper">
+
+	<select id="getBoardList" resultType="com.shch.demo.board.dto.Board">
+		SELECT BID
+		     , CATECD
+		     , TITLE
+		     , CONTENT
+		     , TAG
+		     , VIEWCNT
+		     , REGCD
+		     , REGDT
+		     , MODCD
+		     , MODDT
+		FROM BOARD
+	</select>
+	
+	<select id="getBoardView" resultType="com.shch.demo.board.dto.Board" parameterType="com.shch.demo.board.dto.Board">
+		SELECT BID
+		     , CATECD
+		     , TITLE
+		     , CONTENT
+		     , TAG
+		     , VIEWCNT
+		     , REGCD
+		     , REGDT
+		     , MODCD
+		     , MODDT
+		FROM BOARD
+		WHERE BID = #{bid}
+	</select>
+
+	<insert id="insertBoard" parameterType="com.shch.demo.board.dto.Board">
+		INSERT INTO BOARD (
+			  BID
+			, CATECD
+			, TITLE
+			, CONTENT
+			, TAG
+			, VIEWCNT
+			, REGCD
+			, REGDT
+			, MODCD
+			, MODDT
+		) VALUES (
+			  #{bid}
+			, #{catecd}
+			, #{title}
+			, #{content}
+			, #{tag}
+			, 0
+			, #{sid}
+			, now()
+			, #{sid}
+			, now()
+		)
+	</insert>
+
+	<update id="updateBoard" parameterType="com.shch.demo.board.dto.Board">
+		UPDATE TBL_BOARD SET
+			  CATE_CD = #{catecd}
+			, TITLE = #{title}
+			, CONTENT = #{content}
+			, TAG = #{tag}
+			, MODCD = #{sid}
+			, MODDT = now()
+		WHERE BID = ${bid}
+	</update>
+
+	<delete id="deleteBoard" parameterType="int">
+		DELETE FROM BOARD
+		WHERE BID = #{bid}
+	</delete>
+
+	<update id="updateViewCnt" parameterType="com.shch.demo.board.dto.Board">
+		UPDATE BOARD SET
+			VIEWCNT = VIEWCNT + 1
+		WHERE BID = #{bid}
+	</update>
+
+</mapper>
