@@ -12,7 +12,7 @@ $(document).ready(function(){
 	var mode = '<c:out value="${mode}"/>';
 	if ( mode == 'edit'){
 		//입력 폼 셋팅
-		$("input:hidden[name='bid']").val(<c:out value="${boardView.bid}"/>);
+		$("input:hidden[name='bid']").val('<c:out value="${boardView.bid}"/>');
 		$("input:hidden[name='mode']").val('<c:out value="${mode}"/>');
 		$("#title").val('<c:out value="${boardView.title}"/>');
 		$("#content").val('<c:out value="${boardView.content}"/>');

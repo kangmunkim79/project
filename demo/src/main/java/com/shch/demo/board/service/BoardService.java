@@ -43,4 +43,8 @@ public class BoardService {
 		boardMapper.updateBoard(board);
 	}
 	
+	public void deleteBoard(String bid) throws Exception {
+		boardMapper.deleteBoard(bid);
+	}
+
 }

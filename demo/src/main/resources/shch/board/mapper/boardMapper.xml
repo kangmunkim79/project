@@ -58,7 +58,7 @@
 	</insert>
 
 	<update id="updateBoard" parameterType="com.shch.demo.board.dto.Board">
-		UPDATE TBL_BOARD SET
+		UPDATE BOARD SET
 			  CATE_CD = #{catecd}
 			, TITLE = #{title}
 			, CONTENT = #{content}

@@ -14,8 +14,13 @@ $(document).on('click', '#btnList', function(){
 
 $(document).on('click', '#btnUpdate', function(){
 	var url = "${pageContext.request.contextPath}/board/boardEdit";
-	url = url + "?bid="+${boardView.bid};
-	url = url + "&mode=edit";
+	url = url + "?bid=${boardView.bid}&mode=edit";
+	location.href = url;
+});
+
+$(document).on('click', '#btnDelete', function(){
+    var url = "${pageContext.request.contextPath}/board/deleteBoard";
+    url = url + "?bid=${boardContent.bid}";
 	location.href = url;
 });
 </script>

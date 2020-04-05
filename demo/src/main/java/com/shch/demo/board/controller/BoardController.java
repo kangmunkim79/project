@@ -51,5 +51,11 @@ public class BoardController {
 		model.addAttribute("board", new Board());
 		return "board/boardUpdate";
 	}
+	
+	@RequestMapping(value = "/deleteBoard", method = RequestMethod.GET)
+	public String deleteBoard(RedirectAttributes rttr, @RequestParam("bid") String bid) throws Exception {
+		boardService.deleteBoard(bid);
+		return "redirect:/board/getBoardList";
+	}
 
 }
