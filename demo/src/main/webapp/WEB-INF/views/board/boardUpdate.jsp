@@ -59,4 +59,6 @@ $(document).on('click', '#btnList', function(e){
 		</div>
 	</article>
 </body>
+<!-- ckeditor5 -->
+<script src="${pageContext.request.contextPath}/resources/common/ckeditor5/ckeditor.js"></script>
 </html>
