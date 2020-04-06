@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shch.demo.menu.mapper.MenuMapper">
+    
+    <select id="getMenuList" resultType="com.shch.demo.menu.dto.Menu">
+        SELECT * FROM MENU WHERE DEPTH = '1'
+    </select>
+
+	<select id="getSubMenuList" resultType="com.shch.demo.menu.dto.Menu">
+        SELECT * FROM MENU WHERE DEPTH = '2'
+    </select>
+</mapper>
