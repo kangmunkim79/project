@@ -15,7 +15,7 @@ $(document).ready(function(){
 		$("input:hidden[name='bid']").val('<c:out value="${boardView.bid}"/>');
 		$("input:hidden[name='mode']").val('<c:out value="${mode}"/>');
 		$("#title").val('<c:out value="${boardView.title}"/>');
-		$("#content").val('<c:out value="${boardView.content}"/>');
+		$("#content").val('<c:out value="${boardView.content}" escapeXml="false"/>');			
 		$("#tag").val('<c:out value="${boardView.tag}"/>');
 	}
 });
@@ -47,11 +47,8 @@ $(document).on('click', '#btnList', function(e){
 					<label for="content">내용</label>
 					<form:textarea path="content" id="content" class="form-control" rows="5" placeholder="내용을 입력해 주세요" />
 					<script>
-					    ClassicEditor
-					        .create( document.querySelector( '#content' ) )
-					        .catch( error => {
-					            console.error( error );
-					        } );
+					CKEDITOR.replace('content');	
+					CKEDITOR.instances.content.updateElement();	  					    
 					</script>
 				</div>
 				<div class="mb-3">

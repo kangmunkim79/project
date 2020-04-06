@@ -20,7 +20,7 @@ $(document).on('click', '#btnUpdate', function(){
 
 $(document).on('click', '#btnDelete', function(){
     var url = "${pageContext.request.contextPath}/board/deleteBoard";
-    url = url + "?bid=${boardContent.bid}";
+    url = url + "?bid=${boardView.bid}";
 	location.href = url;
 });
 </script>

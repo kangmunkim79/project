@@ -1,9 +1,12 @@
 package com.shch.demo.board.dto;
 
+import org.apache.commons.lang3.StringEscapeUtils;
+
 import com.shch.demo.security.Session;
 
 public class Board extends Session{
-
+	
+	public int rnum;
 	public String bid;
 	public String catecd;
 	public String title;
@@ -15,6 +18,12 @@ public class Board extends Session{
 	public String modcd;
 	public String moddt;
 	
+	public int getRnum() {
+		return rnum;
+	}
+	public void setRnum(int rnum) {
+		this.rnum = rnum;
+	}
 	public String getBid() {
 		return bid;
 	}
@@ -33,8 +42,8 @@ public class Board extends Session{
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getContent() {
-		return content;
+	public String getContent() {  
+		return StringEscapeUtils.unescapeHtml3(content);
 	}
 	public void setContent(String content) {
 		this.content = content;

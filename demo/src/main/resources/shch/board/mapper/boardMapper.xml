@@ -3,17 +3,25 @@
 <mapper namespace="com.shch.demo.board.mapper.BoardMapper">
 
 	<select id="getBoardList" resultType="com.shch.demo.board.dto.Board">
-		SELECT BID
-		     , CATECD
-		     , TITLE
-		     , CONTENT
-		     , TAG
-		     , VIEWCNT
-		     , REGCD
-		     , REGDT
-		     , MODCD
-		     , MODDT
-		FROM BOARD
+		select z.*
+		     , @rownum := @rownum+1 AS RNUM
+		from (
+				SELECT BID
+				     , CATECD
+				     , TITLE
+				     , CONTENT
+				     , TAG
+				     , VIEWCNT
+				     , REGCD
+				     , REGDT
+				     , MODCD
+				     , MODDT
+				     , row_number() over() as rn		     
+				FROM BOARD
+				ORDER BY BID DESC
+		) z, (SELECT @rownum :=0) AS R
+		order by z.rn desc
+		
 	</select>
 	
 	<select id="getBoardView" resultType="com.shch.demo.board.dto.Board" parameterType="com.shch.demo.board.dto.Board">
@@ -47,7 +55,7 @@
 			  #{bid}
 			, #{catecd}
 			, #{title}
-			, #{content}
+			, replace(replace(replace(#{content}, '\r\n', ''), char(10), ''), char(13), '')
 			, #{tag}
 			, 0
 			, #{sid}
@@ -59,16 +67,16 @@
 
 	<update id="updateBoard" parameterType="com.shch.demo.board.dto.Board">
 		UPDATE BOARD SET
-			  CATE_CD = #{catecd}
+			  CATECD = #{catecd}
 			, TITLE = #{title}
-			, CONTENT = #{content}
+			, CONTENT = replace(replace(replace(#{content}, '\r\n', ''), char(10), ''), char(13), '')
 			, TAG = #{tag}
 			, MODCD = #{sid}
 			, MODDT = now()
-		WHERE BID = ${bid}
+		WHERE BID = #{bid}
 	</update>
 
-	<delete id="deleteBoard" parameterType="int">
+	<delete id="deleteBoard" parameterType="com.shch.demo.board.dto.Board">
 		DELETE FROM BOARD
 		WHERE BID = #{bid}
 	</delete>

@@ -50,7 +50,7 @@ function fn_contentView(bid){
 						<c:when test="${!empty boardList}">
 							<c:forEach var="list" items="${boardList}">
 								<tr>
-									<td><c:out value="${list.bid}"/></td>
+									<td><c:out value="${list.rnum}"/></td>
 									<td><a href="#" onClick="fn_contentView('<c:out value="${list.bid}"/>')"><c:out value="${list.title}"/></a></td>
 									<td><c:out value="${list.regcd}"/></td>
 									<td><c:out value="${list.viewcnt}"/></td>
