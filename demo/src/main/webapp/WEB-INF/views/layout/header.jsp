@@ -26,8 +26,8 @@
 		    <li class="nav-item dropdown">
 		        <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Board</a>
 		        <div class="dropdown-menu" aria-labelledby="dropdown03">
-			        <a class="dropdown-item" href="#">게시판</a>
-		            <a class="dropdown-item" href="#">Q&A</a>
+			        <a class="dropdown-item" href="${pageContext.request.contextPath}/board/getBoardList">게시판</a>
+		            <a class="dropdown-item" href="${pageContext.request.contextPath}/userInfo/getUserList">사용자</a>
 		        </div>
       		</li>
 	    </ul>
