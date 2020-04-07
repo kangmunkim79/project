@@ -74,6 +74,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
+        <dependency>
+			<groupId>org.springframework.security</groupId>
+ 			<artifactId>spring-security-taglibs</artifactId>
+ 			<type>jar</type>
+ 			<scope>compile</scope>
+		</dependency>        
         <!-- SECURITY -->        
         <!-- DB Logback -->
         <dependency>
@@ -86,13 +92,7 @@
 		    <groupId>org.apache.commons</groupId>
 		    <artifactId>commons-lang3</artifactId>
 		    <version>3.4</version>
-		</dependency>       
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<scope>runtime</scope>
-			<optional>true</optional>
-		</dependency>		 	
+		</dependency>       	 	
 	</dependencies>
 
 	<build>

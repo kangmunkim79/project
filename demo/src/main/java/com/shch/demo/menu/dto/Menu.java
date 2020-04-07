@@ -16,6 +16,9 @@ public class Menu {
 	private String regdt;  
 	private String modcd;  
 	private String moddt;
+
+	private int pid;
+	private int id;
 	
 	public String getMenucd() {
 		return menucd;
@@ -100,5 +103,17 @@ public class Menu {
 	}
 	public void setModdt(String moddt) {
 		this.moddt = moddt;
+	}
+	public int getPid() {
+		return pid;
+	}
+	public void setPid(int pid) {
+		this.pid = pid;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}  
 }

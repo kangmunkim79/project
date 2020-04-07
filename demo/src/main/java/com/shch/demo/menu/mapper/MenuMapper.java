@@ -9,5 +9,7 @@ public interface MenuMapper {
 	public List<Menu> getMenuList();
 	
 	public List<Menu> getSubMenuList();
+	
+	public List<Menu> getGridMenuList();
 
 }

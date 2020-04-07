@@ -22,4 +22,8 @@ public class MenuService {
 		return menuMapper.getSubMenuList(); 
 	}
 	
+	public List<Menu> getGridMenuList() throws Exception { 
+		return menuMapper.getGridMenuList(); 
+	}
+	
 }

@@ -13,7 +13,7 @@
 	<select id="getUserInfo" resultType="com.shch.demo.userinfo.dto.UserInfo"> 
 		SELECT userno
 		     , usertype
-		     , username as uid
+		     , '' as uid
 		     , username
 		     , name
              , email
@@ -37,7 +37,7 @@
 	<select id="getUserList" resultType="com.shch.demo.userinfo.dto.UserInfo"> 
 		SELECT userno
 		     , usertype
-		     , username as uid
+		     , '' as uid
 		     , username
 		     , name
              , email
@@ -63,6 +63,7 @@
 		     , usertype
 		     , username
 		     , name
+		     , password
              , email
              , deptcd
              , poscd
@@ -74,10 +75,11 @@
              , regcd
              , regdt		
 		) VALUES ( 
-			   #{userno}
-		     , #{usertype}
+			   (SELECT MAX(USERNO)+1 FROM USER_INFO ALIAS_FOR_SUBQUERY)
+		     , 'IN'
 		     , #{uid}
 		     , #{name}
+		     , #{password}
              , #{email}
              , #{deptcd}
              , #{poscd}

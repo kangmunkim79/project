@@ -1,6 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ include file="/WEB-INF/views/layout/header.jsp"%>
 <!DOCTYPE html>
 <html>
@@ -9,26 +7,32 @@
 <title>userInfo</title>
 </head>
 <script> 
+$(document).ready(function(){
+	init();
+});
 $(document).on('click', '#btnSignup', function(e){ 
 	e.preventDefault(); 
 	$("#form").submit(); 
 }); 
-$(document).on('click', '#btnCancle', function(e){ 
-	e.preventDefault(); 
-	$('#uid').val(''); 
+$(document).on('click', '#btnCancel', function(e){
+	e.preventDefault();
+	init();
+	location.href="${pageContext.request.contextPath}/userInfo/getUserList"; 
+});
+function init(){ 
+	$('#uid').val('');
 	$('#name').val(''); 
-	$('#password1').val(''); 
-	$('#password2').val(''); 
-	$('#email').val(''); 
-	//location.href="${pageContext.request.contextPath}/home"; 
-}); 
+	$('#password').val(''); 
+	$('#repassword').val(''); 
+	$('#email').val('');
+}
 </script> 
 <article> 
 	<div class="container col-md-6" role="main"> 
 		<div class="card"> 
 			<div class="card-header">Register</div> 
 			<div class="card-body"> 
-				<form:form name="form" id="form" class="form-signup" role="form" modelAttribute="userInfo" method="post" action="${pageContext.request.contextPath}/userinfo/insertUser"> 
+				<form:form name="form" id="form" class="form-signup" role="form" modelAttribute="userInfo" method="post" action="${pageContext.request.contextPath}/userInfo/insertUser"> 
 					<div class="form-group row"> 
 						<label for="uid" class="col-md-3 col-form-label text-md-right">아이디</label> 
 						<div class="col-md-5"> 

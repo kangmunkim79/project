@@ -3,6 +3,8 @@ package com.shch.demo.userinfo.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.shch.demo.userinfo.dto.UserInfo;
@@ -14,6 +16,15 @@ public class UserInfoService {
 	@Autowired
 	UserInfoMapper userInfoMapper;
     
+	@Autowired
+	BCryptPasswordEncoder passwordEncoder;
+	
+	@Bean
+	public BCryptPasswordEncoder getPasswordEncoder()
+	{
+	  return new BCryptPasswordEncoder();
+	}
+	
 	public List<UserInfo> getUserList() throws Exception { 
 		return userInfoMapper.getUserList(); 
 	} 
@@ -23,6 +34,9 @@ public class UserInfoService {
 	} 
 
 	public void insertUser(UserInfo userInfo) throws Exception { 
+    	String password =userInfo.getPassword();
+    	String encryptPassword = passwordEncoder.encode(password);
+    	userInfo.setPassword(encryptPassword);
 		userInfoMapper.insertUser(userInfo); 
 	}
 	

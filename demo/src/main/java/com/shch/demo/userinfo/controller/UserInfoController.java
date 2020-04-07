@@ -1,11 +1,15 @@
 package com.shch.demo.userinfo.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.shch.demo.userinfo.dto.UserInfo;
@@ -17,23 +21,34 @@ public class UserInfoController {
 
     @Autowired
     UserInfoService userInfoService;
+
+	@RequestMapping(value = "/getGridUserList", method = RequestMethod.POST) 
+	public @ResponseBody Map<String, Object> getGridUserList() throws Exception { 
+		Map<String, Object> result = new HashMap<String, Object>(); 
+		try { 
+			result.put("uList", userInfoService.getUserList());
+		} catch (Exception e) { 
+			result.put("status", "False"); 
+		} 
+		return result; 
+	}
     
     @RequestMapping(value = "/getUserList", method = RequestMethod.GET) 
-    public String getUserList(Model model) throws Exception { 
-    	model.addAttribute("userList", userInfoService.getUserList()); 
+    public String getUserList(Model model) throws Exception {  
     	return "userinfo/userInfoList"; 
     } 
     
     @RequestMapping(value = "/insertUser", method = RequestMethod.POST) 
-    public String insertUser(@ModelAttribute("userInfo") UserInfo userInfo , RedirectAttributes rttr) throws Exception { 
+    public String insertUser(@ModelAttribute("userInfo") UserInfo userInfo , RedirectAttributes rttr) throws Exception {
     	userInfoService.insertUser(userInfo); 
     	return "redirect:/userInfo/getUserList"; 
     }
     
-    @RequestMapping(value = "/userInfoAdd", method = RequestMethod.GET) 
-    public String userInfoAdd(Model model) throws Exception { 
-    	model.addAttribute("userInfo", new UserInfo()); 
-    	return "userinfo/userInfoAdd"; 
+    @RequestMapping(value = "/userInfoUpdate") 
+    public String userInfoUpdate(Model model) throws Exception { 
+		model.addAttribute("mode", "");
+		model.addAttribute("userInfo", new UserInfo());
+    	return "userinfo/userInfoUpdate"; 
     }
 	
 }
