@@ -19,9 +19,20 @@ $(document.body).ready(function () {
     firstGrid.setConfig({
         target: $('[data-ax5grid="first-grid"]'),
         showLineNumber: true,
-        showRowSelector: true,
+        showRowSelector: false,
         header: {align:'center'},
         columns: [
+            {key: "delchk", label: "Delete", align: "center", sortable: false,
+                width: 60,
+            	editor: {
+                    type: "checkbox", 
+                    config: {
+                        height: 17, 
+                        trueValue: "Y", 
+                        falseValue: "N"
+                    }
+            	}
+            },
             {key: "menucd", label: "Id", width: 100, align: "center",
 	            enableFilter: true,
 	            editor: {
@@ -40,18 +51,20 @@ $(document.body).ready(function () {
 	                }
 	            }
             },
-            {key: "usrtype", label: "Type", width: 100, align: "left",
-            	editor: {
-                    type: "select", config: {
-                        columnKeys: {
-                            optionValue: "CD", optionText: "NM"
-                        },
-                        options: [
-                            {CD: "IN", NM: "IN"},
-                            {CD: "EX", NM: "EX"}
-                        ]
-                    }
-            	}
+            {key: "usrType", label: "saleType", align: "center", 
+                editor: {
+                	type: "select", 
+                	config: {
+                    	columnKeys: {
+                        	optionValue: "CD", 
+                        	optionText: "NM"
+                    	},
+                    	options: [
+                        	{"CD": "IN", "NM": "IN"},
+                        	{"CD": "EX", "NM": "EX"}
+                    	]
+                	}
+                }
             },
             {key: "depth", label: "Depth", width: 80, align: "center",
 	            enableFilter: true,
@@ -92,7 +105,6 @@ $(document.body).ready(function () {
             }
         ],
         body: {
-            columnHeight: 26,
             onDataChanged: function () {
                 if (this.key == 'useflag') {
                     this.self.updateChildRows(this.dindex, {isChecked: this.item.isChecked});
@@ -115,41 +127,10 @@ $(document.body).ready(function () {
                 itemIcon: '<i class="fa fa-circle" aria-hidden="true"></i>'
             },
             columnKeys: {
-                parentKey: "pid",
-                selfKey: "id"
+                parentKey: "pmenucd",
+                selfKey: "menucd"
             }
-        },        
-        contextMenu: {
-            iconWidth: 20,
-            acceleratorWidth: 100,
-            itemClickAndClose: false,
-            icons: {
-                'arrow': '<i class="fa fa-caret-right"></i>'
-            },
-            items: [
-                {type: 1, label: "menu"},
-                {divide: true},
-                {
-                    label: "Tools",
-                    items: [
-                        {type: 1, label: "Excel Export"}
-                    ]
-                }
-            ],
-            popupFilter: function (item, param) {
-                //console.log(item, param);
-                if(param.element) {
-                    return true;
-                }else{
-                    return item.type == 1;
-                }
-            },
-            onClick: function (item, param) {
-            	firstGrid.exportExcel("grid-to-excel.xls");
-                firstGrid.contextMenu.close();
-                //또는 return true;
-            }
-        }                   
+        }                  
     });
 
     // 그리드 데이터 가져오기

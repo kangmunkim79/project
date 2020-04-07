@@ -11,35 +11,9 @@
     </select>
     
     <select id="getGridMenuList" resultType="com.shch.demo.menu.dto.Menu">
-		select null as pid
-			 , 0 as id
-			 , 'TOP' as menucd
-			 , 'TOP' as pmenucd
-			 , 'MENU' as menunm
-			 , '0' as depth
-			 , null as urlpath
-			 , null as usrtype
-			 , '0' as sortseq
-			 , '' as useflag
-		from dual	 
-		union all
-		select z.pid
-			 , z.id
-			 , z.menucd
-			 , z.pmenucd
-			 , z.menunm
-			 , z.depth
-			 , z.urlpath
-			 , z.usrtype
-			 , z.sortseq
-			 , z.useflag
-		from (
-				select cast(substr(ifnull(a.pmenucd,'00'),-2) as unsigned) as pid 
-					  ,a.sortseq as id 	  
-					  ,a.*
-				FROM MENU a
-				order by a.sortseq
-		) z
-		order by id
+		select a.*
+		      ,'N' as delchk
+		FROM MENU a
+		order by a.menucd
     </select>
 </mapper>

@@ -20,6 +20,8 @@ public class Menu {
 	private int pid;
 	private int id;
 	
+	private String delchk;
+	
 	public String getMenucd() {
 		return menucd;
 	}
@@ -115,5 +117,11 @@ public class Menu {
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	public String getDelchk() {
+		return delchk;
+	}
+	public void setDelchk(String delchk) {
+		this.delchk = delchk;
 	}  
 }
