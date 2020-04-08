@@ -14,6 +14,9 @@ $(document).on('click', '#userAddBtn', function(e){
 
 $(document.body).ready(function () {
     var API_SERVER = "http://api-demo.ax5.io";
+    var dialog = new ax5.ui.dialog({
+        title: "Message"
+    });    
     var firstGrid = new ax5.ui.grid({        
         target: $('[data-ax5grid="first-grid"]'),
         columns: [
@@ -125,37 +128,52 @@ $(document.body).ready(function () {
             }
         }                  
     });
-
+	go();
     // 그리드 데이터 가져오기
-    $.ajax({
-        method: "POST",
-        url: "/menu/getGridMenuList",
-        success: function (res) {
-            firstGrid.setData(res.mList);
-        }
-    });
+    function go(){
+	    $.ajax({
+	        method: "POST",
+	        url: "/menu/getGridMenuList",
+	        success: function (res) {
+	            firstGrid.setData(res.mList);
+	        }
+	    });
+    }
     $('[data-grid-control]').click(function () {
     	switch (this.getAttribute("data-grid-control")) {
-        case "row-add":
+        case "level1":
+            alert(1);
             firstGrid.addRow($.extend({}, firstGrid.list[Math.floor(Math.random() * firstGrid.list.length)], {__index: undefined}));
             break;
-        case "row-remove":
-			var delCnt = 0;
-			for(var i=0;i<firstGrid.list.length;i++){
-				var delchk = firstGrid.list[i].delchk;
-				if(delchk == "Y"){
-					delCnt++;
-					firstGrid.removeRow(i);
-				}
-			}
-			if(delCnt == 0){
-				alert("체크된 삭제할 메뉴가 없습니다.");
-			}else{
-				alert("삭제ajax");
-			}				  
-            //firstGrid.removeRow();
+        case "level2":
+        	alert(2);
+            firstGrid.addRow($.extend({}, firstGrid.list[Math.floor(Math.random() * firstGrid.list.length)], {__index: undefined}));
+            break;    
+        case "remove":
+            if(firstGrid.getList("selected").length == 0){
+            	dialog.alert("삭제할 목록을 선택하세요.");
+                $('#alert-close').click(function () {
+                    dialog.close();
+                });
+            }else{
+            	dialog.confirm({
+                    title: "Message",
+                    msg: '삭제하시겠습니까?'
+                }, function(){
+                    if(this.key == "ok"){
+                    	firstGrid.deleteRow("selected");
+                        dialog.alert(firstGrid.getList("deleted").length+"건의 데이터가 삭제되었습니다.");
+                        $('#alert-close').click(function () {
+                            dialog.close();
+                        });
+                    }else if(this.key == "cancel"){
+                        dialog.close();
+                    }
+                });
+            }
+            go();
             break;
-        case "row-update":
+        case "update":
             var updateIndex = Math.floor(Math.random() * firstGrid.list.length);
             firstGrid.updateRow($.extend({}, firstGrid.list[updateIndex], {price: 100, amount: 100, cost: 10000}), updateIndex);
             break;
@@ -172,9 +190,10 @@ $(document.body).ready(function () {
 	<div class="container"> 
 		<h2>Menu list</h2> 
 		<div style="padding: 10px;" align="right">
-		    <button class="btn btn-sm btn-primary" data-grid-control="row-add">row add</button>
-		    <button class="btn btn-sm btn-primary" data-grid-control="row-remove">row remove</button>
-		    <button class="btn btn-sm btn-primary" data-grid-control="row-update">row update</button>
+		    <button class="btn btn-sm btn-primary" data-grid-control="level1">Add Level 1</button>
+		    <button class="btn btn-sm btn-primary" data-grid-control="level2">Add Level 2</button>
+		    <button class="btn btn-sm btn-primary" data-grid-control="remove">Delete</button>
+		    <button class="btn btn-sm btn-primary" data-grid-control="update">Save</button>
 		    <button class="btn btn-sm btn-primary" data-grid-control="excel-export">Excel Export</button>
 		</div>		
 		<div style="position: relative;height:300px;" id="grid-parent">
