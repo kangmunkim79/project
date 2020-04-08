@@ -27,6 +27,7 @@ function init(){
 	$('#email').val('');
 }
 </script> 
+<body>
 <article> 
 	<div class="container col-md-6" role="main"> 
 		<div class="card"> 
@@ -75,3 +76,5 @@ function init(){
 		</div> 
 	</div> 
 </article>
+</body>
+</html>

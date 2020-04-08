@@ -73,6 +73,7 @@ $(document.body).ready(function () {
     });        
 }); 
 </script> 
+<body>
 <article> 
 	<div class="container"> 
 		<h2>User list</h2> 
@@ -90,3 +91,5 @@ $(document.body).ready(function () {
 		</div>		
 	</div> 
 </article>
+</body>
+</html>
