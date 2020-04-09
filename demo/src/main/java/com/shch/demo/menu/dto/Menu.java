@@ -1,6 +1,8 @@
 package com.shch.demo.menu.dto;
 
-public class Menu {
+import com.shch.demo.security.Session;
+
+public class Menu extends Session{
 
 	private String menucd;
 	private String pmenucd;
@@ -20,7 +22,7 @@ public class Menu {
 	private int pid;
 	private int id;
 	
-	private String delchk;
+	private String submenuChk;
 	
 	public String getMenucd() {
 		return menucd;
@@ -118,10 +120,10 @@ public class Menu {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getDelchk() {
-		return delchk;
+	public String getSubmenuChk() {
+		return submenuChk;
 	}
-	public void setDelchk(String delchk) {
-		this.delchk = delchk;
+	public void setSubmenuChk(String submenuChk) {
+		this.submenuChk = submenuChk;
 	}  
 }

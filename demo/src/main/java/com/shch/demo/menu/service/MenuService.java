@@ -26,4 +26,15 @@ public class MenuService {
 		return menuMapper.getGridMenuList(); 
 	}
 	
+	public void deleteMenuList(List<Menu> delList) throws Exception {
+		for(Menu data: delList) {
+			menuMapper.deleteMenu(data);
+		} 
+	}
+
+	public void saveMenuList(List<Menu> saveList) throws Exception {
+		for(Menu data: saveList) {
+			menuMapper.saveMenu(data);
+		} 
+	}
 }

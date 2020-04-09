@@ -13,7 +13,7 @@ $(document).ready(function () {
              
         	var menuHtml = "";
             $.each(data.menuList, function (i, item) {
-                if(item.urlpath != null){
+                if(item.submenuChk == "N"){
                 	menuHtml += '<li class="nav-item">';
                 	menuHtml += '<a class="nav-link" href="${pageContext.request.contextPath}' + item.urlpath + '">' + item.menunm + '</a>';
                 	menuHtml += '</li>';

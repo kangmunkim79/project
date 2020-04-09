@@ -11,5 +11,9 @@ public interface MenuMapper {
 	public List<Menu> getSubMenuList();
 	
 	public List<Menu> getGridMenuList();
+	
+	public void deleteMenu(Menu param);
+	
+	public void saveMenu(Menu param);
 
 }

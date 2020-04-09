@@ -3,17 +3,83 @@
 <mapper namespace="com.shch.demo.menu.mapper.MenuMapper">
     
     <select id="getMenuList" resultType="com.shch.demo.menu.dto.Menu">
-        SELECT * FROM MENU WHERE DEPTH = '1'
+		select z.menucd
+		      ,z.menunm
+		      ,z.urlpath
+		      ,z.sortseq
+		      , case when count(z.submenucd) <![CDATA[ > ]]> 0 then 'Y' else 'N' end as submenuChk 
+		from (
+				select b.menucd as submenucd
+				      ,a.*
+				from menu a left OUTER join menu b on  a.MENUCD = b.PMENUCD
+		) z
+		where z.depth = '1'
+		group by z.menucd,z.menunm,z.urlpath,z.sortseq
+		order by z.sortseq asc
     </select>
 
 	<select id="getSubMenuList" resultType="com.shch.demo.menu.dto.Menu">
-        SELECT * FROM MENU WHERE DEPTH = '2'
+        select * 
+        from menu 
+        where depth = '2' 
+        order by sortseq
     </select>
     
     <select id="getGridMenuList" resultType="com.shch.demo.menu.dto.Menu">
 		select a.*
-		      ,'N' as delchk
 		FROM MENU a
-		order by a.menucd
+		order by a.sortseq, a.menucd
     </select>
+    
+    <delete id="deleteMenu" parameterType="com.shch.demo.menu.dto.Menu">
+    	delete from menu where menucd = #{menucd}
+    </delete>
+    
+    <update id="saveMenu" parameterType="com.shch.demo.menu.dto.Menu">
+    	insert into menu (
+    		menucd
+    	   ,pmenucd
+    	   ,menunm
+    	   ,depth
+    	   ,urlpath
+    	   ,param
+    	   ,usrtype
+    	   ,sortseq
+    	   ,useflag
+    	   ,sts
+    	   ,regcd
+    	   ,regdt
+    	   ,modcd
+    	   ,moddt    	
+    	) values (
+    		#{menucd}
+    	   ,#{pmenucd}
+    	   ,#{menunm}
+    	   ,#{depth}
+    	   ,#{urlpath}
+    	   ,#{param}
+    	   ,#{usrtype}
+    	   ,#{sortseq}
+    	   ,#{useflag}
+    	   ,'C'
+    	   ,#{sid}
+    	   ,sysdate()
+    	   ,#{sid}
+    	   ,sysdate()
+    	)
+    	on duplicate key 
+    	update
+    	    pmenucd = #{pmenucd}
+    	   ,menunm  = #{menunm}
+    	   ,depth   = #{depth}
+    	   ,urlpath = #{urlpath}
+    	   ,param   = #{param}
+    	   ,usrtype = #{usrtype}
+    	   ,sortseq = #{sortseq}
+    	   ,useflag = #{useflag}
+    	   ,modcd   = #{sid}
+    	   ,moddt   = sysdate()
+    	   
+    </update>
+    
 </mapper>
