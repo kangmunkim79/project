@@ -13,14 +13,15 @@ $(document).on('click', '#userAddBtn', function(e){
 });
 
 $(document.body).ready(function () {
-    var API_SERVER = "http://api-demo.ax5.io";
-    var firstGrid = new ax5.ui.grid();
-
-    firstGrid.setConfig({
+	var API_SERVER = "http://api-demo.ax5.io";
+	var dialog = new ax5.ui.dialog({
+	    title: "Message"
+	});    
+	$('#alert-close').click(function () {
+	    dialog.close();
+	});
+    var firstGrid = new ax5.ui.grid({
         target: $('[data-ax5grid="first-grid"]'),
-        showLineNumber: true,
-        showRowSelector: false,
-        header: {align: 'center'},
         columns: [
             {key: "username", label: "Id", width: 120, align: "center"},
             {key: "name", label: "Name", width: 120, align: "cneter"},
@@ -80,7 +81,7 @@ $(document.body).ready(function () {
 		<div style="position: relative;height:400px;" id="grid-parent">
 		    <div data-ax5grid="first-grid" data-ax5grid-config="{
 			                    showLineNumber: true,
-			                    showRowSelector: false,
+			                    showRowSelector: true,
 			                    sortable: true,
 			                    header: {align:'center'}
 			                    }" style="height: 100%;"></div>

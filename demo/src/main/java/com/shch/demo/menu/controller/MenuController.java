@@ -10,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.shch.demo.menu.dto.Menu;
@@ -24,7 +23,7 @@ public class MenuController {
 	MenuService menuService;
 
 	@RequestMapping(value = "/menuList", method = RequestMethod.GET)
-	public String getBoardList(Model model) throws Exception {
+	public String menuList(Model model) throws Exception {
 		return "menu/menuList";
 	}
 	

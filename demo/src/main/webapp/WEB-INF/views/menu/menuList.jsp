@@ -13,13 +13,13 @@ $(document).on('click', '#userAddBtn', function(e){
 });
 
 $(document.body).ready(function () {
-    var API_SERVER = "http://api-demo.ax5.io";
-    var dialog = new ax5.ui.dialog({
-        title: "Message"
-    });    
-    $('#alert-close').click(function () {
-        dialog.close();
-    });
+	var API_SERVER = "http://api-demo.ax5.io";
+	var dialog = new ax5.ui.dialog({
+	    title: "Message"
+	});    
+	$('#alert-close').click(function () {
+	    dialog.close();
+	});
     var firstGrid = new ax5.ui.grid({        
         target: $('[data-ax5grid="first-grid"]'),
         columns: [
@@ -275,17 +275,17 @@ $(document.body).ready(function () {
 <body>
 <article> 
 	<div class="container"> 
-		<h2>Menu list</h2> 
+		<h2>Menu list</h2> 	
+		<div style="position: relative;height:400px;" id="grid-parent">
+		    <div data-ax5grid="first-grid" data-ax5grid-config="{showLineNumber: true,showRowSelector: true,header: {selector: false, align:'center'}}" style="height: 100%;"></div>
+		</div>	
 		<div style="padding: 10px;" align="right">
 		    <button class="btn btn-sm btn-primary" data-grid-control="level1">Add Level 1</button>
 		    <button class="btn btn-sm btn-primary" data-grid-control="level2">Add Level 2</button>
 		    <button class="btn btn-sm btn-primary" data-grid-control="remove">Delete</button>
 		    <button class="btn btn-sm btn-primary" data-grid-control="update">Save</button>
 		    <button class="btn btn-sm btn-primary" data-grid-control="excel-export">Excel Export</button>
-		</div>		
-		<div style="position: relative;height:400px;" id="grid-parent">
-		    <div data-ax5grid="first-grid" data-ax5grid-config="{showLineNumber: true,showRowSelector: true,header: {selector: false, align:'center'}}" style="height: 100%;"></div>
-		</div>			
+		</div>					
 	</div> 
 </article>
 </body>

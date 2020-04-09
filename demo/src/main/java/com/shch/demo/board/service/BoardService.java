@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.shch.demo.board.dto.Board;
 import com.shch.demo.board.mapper.BoardMapper;
+import com.shch.demo.menu.dto.Menu;
 import com.shch.demo.utils.StringUtils;
 import com.shch.demo.utils.keyGeneratorUtils;
 
@@ -47,4 +48,10 @@ public class BoardService {
 		boardMapper.deleteBoard(bid);
 	}
 
+	public void deleteBoardList(List<Board> delList) throws Exception {
+		for(Board data: delList) {
+			String bid = data.getBid();
+			boardMapper.deleteBoard(bid);
+		} 
+	}
 }
