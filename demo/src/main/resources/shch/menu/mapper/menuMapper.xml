@@ -36,49 +36,67 @@
     </delete>
     
     <update id="saveMenu" parameterType="com.shch.demo.menu.dto.Menu">
-    	insert into menu (
-    		menucd
-    	   ,pmenucd
-    	   ,menunm
-    	   ,depth
-    	   ,urlpath
-    	   ,param
-    	   ,usrtype
-    	   ,sortseq
-    	   ,useflag
-    	   ,sts
-    	   ,regcd
-    	   ,regdt
-    	   ,modcd
-    	   ,moddt    	
-    	) values (
-    		#{menucd}
-    	   ,#{pmenucd}
-    	   ,#{menunm}
-    	   ,#{depth}
-    	   ,#{urlpath}
-    	   ,#{param}
-    	   ,#{usrtype}
-    	   ,#{sortseq}
-    	   ,#{useflag}
-    	   ,'C'
-    	   ,#{sid}
-    	   ,sysdate()
-    	   ,#{sid}
-    	   ,sysdate()
-    	)
-    	on duplicate key 
-    	update
-    	    pmenucd = #{pmenucd}
-    	   ,menunm  = #{menunm}
-    	   ,depth   = #{depth}
-    	   ,urlpath = #{urlpath}
-    	   ,param   = #{param}
-    	   ,usrtype = #{usrtype}
-    	   ,sortseq = #{sortseq}
-    	   ,useflag = #{useflag}
-    	   ,modcd   = #{sid}
-    	   ,moddt   = sysdate()
+		MERGE menu AS m
+		USING (select #{menucd} as menucd
+				  	 ,#{pmenucd} as pmenucd
+					 ,#{menunm} as menunm
+					 ,#{depth} as depth
+					 ,#{urlpath} as urlpath
+				 	 ,#{param} as param
+					 ,#{usrtype} as usrtype
+					 ,#{sortseq} as sortseq
+					 ,#{useflag} as useflag
+					 ,'C' as sts
+					 ,#{sid} as regcd
+					 ,getdate() as regdt
+					 ,#{sid} modcd
+					 ,getdate() as moddt
+		) as s
+		ON m.menucd = s.menucd
+		WHEN MATCHED THEN
+			UPDATE SET
+				 pmenucd = s.pmenucd
+				,menunm  = s.menunm
+				,depth   = s.depth
+				,urlpath = s.urlpath
+				,param   = s.param
+				,usrtype = s.usrtype
+				,sortseq = s.sortseq
+				,useflag = s.useflag
+				,modcd   = s.modcd
+				,moddt   = getdate()
+		WHEN NOT MATCHED THEN
+			INSERT (
+		    	 menucd
+		    	,pmenucd
+		    	,depth
+		    	,menunm		    	
+		    	,urlpath
+		    	,param
+		    	,usrtype
+		    	,sortseq
+		    	,useflag
+		    	,sts
+		    	,regcd
+		    	,regdt
+		    	,modcd
+		    	,moddt			
+			)VALUES(
+		    	 s.menucd
+		    	,s.pmenucd
+		    	,s.depth
+		    	,s.menunm		    	
+		    	,s.urlpath
+		    	,s.param
+		    	,s.usrtype
+		    	,s.sortseq
+		    	,s.useflag
+		    	,s.sts
+		    	,s.regcd
+		    	,s.regdt
+		    	,s.modcd
+		    	,s.moddt	
+			);
     	   
     </update>
     

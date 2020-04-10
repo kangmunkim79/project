@@ -46,6 +46,7 @@ $(document.body).ready(function () {
 <body>
 <article> 
 	<div class="container">
+		<h2></h2>
 		<div id="media-viewer-target-0"></div>			
 	</div> 
 </article>

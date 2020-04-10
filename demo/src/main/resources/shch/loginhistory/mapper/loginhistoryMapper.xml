@@ -10,9 +10,9 @@
            ,regdt
         ) VALUES (
         	#{username}
-           ,sysdate()
+           ,getdate()
            ,#{ip}
-           ,sysdate()
+           ,getdate()
         )
     </insert>
     

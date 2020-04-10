@@ -47,7 +47,7 @@ $(document).ready(function () {
 });
 </script>
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-    <a class="navbar-brand" href="${pageContext.request.contextPath}/">SHCH.COM</a>
+    <a class="navbar-brand" href="${pageContext.request.contextPath}/">License Monitoring System</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -67,3 +67,10 @@ $(document).ready(function () {
         </ul>    
     </div>
 </nav>
+<div class="fixed-bottom">
+	<div class="card text-center">
+	  	<div class="card-footer text-muted">
+	    	© 2020 Copyright : DOOSAN.COM  Help: kwanghyun.l@doosan.com / 032-211-6843
+	  	</div>  
+	</div>
+</div>
