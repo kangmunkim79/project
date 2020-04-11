@@ -13,12 +13,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 
+import com.shch.demo.GlobalPropertySource;
 import com.shch.demo.loginhistory.mapper.LoginhistoryMapper;
+import com.shch.demo.loginhistory.mssql.mapper.MsLoginhistoryMapper;
 
 public class CustomLoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {
     
+    @Autowired
+    GlobalPropertySource globalPropertySource;
+    
 	@Autowired
 	LoginhistoryMapper loginhistoryMapper;
+
+	@Autowired
+	MsLoginhistoryMapper msloginhistoryMapper;
 	
 	public CustomLoginSuccessHandler(String defaultTargetUrl) {
         setDefaultTargetUrl(defaultTargetUrl);
@@ -37,7 +45,14 @@ public class CustomLoginSuccessHandler extends SavedRequestAwareAuthenticationSu
             Map<String, Object> param = new HashMap<String, Object>();
             param.put("username", username);
             param.put("ip", ip);
-            loginhistoryMapper.insertLoginhistory(param);
+            if("maria".equals(globalPropertySource.getDefaultdb())) {
+            	loginhistoryMapper.insertLoginhistory(param);
+            }else if("mssql".equals(globalPropertySource.getDefaultdb())) {
+            	msloginhistoryMapper.insertLoginhistory(param);
+            }else if("oracle".equals(globalPropertySource.getDefaultdb())) {
+            	
+            }
+            
             if (redirectUrl != null) {
                 session.removeAttribute("prevPage");
                 getRedirectStrategy().sendRedirect(request, response, redirectUrl);

@@ -7,7 +7,9 @@ import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.jdbc.DataSourceBuilder;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -17,16 +19,16 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import com.shch.demo.GlobalPropertySource;
 
 @Configuration
-@MapperScan(basePackages = "com.shch.demo")
+@MapperScan(value="com.shch.demo.*.mapper", sqlSessionFactoryRef="mariaSqlSessionFactory")
 @EnableTransactionManagement
-public class DatabaseConfig {
+public class MariaDatabaseConfig {
 
     @Autowired
     GlobalPropertySource globalPropertySource;
     
-    @Bean
+    @Bean(name = "mariaDataSource")
     @Primary
-    public DataSource customDataSource() {
+    public DataSource mariaDataSource() {
         return DataSourceBuilder
             .create()
             .url(globalPropertySource.getUrl())
@@ -36,19 +38,20 @@ public class DatabaseConfig {
             .build();
     }
     
-    @Bean
-    public SqlSessionFactory sqlSessionFactory(DataSource customDataSource) throws Exception {
-        final SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
-        sessionFactory.setDataSource(customDataSource);
+    @Bean(name = "mariaSqlSessionFactory")
+    @Primary
+    public SqlSessionFactory mariaSqlSessionFactory(@Qualifier("mariaDataSource") DataSource mariaDataSource, ApplicationContext applicationContext) throws Exception {
+        SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
+        sqlSessionFactoryBean.setDataSource(mariaDataSource);
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-        sessionFactory.setMapperLocations(resolver.getResources("classpath:shch/**/mapper/*.xml"));
-        return sessionFactory.getObject();
+        sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath:shch/**/mapper/*.xml"));
+        return sqlSessionFactoryBean.getObject();
     }
     
-    @Bean
-    public SqlSessionTemplate sqlSessionTemplate(SqlSessionFactory sqlSessionFactory) throws Exception {
-      final SqlSessionTemplate sqlSessionTemplate = new SqlSessionTemplate(sqlSessionFactory);
-      return sqlSessionTemplate;
+    @Bean(name = "mariaSqlSessionTemplate")
+    @Primary
+    public SqlSessionTemplate mariaSqlSessionTemplate(SqlSessionFactory mariaSqlSessionFactory) throws Exception {
+      return new SqlSessionTemplate(mariaSqlSessionFactory);
     }
 
 }

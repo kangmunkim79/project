@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.shch.demo.loginhistory.mapper.LoginhistoryMapper">
+<mapper namespace="com.shch.demo.loginhistory.mssql.mapper.MsLoginhistoryMapper">
     
     <insert id="insertLoginhistory" parameterType="Map">
         INSERT INTO USER_LOGIN_HIST (
@@ -10,9 +10,9 @@
            ,regdt
         ) VALUES (
         	#{username}
-           ,now()
+           ,getdate()
            ,#{ip}
-           ,now()
+           ,getdate()
         )
     </insert>
     
