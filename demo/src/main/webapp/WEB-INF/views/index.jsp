@@ -42,12 +42,12 @@ $(document.body).ready(function () {
         }
     });
 });
-</script> 
+</script>
 <body>
 <article> 
 	<div class="container">
 		<h2></h2>
-		<div id="media-viewer-target-0"></div>			
+		<div id="media-viewer-target-0"></div>		
 	</div> 
 </article>
 </body>

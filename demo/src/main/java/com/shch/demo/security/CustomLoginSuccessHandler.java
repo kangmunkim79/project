@@ -44,15 +44,8 @@ public class CustomLoginSuccessHandler extends SavedRequestAwareAuthenticationSu
             String redirectUrl = (String) session.getAttribute("prevPage");
             Map<String, Object> param = new HashMap<String, Object>();
             param.put("username", username);
-            param.put("ip", ip);
-            if("maria".equals(globalPropertySource.getDefaultdb())) {
-            	loginhistoryMapper.insertLoginhistory(param);
-            }else if("mssql".equals(globalPropertySource.getDefaultdb())) {
-            	msloginhistoryMapper.insertLoginhistory(param);
-            }else if("oracle".equals(globalPropertySource.getDefaultdb())) {
-            	
-            }
-            
+            param.put("ip", ip);            	
+            loginhistoryMapper.insertLoginhistory(param);                
             if (redirectUrl != null) {
                 session.removeAttribute("prevPage");
                 getRedirectStrategy().sendRedirect(request, response, redirectUrl);

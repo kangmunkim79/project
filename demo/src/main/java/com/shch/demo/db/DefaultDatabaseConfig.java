@@ -12,42 +12,44 @@ import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.shch.demo.GlobalPropertySource;
 
 @Configuration
-@MapperScan(value="com.shch.demo.*.maria.mapper", sqlSessionFactoryRef="mariaSqlSessionFactory")
+@MapperScan(value="com.shch.demo.*.mapper", sqlSessionFactoryRef="defaultSqlSessionFactory")
 @EnableTransactionManagement
-public class MariaDatabaseConfig {
-
+public class DefaultDatabaseConfig {
     @Autowired
     GlobalPropertySource globalPropertySource;
     
-    @Bean(name = "mariaDataSource")
-    public DataSource mariaDataSource() {
+    @Bean(name = "defaultDataSource")
+    @Primary
+    public DataSource defaultDataSource() {
         return DataSourceBuilder
             .create()
-            .url(globalPropertySource.getMariaurl())
-            .driverClassName(globalPropertySource.getMariadriverClassName())
-            .username(globalPropertySource.getMariausername())
-            .password(globalPropertySource.getMariapassword())
+            .url(globalPropertySource.getUrl())
+            .driverClassName(globalPropertySource.getDriverClassName())
+            .username(globalPropertySource.getUsername())
+            .password(globalPropertySource.getPassword())
             .build();
     }
     
-    @Bean(name = "mariaSqlSessionFactory")
-    public SqlSessionFactory mariaSqlSessionFactory(@Qualifier("mariaDataSource") DataSource mariaDataSource, ApplicationContext applicationContext) throws Exception {
+    @Bean(name = "defaultSqlSessionFactory")
+    @Primary
+    public SqlSessionFactory defaultSqlSessionFactory(@Qualifier("defaultDataSource") DataSource defaultDataSource, ApplicationContext applicationContext) throws Exception {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
-        sqlSessionFactoryBean.setDataSource(mariaDataSource);
+        sqlSessionFactoryBean.setDataSource(defaultDataSource);
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-        sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath:shch/**/maria/mapper/*.xml"));
+        sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath:shch/**/mapper/*.xml"));
         return sqlSessionFactoryBean.getObject();
     }
     
-    @Bean(name = "mariaSqlSessionTemplate")
-    public SqlSessionTemplate mariaSqlSessionTemplate(SqlSessionFactory mariaSqlSessionFactory) throws Exception {
-      return new SqlSessionTemplate(mariaSqlSessionFactory);
+    @Bean(name = "defaultSqlSessionTemplate")
+    @Primary
+    public SqlSessionTemplate defaultSqlSessionTemplate(SqlSessionFactory defaultSqlSessionFactory) throws Exception {
+      return new SqlSessionTemplate(defaultSqlSessionFactory);
     }
-
 }

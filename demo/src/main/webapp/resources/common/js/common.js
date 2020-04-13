@@ -1,3 +1,20 @@
+var picker = new ax5.ui.picker();
+var mask = new ax5.ui.mask();
+function common_gridloading_open(id){	
+	var gridid = "#"+id;
+	mask.open({
+        // position: "fixed", // Maybe options that may be required to you
+        zIndex: 99,
+        target: $(gridid).get(0),
+        content: '<h1><i class="fa fa-spinner fa-spin"></i> Loading</h1>'
+		/*onClick: function(){
+            console.log(this);
+        } */
+    });
+}
+function common_gridloading_close(){
+	mask.close();
+}
 /**
  * 좌측문자열채우기
  * @params

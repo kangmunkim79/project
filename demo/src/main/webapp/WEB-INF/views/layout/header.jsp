@@ -67,10 +67,3 @@ $(document).ready(function () {
         </ul>    
     </div>
 </nav>
-<div class="fixed-bottom">
-	<div class="card text-center">
-	  	<div class="card-footer text-muted">
-	    	© 2020 Copyright : DOOSAN.COM  Help: kwanghyun.l@doosan.com / 032-211-6843
-	  	</div>  
-	</div>
-</div>

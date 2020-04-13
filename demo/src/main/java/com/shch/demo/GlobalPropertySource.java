@@ -11,24 +11,17 @@ import org.springframework.context.annotation.PropertySources;
     @PropertySource( value = "classpath:config.properties" )
 })
 public class GlobalPropertySource {
-
-    @Value("${spring.datasource.defaultdb}")
-    private String defaultdb;
     
-    public String getDefaultdb() {
-        return defaultdb;
-    }
-	
-    @Value("${spring.maria.datasource.driverClassName}")
+    @Value("${spring.datasource.driverClassName}")
     private String driverClassName;
     
-    @Value("${spring.maria.datasource.url}")
+    @Value("${spring.datasource.url}")
     private String url;
     
-    @Value("${spring.maria.datasource.username}")
+    @Value("${spring.datasource.username}")
     private String username;
     
-    @Value("${spring.maria.datasource.password}")
+    @Value("${spring.datasource.password}")
     private String password;
     
     public String getDriverClassName() {
@@ -45,6 +38,36 @@ public class GlobalPropertySource {
  
     public String getPassword() {
         return password;
+    }
+    
+    
+    
+    @Value("${spring.maria.datasource.driverClassName}")
+    private String mariadriverClassName;
+    
+    @Value("${spring.maria.datasource.url}")
+    private String mariaurl;
+    
+    @Value("${spring.maria.datasource.username}")
+    private String mariausername;
+    
+    @Value("${spring.maria.datasource.password}")
+    private String mariapassword;
+    
+    public String getMariadriverClassName() {
+        return mariadriverClassName;
+    }
+ 
+    public String getMariaurl() {
+        return mariaurl;
+    }
+ 
+    public String getMariausername() {
+        return mariausername;
+    }
+ 
+    public String getMariapassword() {
+        return mariapassword;
     }
 
     

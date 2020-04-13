@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shch.demo.license.mapper.LicenseMapper">
+
+	<select id="getGridLicenseList" parameterType="HashMap" resultType="HashMap">
+		SELECT licensename as licnm
+			 , CASE WHEN LICENSENAME = '건기 3D PDM(VER)                                  ' THEN 'VER'
+		            WHEN LICENSENAME = 'ABAQUS                                          ' THEN 'abaqus'
+		            WHEN LICENSENAME = 'ADAMS                                           ' THEN 'Adams_View'	       
+	    			WHEN LICENSENAME = 'ADAMS(방산)                                      ' THEN 'Adams_View'	
+		            WHEN LICENSENAME = 'AMESIM                                          ' THEN 'lms_il_ame_01'
+		            WHEN LICENSENAME = 'AMESIM(방산)                                     ' THEN 'lms_il_dss_69_run'
+		            WHEN LICENSENAME = 'ANSA                                            ' THEN 'ANSA'
+		            WHEN LICENSENAME = 'AutoCAD Mechanical                              ' THEN '86627AMECH_PP_2017_0F'
+		            WHEN LICENSENAME = 'AutoCAD Mechanical(방산)                         ' THEN '86627AMECH_PP_2017_0F'	            
+		            WHEN LICENSENAME = 'CATIA V5(MD2)                                   ' THEN 'MD2'
+		            WHEN LICENSENAME = 'CETOL v6 Sigma                                  ' THEN 'cetol_catia'	           
+		            WHEN LICENSENAME = 'FEMFAT(LM Tools)                                ' THEN 'EHD'	            
+		            WHEN LICENSENAME = 'FEV-Virtual Engine                              ' THEN 'FEV_VIRTUAL_ENGINE__ADVCRANK'
+		            WHEN LICENSENAME = 'FlowMaster                                      ' THEN 'FlowmasterV7X'	    
+		            WHEN LICENSENAME = 'FlowMaster(방산)                                 ' THEN 'FloMASTERdyna_c'	          
+		            WHEN LICENSENAME = 'HyperWorks                                      ' THEN 'GlobalZoneAP'
+		            WHEN LICENSENAME = 'IDEAS12                                         ' THEN 'A026G'	           
+		            WHEN LICENSENAME = 'KULI                                            ' THEN 'KULI_base'
+		            WHEN LICENSENAME = 'MATHCAD                                         ' THEN 'MATHCAD'
+		            WHEN LICENSENAME = 'nCode                                           ' THEN 'BASIC'
+		            WHEN LICENSENAME = 'ORCAD/PSPISE                                    ' THEN 'Capture'
+		            WHEN LICENSENAME = 'Origin8.5                                       ' THEN 'Origin'
+		            WHEN LICENSENAME = 'Origin8.6                                       ' THEN 'OriginPro'
+		            WHEN LICENSENAME = 'PADS                                            ' THEN 'pwrverify'
+		            WHEN LICENSENAME = 'RadTherm                                        ' THEN 'TaiSO'
+		            WHEN LICENSENAME = 'RAMSIS                                          ' THEN 'main_core_bb'
+		            WHEN LICENSENAME = 'RECURDYNE                                       ' THEN 'RFLEX_SOL'
+		            WHEN LICENSENAME = 'Test lab                                        ' THEN 'lms_tl_dtp_20'
+		            WHEN LICENSENAME = 'VA ONE                                          ' THEN 'vaone'
+		            WHEN LICENSENAME = 'Virtual Lab                                     ' THEN 'lms_vl_tw'
+		            WHEN LICENSENAME = 'WeldPlanner                                     ' THEN 'VISUAL_VIEWER'
+		            WHEN LICENSENAME = 'Zuken                                           ' THEN 'E3cable'
+		            WHEN LICENSENAME = 'nCode(LMX)                                      ' THEN 'FUNDAMENTALS'
+		            WHEN LICENSENAME = 'FEMFAT(LM-X Tools)                              ' THEN 'FEMFAT'
+		            WHEN LICENSENAME = 'Converge                                        ' THEN 'converge'
+		       		WHEN LICENSENAME = 'ALIAS/SHOWCASE                                  ' THEN '85300SURFST_F / 86312VRDPRO_F'
+		            WHEN LICENSENAME = 'Ricardo(PISDYN/VALDYN/RINGPAK/ENGDYN/WAVE)      ' THEN 'PISDYN_Base / VALDYN_Solver / RINGPAK_Base / ENGDYN_GUIBase / WAVE_Solver'
+		            WHEN LICENSENAME = 'SC/TETRA                                        ' THEN 'SCTMPIGRP'	            
+		            WHEN LICENSENAME = 'TeamCenter(Author/Consumer)                     ' THEN 'teamcenter_author / teamcenter_consumer'	            	         
+		            WHEN LICENSENAME = 'Origin9.1                                       ' THEN 'Origin'
+		            WHEN LICENSENAME = 'AVL EXCITE                                      ' THEN 'excite_gui'
+		            WHEN LICENSENAME = 'IPS Simulation                                  ' THEN 'ipsm01'
+		            WHEN LICENSENAME = 'Keyshot                                         ' THEN 'Keyshot2'
+		            WHEN LICENSENAME = 'fluent                                          ' THEN 'acfd_fluent'
+		            WHEN LICENSENAME = 'CATIA Composer                                  ' THEN 'S_Publisher'
+		            WHEN LICENSENAME = 'GT-SUITE                                        ' THEN 'GTsuite'
+		            WHEN LICENSENAME = 'modeFRONTIER                                    ' THEN 'mf_gui'
+		            WHEN LICENSENAME = 'CATIA V5(MOXY)                                  ' THEN 'MD2'
+		            WHEN LICENSENAME = 'CATIA V5 DICC' THEN 'MD2'
+		            WHEN LICENSENAME = 'CATIA V5 DISD' THEN 'MD2'	
+		            WHEN LICENSENAME = '3DEXPERIENCE(GLOBAL)                            ' THEN 'CSV / VCL / PPL'
+		            WHEN LICENSENAME = '3DEXPERIENCE(LOCAL)                             ' THEN 'CSV / VCL / PPL'    
+		            WHEN LICENSENAME = 'NX/JACK(JACK 3D)/JT TRANSLATOR FOR CATIA V5     ' THEN '' 
+		            WHEN LICENSENAME = 'STAR-CD/CCM+                                    ' THEN ''       
+		       ELSE '' END AS modulenm   
+		     , MAX(MAXCREDIT) AS maxcredit
+		FROM TB_LIC_CAE_KOREA_TOTAL_AMT
+		<where>
+			<if test='licnm != null and licnm != ""'>
+			AND LICENSENAME like '%'+ #{licnm} +'%'
+			</if>
+			<if test='modulenm != null and modulenm != ""'>
+			AND MODEULNAME like '%'+ #{modulenm} +'%'
+			</if>
+			<if test='stDateTime != null and stDateTime != ""'>
+			AND CONVERT(DATETIME, SUBSTRING(LOGEDTIME,1,8)) >= CONVERT(DATETIME,#{stDateTime})
+			</if>
+			<if test='etDateTime != null and etDateTime != ""'>
+			AND CONVERT(DATETIME, SUBSTRING(LOGEDTIME,1,8)) <![CDATA[<=]]> CONVERT(DATETIME,#{etDateTime})
+			</if>				
+			<if test="daytyp != true">
+		    AND SUBSTRING(LOGEDTIME,9,2) > 7
+		    AND SUBSTRING(LOGEDTIME,9,2) <![CDATA[<]]> 19				  
+			</if>											
+		</where>		
+		GROUP BY LICENSENAME		
+	    ORDER BY LICENSENAME ASC
+	</select>
+
+	<select id="getGridModuleList" parameterType="HashMap" resultType="HashMap">
+		SELECT LICENSENAME as licnm
+		     , MODEULNAME as modulenm
+		     , MAX(CONVERT(INTEGER,USAGE)) AS usage
+		     , AVG(CONVERT(BIGINT,MAXCREDIT)) AS maxcredit
+		FROM TB_LIC_CAE_KOREA_TOTAL_AMT
+		WHERE LICENSENAME = #{licnm}		  
+		<if test='modulenm != null and modulenm != ""'>
+		AND MODEULNAME like '%'+ #{modulenm} +'%'
+		</if>
+		<if test='stDateTime != null and stDateTime != ""'>
+		AND CONVERT(DATETIME, SUBSTRING(LOGEDTIME,1,8)) >= CONVERT(DATETIME,#{stDateTime})
+		</if>
+		<if test='etDateTime != null and etDateTime != ""'>
+		AND CONVERT(DATETIME, SUBSTRING(LOGEDTIME,1,8)) <![CDATA[<=]]> CONVERT(DATETIME,#{etDateTime})
+		</if>	
+		<if test="daytyp != true">
+	    AND SUBSTRING(LOGEDTIME,9,2) > 7
+	    AND SUBSTRING(LOGEDTIME,9,2) <![CDATA[<]]> 19	
+	    </if>			
+		GROUP BY LICENSENAME, MODEULNAME		
+		ORDER BY LICENSENAME, MODEULNAME ASC
+	</select>
+	
+	<select id="getGridLicUserList" parameterType="hashmap" resultType="hashmap">
+		/* userList */
+		SELECT a.LICENSENAME as licnm
+		     , a.MODEULNAME as modulenm
+		     , a.ID as id
+		     , b.USER_NM AS name
+		     , b.DEPT_NM as deptnm
+		     , COUNT(*) AS cnt
+		     , CONVERT(VARCHAR,COUNT(*))+' / '+ CONVERT(VARCHAR,(SELECT count(*)
+				FROM TB_LIC_CAE_KOREA_TOTAL_AMT
+				WHERE LICENSENAME = #{LICENSENAME}
+				AND   MODEULNAME = #{MODEULNAME}
+				AND   CONVERT(DATETIME, SUBSTRING(LOGEDTIME,1,8)+' '+SUBSTRING(LOGEDTIME,9,2)+':'+SUBSTRING(LOGEDTIME,11,2)) >= CONVERT(DATETIME,#{STDATE})	 	 
+				AND   CONVERT(DATETIME, SUBSTRING(LOGEDTIME,1,8)+' '+SUBSTRING(LOGEDTIME,9,2)+':'+SUBSTRING(LOGEDTIME,11,2))  <![CDATA[<=]]>  CONVERT(DATETIME,#{ETDATE})
+					<if test='daytyp != "A"'>
+					AND SUBSTRING(LOGEDTIME,9,2) > 7
+					AND SUBSTRING(LOGEDTIME,9,2) <![CDATA[<]]> 19
+					</if>	
+				)) AS usecount
+				
+		FROM TB_LIC_CAE_KOREA_USER_LOG a left outer join TB_LIC_EXT_USERTABLE b on a.ID =b.USER_ID
+		WHERE a.LICENSENAME = #{licnm}
+		AND   a.MODEULNAME = #{modulenm}
+	
+		<if test='id != null and id != ""'>
+		AND a.ID like '%'+ #{id} +'%'
+		</if>
+		<if test='stDateTime != null and stDateTime != ""'>
+		AND CONVERT(DATETIME, SUBSTRING(a.LOGEDTIME,1,8)) >= CONVERT(DATETIME,#{stDateTime})
+		</if>
+		<if test='etDateTime != null and etDateTime != ""'>
+		AND CONVERT(DATETIME, SUBSTRING(a.LOGEDTIME,1,8)) <![CDATA[<=]]> CONVERT(DATETIME,#{etDateTime})
+		</if>
+		<if test="daytyp != true">
+	    AND SUBSTRING(a.LOGEDTIME,9,2) > 7
+	    AND SUBSTRING(a.LOGEDTIME,9,2) <![CDATA[<]]> 19			  
+		</if>	
+		GROUP BY a.LICENSENAME, a.MODEULNAME,a.ID, b.USER_NM,b.DEPT_NM	
+		ORDER BY CNT DESC
+
+	</select>	
+	
+	<insert id="insertLicUserLog">
+		INSERT INTO tb_lic_cae_user_log_v2(
+			id,
+			licserver,
+			modulenm,
+			logintime,
+			logedtime
+		)VALUES(
+			#{id},
+			#{licserver},
+			#{modulenm},
+			#{logintime},
+			#{logedtime}
+		)	
+	</insert>
+
+	<insert id="insertLicTotalAmtLog">   		
+   		INSERT INTO tb_lic_cae_korea_total_amt_v2(
+			licserver,
+			modulenm,
+			maxcredit,
+			usage,
+			percentage,
+			logedtime
+		)VALUES(
+			#{licserver},
+			#{modulenm},
+			#{maxcredit},
+			#{usage},
+			#{usage}/#{maxcredit}*100,
+			#{logedtime}
+		)			
+	</insert>	
+</mapper>
