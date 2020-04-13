@@ -11,6 +11,8 @@ public interface LicenseMapper {
 	
 	public List<Map<String, Object>> getGridLicUserList(Map<String, Object> param);
 	
+	public List<Map<String, Object>> getGridLicServerList(Map<String, Object> param);
+	
 	public void insertLicUserLog(Map<String, Object> param);
 	
 	public void insertLicTotalAmtLog(Map<String, Object> param);

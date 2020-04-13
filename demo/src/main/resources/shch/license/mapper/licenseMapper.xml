@@ -149,6 +149,10 @@
 
 	</select>	
 	
+	<select id="getGridLicServerList" parameterType="hashmap" resultType="hashmap">
+	
+	</select>
+	
 	<insert id="insertLicUserLog">
 		INSERT INTO tb_lic_cae_user_log_v2(
 			id,

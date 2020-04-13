@@ -33,6 +33,10 @@ public class LicenseService {
 		return licenseMapper.getGridLicUserList(param);
 	}
 	
+	public List<Map<String, Object>> getGridLicServerList(Map<String, Object> param){
+		return licenseMapper.getGridLicServerList(param);
+	}
+	
 	public void readFileANSA(String fileName, String timeName) throws Exception {
 		BufferedReader in = new BufferedReader(new FileReader(fileName));
 		String s = null;

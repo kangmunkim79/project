@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>사용자관리</title>
+<title>License Server 관리</title>
 </head>
 <script> 
 $(document.body).ready(function () {
@@ -18,7 +18,7 @@ $(document.body).ready(function () {
     var firstGrid = new ax5.ui.grid({        
         target: $('[data-ax5grid="first-grid"]'),
         columns: [
-            {key: "menunm", label: "Name", width: 120, align: "left", treeControl: true,
+            {key: "licserver", label: "라이선스 서버", width: 150, align: "left",
 	            enableFilter: true,
 	            editor: {
 	                type: "text", disabled: function () {
@@ -27,7 +27,7 @@ $(document.body).ready(function () {
 	                }
 	            }
             },            
-            {key: "menucd", label: "Id", width: 100, align: "center",
+            {key: "licnm", label: "라이선스명", width: 150, align: "left",
 	            enableFilter: true,
 	            editor: {
 	                type: "text", disabled: function () {
@@ -36,20 +36,7 @@ $(document.body).ready(function () {
 	                }
 	            }
             },
-            {
-                key: "usrtype", label: "userType", editor: {
-                type: "select", config: {
-                    columnKeys: {
-                        optionValue: "CD", optionText: "NM"
-                    },
-                    options: [
-                        {CD: "IN", NM: "IN: ADMIN"},
-                        {CD: "EX", NM: "EX: USER"}
-                    ]
-                }
-                }
-            },
-            {key: "depth", label: "Depth", width: 80, align: "center",
+            {key: "fileurl", label: "파일경로", width: 120, align: "left",
 	            enableFilter: true,
 	            editor: {
 	                type: "text", disabled: function () {
@@ -58,7 +45,7 @@ $(document.body).ready(function () {
 	                }
 	            }
             },
-            {key: "urlpath", label: "Url", width: 120, align: "left",
+            {key: "filenmtype", label: "파일명 형식", width: 120, align: "center",
 	            enableFilter: true,
 	            editor: {
 	                type: "text", disabled: function () {
@@ -67,16 +54,7 @@ $(document.body).ready(function () {
 	                }
 	            }
             },
-            {key: "sortseq", label: "Sort", width: 80, align: "center",
-	            enableFilter: true,
-	            editor: {
-	                type: "text", disabled: function () {
-	                    // item, value
-	                    return false;
-	                }
-	            }
-            },
-            {key: "useflag", label: "Use Flag", align: "center", sortable: false,
+            {key: "useflag", label: "사용여부", align: "center", sortable: false,
             	editor: {
                     type: "checkbox", 
                     config: {
@@ -91,80 +69,18 @@ $(document.body).ready(function () {
             onDataChanged: function () {
                 if (this.key == 'useflag') {
                     this.self.updateChildRows(this.dindex, {isChecked: this.item.isChecked});
-                }else if(this.key == 'usrType'){
-                    this.self.updateChildRows(this.dindex, {__selected__: this.item.__selected__});
                 }
             }           
-        },        
-        tree: {
-            use: true,
-            indentWidth: 10,
-            arrowWidth: 15,
-            iconWidth: 18,
-            icons: {
-                openedArrow: '<i class="fa fa-caret-down" aria-hidden="true"></i>',
-                collapsedArrow: '<i class="fa fa-caret-right" aria-hidden="true"></i>',
-                groupIcon: '<i class="fa fa-folder-open" aria-hidden="true"></i>',
-                collapsedGroupIcon: '<i class="fa fa-folder" aria-hidden="true"></i>',
-                itemIcon: '<i class="fa fa-folder" aria-hidden="true"></i>'
-            },
-            columnKeys: {
-                parentKey: "pmenucd",
-                selfKey: "menucd"
-            }
-        }                  
+        }             
     });
 	go();
 
     $('[data-grid-control]').click(function () {
     	switch (this.getAttribute("data-grid-control")) {
-        case "level1":
-            var cnt = firstGrid.list.length;
-            var maxNoArray = [];
-            var maxSeqArray = [];
-            for(var i=0;i<cnt;i++){
-            	var depth = firstGrid.list[i].depth;            		
-            	var menucdNo = firstGrid.list[i].menucd.substring(4);
-            	if(depth == 1){
-            		maxNoArray.push(menucdNo);            		
-                }
-            	maxSeqArray.push(firstGrid.list[i].sortseq);
-            }
-            var maxNo = Math.max.apply(null, maxNoArray);
-            var maxSeq = Math.max.apply(null, maxSeqArray);
-            var menucd = "SHCH"+common_lpad(maxNo+1, 4, "0");
-			var addRowParam = {"menucd":menucd,"pmenucd":null,"menunm":null,"depth":1,"urlpath":null,"usrtype":"IN","useflag":"Y","sortseq":maxSeq+1,"sts":"I"};
+        case "add":
+			var addRowParam = {"licserver":null,"licnm":null,"fileurl":null,"filenmtype":null,"useflag":"Y"};
             firstGrid.addRow($.extend({}, addRowParam, 0));
             break;
-        case "level2":
-            var list = firstGrid.getList("selected");
-            var listCnt = list.length;
-        	if(listCnt == 0){
-            	dialog.alert("상위 메뉴를 먼저 선택하세요.");
-                return;
-            }
-        	if(listCnt > 1){
-        		dialog.alert("상위 메뉴를 하나만 선택하세요.");
-                return;
-            }
-			if(list[0].depth > 1 ){
-            	dialog.alert("상위 메뉴를 먼저 선택하세요.");
-                return;
-			}	
-			var cnt = firstGrid.list.length;
-            var maxNoArray = [];
-            for(var i=0;i<cnt;i++){
-            	var depth = firstGrid.list[i].depth;            		
-            	var menucdNo = firstGrid.list[i].menucd.substring(4);
-            	if(depth == 2){
-            		maxNoArray.push(menucdNo);            		
-                }
-            }
-            var maxNo = Math.max.apply(null, maxNoArray);
-            var menucd = "SHCH"+common_lpad(maxNo+1, 4, "0");            
-			var addRowParam = {"menucd":menucd,"pmenucd":list[0].menucd,"menunm":null,"depth":2,"urlpath":null,"usrtype":"IN","useflag":"Y","sortseq":list[0].sortseq,"sts":"I"};
-			firstGrid.addRow($.extend({}, addRowParam, 0));
-            break;    
         case "remove":
             if(firstGrid.getList("selected").length == 0){
             	dialog.alert("삭제할 목록을 선택하세요.");
@@ -220,7 +136,7 @@ $(document.body).ready(function () {
     function go(){
 	    $.ajax({
 	        method: "POST",
-	        url: "/menu/getGridMenuList",
+	        url: "/license/getGridLicServerList",
 	        success: function (res) {
 	            firstGrid.setData(res.mList);
 	        }
@@ -231,14 +147,14 @@ $(document.body).ready(function () {
 	    $.ajax({
 	        type: "POST",
 	        contentType: "application/json",
-	        url: "/menu/deleteMenuList",
+	        url: "/license/deleteLicenseList",
 	        data: JSON.stringify(delList),
 	        dataType: 'json',
 	        cache: false,
 	        timeout: 600000,
 	        success: function (data) {
                 dialog.alert(delCnt+"건의 데이터가 삭제되었습니다.");
-                reMenuSet();
+                go();
 	        }
 
 	    });
@@ -248,35 +164,28 @@ $(document.body).ready(function () {
 	    $.ajax({
 	        type: "POST",
 	        contentType: "application/json",
-	        url: "/menu/saveMenuList",
+	        url: "/license/saveLicList",
 	        data: JSON.stringify(upList),
 	        dataType: 'json',
 	        cache: false,
 	        timeout: 600000,
 	        success: function (data) {
                 dialog.alert("저장되었습니다.");
-                reMenuSet();
+                go();
 	        }
-
 	    });
-    }
-
-    function reMenuSet(){
-        var url = "${pageContext.request.contextPath}/menu/menuList";
-    	location.href = url;
     }
 }); 
 </script> 
 <body>
 <article> 
 	<div class="container"> 
-		<h2>Menu list</h2> 	
+		<h2>License Server 관리</h2> 	
 		<div style="position: relative;height:400px;" id="grid-parent">
-		    <div data-ax5grid="first-grid" data-ax5grid-config="{showLineNumber: true,showRowSelector: true,header: {selector: false, align:'center'}}" style="height: 100%;"></div>
+		    <div data-ax5grid="first-grid" data-ax5grid-config="{showLineNumber: true,showRowSelector: true,header: {align:'center'}}" style="height: 100%;"></div>
 		</div>	
 		<div style="padding: 10px;" align="right">
-		    <button class="btn btn-sm btn-primary" data-grid-control="level1">Add Level 1</button>
-		    <button class="btn btn-sm btn-primary" data-grid-control="level2">Add Level 2</button>
+		    <button class="btn btn-sm btn-primary" data-grid-control="add">Add</button>
 		    <button class="btn btn-sm btn-primary" data-grid-control="remove">Delete</button>
 		    <button class="btn btn-sm btn-primary" data-grid-control="update">Save</button>
 		    <button class="btn btn-sm btn-primary" data-grid-control="excel-export">Excel Export</button>

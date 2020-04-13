@@ -26,6 +26,11 @@ public class LicenseController {
 		return "license/licenseList";
 	}
 	
+	@RequestMapping(value = "/licServerMgtList", method = RequestMethod.GET)
+	public String licServerMgtList(Model model) throws Exception {
+		return "license/licServerMgtList";
+	}
+	
 	@RequestMapping(value = "/getGridLicenseList", method = RequestMethod.POST) 
 	public @ResponseBody Map<String, Object> getGridLicenseList(@RequestBody Map<String, Object> param) throws Exception { 
 		Map<String, Object> result = new HashMap<String, Object>(); 
@@ -56,6 +61,18 @@ public class LicenseController {
 		try { 
 			List<Map<String, Object>> list = licenseService.getGridLicUserList(param);
 			result.put("uList", list);
+		} catch (Exception e) { 
+			result.put("status", "False"); 
+		} 
+		return result; 
+	}
+	
+	@RequestMapping(value = "/getGridLicServerList", method = RequestMethod.POST) 
+	public @ResponseBody Map<String, Object> getGridLicServerList(@RequestBody Map<String, Object> param) throws Exception { 
+		Map<String, Object> result = new HashMap<String, Object>(); 
+		try { 
+			List<Map<String, Object>> list = licenseService.getGridLicServerList(param);
+			result.put("mList", list);
 		} catch (Exception e) { 
 			result.put("status", "False"); 
 		} 
