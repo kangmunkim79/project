@@ -1,0 +1,10 @@
+	Dassault Systemes V5 (B42B3C3E-8CA2-422F-8B69-89556C54D4FC)
+		EHI      maxReleaseNumber: 0  maxReleaseDate: 2020. 3. 31 오전 8:59:00 expirationDate: 2020. 3. 31 오전 8:59:00 type: ConcurrentUser  count: 1  inuse: 0 customerId: 100000000002952
+		ELB      maxReleaseNumber: 0  maxReleaseDate: 2020. 3. 31 오전 8:59:00 expirationDate: 2020. 3. 31 오전 8:59:00 type: ConcurrentUser  count: 1  inuse: 0 customerId: 100000000002952
+		MD2      maxReleaseNumber: 0  maxReleaseDate: 2020. 4. 1 오전 8:59:00  expirationDate: 2020. 4. 1 오전 8:59:00  type: ConcurrentUser  count: 5  inuse: 2 customerId: 100000000002952
+			internal Id: KSAETEN@DSG.S-1-5-21-1229272821-1614895754-1606980848-464250.0A2A32AA.1.TEE-43CE1CEE7B86ECE2   granted since:  2020. 2. 24 오후 4:06:33  last used at: 2020. 2. 27 오전 10:50:52  by user: ksaeten  on host: MOX-PC147 (43CE1CEE7B86ECE2-0a2a32aa.1)/10.42.50.170      
+				MOX-PC147 (43CE1CEE7B86ECE2-0a2a32aa.1)/10.42.50.170        ksaeten   C:\Program Files\Dassault Systemes\B23\win_b64\code\bin\CNEXT.exe  granted since: 2020. 2. 24 오후 4:06:33
+			internal Id: I0198101@DSG.S-1-5-21-1229272821-1614895754-1606980848-105598.0A209A7D.1.LAP-42111C16456E91A6  granted since:  2020. 2. 27 오전 8:38:38  last used at: 2020. 2. 27 오전 10:52:28  by user: i0198101 on host: I0198101MW0614 (42111C16456E91A6-0a209a7d.1)/10.32.154.125
+				I0198101MW0614 (42111C16456E91A6-0a209a7d.1)/10.32.154.125  i0198101  C:\CATIAV5R23FORDIN\B23\win_b64\code\bin\CNEXT.exe                 granted since: 2020. 2. 27 오전 8:38:38
+		MD2-SMD  maxReleaseNumber: 0  maxReleaseDate: 2020. 3. 31 오전 8:59:00 expirationDate: 2020. 3. 31 오전 8:59:00 type: ConcurrentUser  count: 4  inuse: 0 customerId: 100000000002952
+		SMD      maxReleaseNumber: 0  maxReleaseDate: 2020. 4. 1 오전 8:59:00  expirationDate: 2020. 4. 1 오전 8:59:00  type: ConcurrentUser  count: 1  inuse: 0 customerId: 100000000002952

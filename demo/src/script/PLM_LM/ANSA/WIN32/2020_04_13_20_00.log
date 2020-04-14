@@ -1,0 +1,24 @@
+
+ Trying 6007@10.32.150.32 ....
+
+ Found License daemon on 10.32.150.32
+Usage Report for users: all
+   USER NAME@HOST           |  FEATURE   |      PID   |       START   
+  seonyeol.p@seonyeolpW0319(:0) | ANSA       | 0          | Fri Apr 10 09:12:49 2020 
+  i0212378@i0212378W1014(:0) | ANSA       | 0          | Fri Apr 10 13:49:00 2020 
+
+STATUS REPORT
+      PACKAGE          |     ISSUED      |     EXPIRE      |   CREDIT  
+  PRE_POST             | Mon Jun 03 2019 | Thu Apr 30 2020 | 400        
+
+   PACKAGE:FEATURE     | MAX CREDIT | CREDIT USED | USED PERCENTAGE | USAGE
+  PRE_POST:ANSA        | 400        | 200         |          50(%)  | 2          
+  PRE_POST:ANSA_BATCH  | 400        | 0           |           0(%)  | 0          
+  PRE_POST:ANSA_CATIA_V4 | 400        | 0           |           0(%)  | 0          
+  PRE_POST:ANSA_OLD    | 400        | 0           |           0(%)  | 0          
+  PRE_POST:ANSA_TOSCA  | 400        | 0           |           0(%)  | 0          
+  PRE_POST:ANSA_UG     | 400        | 0           |           0(%)  | 0          
+  PRE_POST:EPILYSIS    | 400        | 0           |           0(%)  | 0          
+  PRE_POST:META_POST   | 400        | 0           |           0(%)  | 0          
+  PRE_POST:META_POST_BATCH | 400        | 0           |           0(%)  | 0          
+  PRE_POST:META_POST_OLD | 400        | 0           |           0(%)  | 0          

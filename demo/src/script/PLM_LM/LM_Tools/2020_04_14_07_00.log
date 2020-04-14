@@ -1,0 +1,1738 @@
+lmutil - Copyright (c) 1989-2012 Flexera Software LLC. All Rights Reserved.
+Flexible License Manager status on Tue 4/14/2020 07:01
+
+[Detecting lmgrd processes...]
+License server status: 27500@DIRWIN002
+    License file(s) on DIRWIN002: C:\Program Files\MSC.Software\MSC Licensing\Helium\license.dat:
+
+ DIRWIN002: license server UP (MASTER) v11.16
+
+Vendor daemon status (on DIRWIN002):
+
+       MSC: UP v11.16
+Feature usage info:
+
+Users of ADAMS_View:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of MDA_View:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of ADAMS_Exchange:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of MDA_Exchange:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of ADAMS_Postprocessor:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of MDA_Postprocessor:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of ADAMS_Solver:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of MDA_Solver:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of ADAMS_Solver_FixedStep:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of ADAMS_Solver_SMP:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of MDA_Solver_SMP:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of ADAMS_Linear:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of MDA_Linear:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of ADAMS_Insight:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of MDA_Insight:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of ADAMS_Flex:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of MDA_Flex:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of ADAMS_Durability:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of MDA_Durability:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of ADAMS_Controls:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of MDA_Controls:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of ADAMS_Vibration:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of MDA_Vibration:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of ADAMS_Vibration_Solver:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of MDA_Vibration_Solver:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of ADAMS_Mechatronics:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of MDA_Mechatronics:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of ADAMS_Foundation_Classes:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of MDA_Foundation_Classes:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of ADAMS_Visual_Edit:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of MDA_Visual_Edit:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of FFT_Actran_AdamsEntry:  (Error: 1 licenses, unsupported by licensed server)
+
+Users of FFT_Actran_Level3:  (Error: 1 licenses, unsupported by licensed server)
+
+Users of FFT_Actran_PreProcess:  (Error: 1 licenses, unsupported by licensed server)
+
+Users of FFT_Actran_Python:  (Error: 1 licenses, unsupported by licensed server)
+
+Users of FFT_Actran_Sequential:  (Error: 1 licenses, unsupported by licensed server)
+
+
+lmutil - Copyright (c) 1989-2012 Flexera Software LLC. All Rights Reserved.
+Flexible License Manager status on Tue 4/14/2020 07:01
+
+[Detecting lmgrd processes...]
+License server status: 28000@DIRWIN001
+    License file(s) on DIRWIN001: C:\Siemens\PLMLicenseServer\splm9.lic:
+
+ DIRWIN001: license server UP (MASTER) v11.15
+
+Vendor daemon status (on DIRWIN001):
+
+    ugslmd: UP v11.15
+Feature usage info:
+
+Users of 3d_to_2d_flattener:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of A026G:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of DESIGNER:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of assemblies:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of borrowing:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of cam_base:  (Total of 1 license issued;  Total of 1 license in use)
+
+  "cam_base" v33.0, vendor: ugslmd
+  floating license
+
+    i0352839 i0352839W60826 i0352839W608260.0 (v30.000) (DIRWIN001/28000 409), start Tue 4/7 16:38
+
+Users of catv5_nx:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of cavity_milling:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of drafting:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of dxfdwg:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of features_modeling:  (Total of 1 license issued;  Total of 1 license in use)
+
+  "features_modeling" v33.0, vendor: ugslmd
+  floating license
+
+    i0352839 i0352839W60826 i0352839W608260.0 (v30.000) (DIRWIN001/28000 808), start Tue 4/7 16:38
+
+Users of fix_axis_surf_mill:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of gateway:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of gateway_id:  (Total of 1000 licenses issued;  Total of 1 license in use)
+
+  "gateway_id" v33.0, vendor: ugslmd
+  floating license
+
+    i0352839 i0352839W60826 i0352839W608260.0 (v30.000) (DIRWIN001/28000 708), start Tue 4/7 16:38
+
+Users of graphical_tool_path:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of id_catia_sa_trans:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of id_tmg_duct_flow:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of iges:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of mechanisms:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of motion_export_adm:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of motion_kin:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of motion_kin_recurdyn:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of nx_abaqus_export:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of nx_abaqus_import:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of nx_drafting_plus:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of nx_drawing_auto:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of nx_freeform_1:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of nx_freeform_2:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of nx_ftk:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of nx_layout:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of nx_material_system:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of nx_nas_advnlin_dsk:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of nx_nas_aero_dsk:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of nx_nas_basic_dsk:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of nx_nas_dmap_dsk:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of nx_nas_dyn_dsk:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of nx_nas_nonlin_dsk:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of nx_nas_supel_dsk:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of nx_nas_uss_dsk:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of nx_nastran_export:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of nx_nastran_import:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of nx_post_config_adv:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of nx_response_anlys:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of nx_sheet_metal:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of nx_space_therm_solv:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of nx_space_therm_ui:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of planar_milling:  (Total of 1 license issued;  Total of 1 license in use)
+
+  "planar_milling" v33.0, vendor: ugslmd
+  floating license
+
+    i0352839 i0352839W60826 i0352839W608260.0 (v30.000) (DIRWIN001/28000 509), start Tue 4/7 16:38
+
+Users of pstudio_cons:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of pv_ugdatagenerator:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of shop_doc:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of sla_3d_systems:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of solid_modeling:  (Total of 1 license issued;  Total of 1 license in use)
+
+  "solid_modeling" v33.0, vendor: ugslmd
+  floating license
+
+    i0352839 i0352839W60826 i0352839W608260.0 (v30.000) (DIRWIN001/28000 908), start Tue 4/7 16:38
+
+Users of step_ap203:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of step_ap214:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of surface_milling:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of tol_cavity_milling:  (Total of 1 license issued;  Total of 1 license in use)
+
+  "tol_cavity_milling" v33.0, vendor: ugslmd
+  floating license
+
+    i0352839 i0352839W60826 i0352839W608260.0 (v30.000) (DIRWIN001/28000 609), start Tue 4/7 16:38
+
+Users of ug_post_exe:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of ug_post_mill:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of ug_smart_models:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of ug_struct_pe_solver:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of ug_turning:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of ugopen_menuscript:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of server_id:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of DESIGNER_drafting:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of DESIGNER_dxf_to_ug:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of DESIGNER_dxfdwg:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of DESIGNER_features_modeling:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of DESIGNER_gateway:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of DESIGNER_iges:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of DESIGNER_pstudio_cons:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of DESIGNER_pv_ugdatagenerator:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of DESIGNER_solid_modeling:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of DESIGNER_step_ap203:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of DESIGNER_step_ap214:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of DESIGNER_ug_smart_models:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of DESIGNER_ug_to_dxf:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of DESIGNER_ugopen_menuscript:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of A026G_ansys_meshers:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of A026G_assemblies:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of A026G_features_modeling:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of A026G_gateway:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of A026G_gfem_ansys:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of A026G_gfem_nastran:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of A026G_grip_execute:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of A026G_id_ext_fem_beam:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of A026G_iges:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of A026G_nx_freeform_1:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of A026G_nx_freeform_2:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of A026G_nx_ftk:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of A026G_nx_masterfem:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of A026G_nx_material_system:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of A026G_pcf_package_file:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of A026G_pstudio_cons:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of A026G_pv_ugdatagenerator:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of A026G_sla_3d_systems:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of A026G_solid_modeling:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of A026G_studio_render:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of A026G_studio_visualize:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of A026G_ug_checkmate:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of A026G_ug_kf_checker:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of A026G_ug_kf_execute:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of A026G_ug_scenario:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of A026G_ug_smart_models:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of A026G_ug_web_express:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of A026G_ugopen_menuscript:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of A026G_usr_defined_features:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+
+lmutil - Copyright (c) 1989-2012 Flexera Software LLC. All Rights Reserved.
+Flexible License Manager status on Tue 4/14/2020 07:01
+
+[Detecting lmgrd processes...]
+License server status: 27011@DIRWIN001
+    License file(s) on DIRWIN001: C:\VAOne\vaone_server.lic:
+
+ DIRWIN001: license server UP (MASTER) v11.14
+
+Vendor daemon status (on DIRWIN001):
+
+   pam_lmd: UP v11.11
+Feature usage info:
+
+Users of vaone_sea:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of vaone_surface_mesher:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of vaone_iges_import:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of vaone:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+
+lmutil - Copyright (c) 1989-2012 Flexera Software LLC. All Rights Reserved.
+Flexible License Manager status on Tue 4/14/2020 07:01
+
+[Detecting lmgrd processes...]
+License server status: 11800@DIRWIN002
+    License file(s) on DIRWIN002: C:\Program Files\FunctionBay, Inc\FunctionBay License Server\KO-190100.dat:
+
+ DIRWIN002: license server UP (MASTER) v11.14
+
+Vendor daemon status (on DIRWIN002):
+
+     fblmd: UP v11.14
+Feature usage info:
+
+Users of MODELER:  (Total of 3 licenses issued;  Total of 1 license in use)
+
+  "MODELER" v2020.0630, vendor: fblmd
+  floating license
+
+    haesang.j haesang-jeongW2 haesang-jeongW2 (v2019.0701) (DIRWIN002/11800 1523), start Fri 4/10 16:38
+
+Users of MBD_SOL:  (Total of 3 licenses issued;  Total of 0 licenses in use)
+
+Users of PROCESSNET:  (Total of 3 licenses issued;  Total of 0 licenses in use)
+
+Users of PRE_RFLEX:  (Total of 2 licenses issued;  Total of 1 license in use)
+
+  "PRE_RFLEX" v2020.0630, vendor: fblmd
+  floating license
+
+    haesang.j haesang-jeongW2 haesang-jeongW2 (v2019.0701) (DIRWIN002/11800 205), start Fri 4/10 16:38
+
+Users of RFLEX_SOL:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of PRE_TRACK_LM:  (Total of 2 licenses issued;  Total of 1 license in use)
+
+  "PRE_TRACK_LM" v2020.0630, vendor: fblmd
+  floating license
+
+    haesang.j haesang-jeongW2 haesang-jeongW2 (v2019.0701) (DIRWIN002/11800 503), start Fri 4/10 16:38
+
+Users of TRACK_LM_SOL:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of CONTROL:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of PRE_CONTROL:  (Total of 2 licenses issued;  Total of 1 license in use)
+
+  "PRE_CONTROL" v2020.0630, vendor: fblmd
+  floating license
+
+    haesang.j haesang-jeongW2 haesang-jeongW2 (v2019.0701) (DIRWIN002/11800 304), start Fri 4/10 16:38
+
+Users of CONTROL_SOL:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of PRE_PARTICLE:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of PARTICLE_SOL:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of TIRE:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of PRE_TIRE:  (Total of 2 licenses issued;  Total of 1 license in use)
+
+  "PRE_TIRE" v2020.0630, vendor: fblmd
+  floating license
+
+    haesang.j haesang-jeongW2 haesang-jeongW2 (v2019.0701) (DIRWIN002/11800 103), start Fri 4/10 16:38
+
+Users of TIRE_SOL:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of MFTIRE:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of PRE_FFLEX:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of FFLEX_SOL:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of MESHER:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of STEP:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of PRE_TSG:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of TSG_SOL:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of S4PARK_ENT:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+
+lmutil - Copyright (c) 1989-2012 Flexera Software LLC. All Rights Reserved.
+Flexible License Manager status on Tue 4/14/2020 07:01
+
+[Detecting lmgrd processes...]
+License server status: 1717@DIN_LIC_Server
+    License file(s) on DIN_LIC_Server: C:\FloMASTER\flexnet 11.14\FloMASTER License_20200309.dat:
+
+DIN_LIC_Server: license server UP (MASTER) v11.14
+
+Vendor daemon status (on DIN_LIC_Server):
+
+     mgcld: UP v11.14
+Feature usage info:
+
+Users of FloMASTERdyna_c:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+
+lmutil - Copyright (c) 1989-2012 Flexera Software LLC. All Rights Reserved.
+Flexible License Manager status on Tue 4/14/2020 07:01
+
+[Detecting lmgrd processes...]
+License server status: 56972@DIRWIN002
+    License file(s) on DIRWIN002: C:\TAITHERM\taitherm.lic:
+
+ DIRWIN002: license server UP (MASTER) v11.14
+
+Vendor daemon status (on DIRWIN002):
+
+  taitherm: UP v11.14
+Feature usage info:
+
+Users of TaiRT:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of TaiSO:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of TaiSC:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of TaiMultiGrid:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of TaiHC:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of TaiBCM:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of TaiPhys:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of TaiExhaust:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of TaiCoTherm:  (Total of 1 license issued;  Total of 1 license in use)
+
+  "TaiCoTherm" v2.3, vendor: taitherm
+  floating license
+
+    i0214060 i0214060W1216 i0214060W1216 (v2.2) (DIRWIN002/56972 563), start Tue 4/14 6:51
+
+Users of TaiCoThermProcess:  (Total of 1 license issued;  Total of 1 license in use)
+
+  "TaiCoThermProcess" v2.3, vendor: taitherm
+  floating license
+
+    i0214060 thorn01 /dev/tty (v2.2) (DIRWIN002/56972 235), start Mon 4/13 16:37
+
+Users of TaiMP:  (Total of 15 licenses issued;  Total of 0 licenses in use)
+
+
+lmutil - Copyright (c) 1989-2012 Flexera Software LLC. All Rights Reserved.
+Flexible License Manager status on Tue 4/14/2020 07:01
+
+[Detecting lmgrd processes...]
+License server status: 27004@DIRWIN002
+    License file(s) on DIRWIN002: C:\SIMULIA\License\2019.HF4\win_b64\code\bin\Abaqus2019.LIC:
+
+ DIRWIN002: license server UP (MASTER) v11.13
+
+Vendor daemon status (on DIRWIN002):
+
+  ABAQUSLM: UP v11.13
+Feature usage info:
+
+Users of abaqus:  (Total of 152 licenses issued;  Total of 0 licenses in use)
+
+Users of ams:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of aqua:  (Total of 152 licenses issued;  Total of 0 licenses in use)
+
+Users of cosim_acusolve:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of cosim_direct:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of cse:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of design:  (Total of 152 licenses issued;  Total of 0 licenses in use)
+
+Users of euler_lagrange:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of gpgpu:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of multiphysics:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of parallel:  (Total of 16384 licenses issued;  Total of 0 licenses in use)
+
+Users of tomee:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of pydriver:  (Total of 3 licenses issued;  Total of 0 licenses in use)
+
+Users of safe_verity:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of abaqus_extended:  (Total of 4 licenses issued;  Total of 0 licenses in use)
+
+Users of cae:  (Total of 4 licenses issued;  Total of 0 licenses in use)
+
+Users of rtgateway:  (Total of 4 licenses issued;  Total of 0 licenses in use)
+
+Users of gateway:  (Total of 4 licenses issued;  Total of 0 licenses in use)
+
+Users of safe_ex_gui:  (Total of 4 licenses issued;  Total of 0 licenses in use)
+
+Users of cfd:  (Total of 152 licenses issued;  Total of 0 licenses in use)
+
+Users of explicit:  (Total of 152 licenses issued;  Total of 0 licenses in use)
+
+Users of foundation:  (Total of 152 licenses issued;  Total of 0 licenses in use)
+
+Users of simflow:  (Total of 152 licenses issued;  Total of 0 licenses in use)
+
+Users of standard:  (Total of 152 licenses issued;  Total of 0 licenses in use)
+
+Users of cse_token:  (Total of 152 licenses issued;  Total of 0 licenses in use)
+
+Users of safe_ex_engine:  (Total of 152 licenses issued;  Total of 0 licenses in use)
+
+Users of tosca_topo:  (Total of 152 licenses issued;  Total of 0 licenses in use)
+
+Users of tosca_shape:  (Total of 152 licenses issued;  Total of 0 licenses in use)
+
+Users of tosca_bead:  (Total of 152 licenses issued;  Total of 0 licenses in use)
+
+Users of tosca_sizing:  (Total of 152 licenses issued;  Total of 0 licenses in use)
+
+Users of tosca_int_abaqus:  (Total of 152 licenses issued;  Total of 0 licenses in use)
+
+Users of tosca_int_ansys:  (Total of 152 licenses issued;  Total of 0 licenses in use)
+
+Users of tosca_int_nastran:  (Total of 152 licenses issued;  Total of 0 licenses in use)
+
+Users of tosca_adv_nonlinear:  (Total of 152 licenses issued;  Total of 0 licenses in use)
+
+Users of tosca_adv_durability:  (Total of 152 licenses issued;  Total of 0 licenses in use)
+
+Users of tosca_adv_morph:  (Total of 152 licenses issued;  Total of 0 licenses in use)
+
+Users of tosca_smooth:  (Total of 152 licenses issued;  Total of 0 licenses in use)
+
+Users of tosca_report:  (Total of 152 licenses issued;  Total of 0 licenses in use)
+
+Users of tfluid_topo:  (Total of 152 licenses issued;  Total of 0 licenses in use)
+
+Users of tfluid_smooth:  (Total of 152 licenses issued;  Total of 0 licenses in use)
+
+Users of tfluid_parallel:  (Total of 152 licenses issued;  Total of 0 licenses in use)
+
+Users of tfluid_int_ccmp:  (Total of 152 licenses issued;  Total of 0 licenses in use)
+
+Users of tfluid_int_fluent:  (Total of 152 licenses issued;  Total of 0 licenses in use)
+
+
+lmutil - Copyright (c) 1989-2012 Flexera Software LLC. All Rights Reserved.
+Flexible License Manager status on Tue 4/14/2020 07:01
+
+[Detecting lmgrd processes...]
+License server status: 1999@DIITLicense03
+    License file(s) on DIITLicense03: C:\Program Files\starccm\STARCCM_20170405.dat:
+
+DIITLicense03: license server UP (MASTER) v11.14
+
+Vendor daemon status (on DIITLicense03):
+
+     cdlmd: UP v11.13
+Feature usage info:
+
+Users of ccmpsuite:  (Total of 7 licenses issued;  Total of 3 licenses in use)
+
+  "ccmpsuite" v2016.03, vendor: cdlmd
+  floating license
+
+    i0212378 i0212378W1014 i0212378W1014 (v2016.02) (DIITLicense03/1999 317), start Fri 4/10 13:33
+    i0212378 i0212378W1014 i0212378W1014 (v2016.02) (DIITLicense03/1999 110), start Mon 4/13 8:37
+    jinyeong.do dojinyws0709 dojinyws0709 (v2016.02) (DIITLicense03/1999 601), start Sun 3/29 10:53
+
+Users of hpcdomains:  (Total of 19 licenses issued;  Total of 11 licenses in use)
+
+  "hpcdomains" v2016.03, vendor: cdlmd
+  floating license
+
+    i0212378 i0212378W1014 i0212378W1014 (v2016.02) (DIITLicense03/1999 513), start Fri 4/10 13:34, 11 licenses
+
+Users of enablestar:  (Error: 2 licenses, unsupported by licensed server)
+
+Users of proice:  (Error: 2 licenses, unsupported by licensed server)
+
+Users of ECFMmodels:  (Error: 1 licenses, unsupported by licensed server)
+
+
+lmutil - Copyright (c) 1989-2012 Flexera Software LLC. All Rights Reserved.
+Flexible License Manager status on Tue 4/14/2020 07:01
+
+[Detecting lmgrd processes...]
+License server status: 1055@DIRWIN002
+    License file(s) on DIRWIN002: C:\Program Files\ANSYS Inc\Shared Files\Licensing\license_files\ansyslmd.lic:
+
+ DIRWIN002: license server UP (MASTER) v11.13
+
+Vendor daemon status (on DIRWIN002):
+
+  ansyslmd: UP v11.13
+Feature usage info:
+
+Users of acfd_vki:  (Total of 13 licenses issued;  Total of 0 licenses in use)
+
+Users of ensight:  (Total of 10 licenses issued;  Total of 0 licenses in use)
+
+Users of envision_pro:  (Total of 10 licenses issued;  Total of 0 licenses in use)
+
+Users of struct:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of agppi:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of dsdxm:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of acfd_fluent:  (Total of 3 licenses issued;  Total of 0 licenses in use)
+
+Users of amesh_tgrid:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of anshpc_pack:  (Total of 11 licenses issued;  Total of 0 licenses in use)
+
+Users of acfd_2:  (Total of 8 licenses issued;  Total of 2 licenses in use)
+
+  "acfd_2" v2019.1231, vendor: ansyslmd
+  floating license
+
+    i0212378 i0212378W1014.corp.doosan.com i0212378W1014.corp.doosan.com 26476 (v2019.0723) (DIRWIN002/1055 953), start Wed 4/8 12:16
+    jinyeong.do dojinyws0709.corp.doosan.com dojinyws0709.corp.doosan.com 21480 (v2019.0723) (DIRWIN002/1055 218), start Fri 4/3 12:14
+
+Users of forte_3:  (Total of 8 licenses issued;  Total of 0 licenses in use)
+
+Users of rd_ckpreproc:  (Total of 8 licenses issued;  Total of 0 licenses in use)
+
+Users of rd_fortejob:  (Total of 8 licenses issued;  Total of 0 licenses in use)
+
+Users of rd_fortemesh:  (Total of 8 licenses issued;  Total of 0 licenses in use)
+
+Users of rd_forteui:  (Total of 8 licenses issued;  Total of 0 licenses in use)
+
+Users of rd_forteviz:  (Total of 8 licenses issued;  Total of 0 licenses in use)
+
+Users of rd_mechforte:  (Total of 8 licenses issued;  Total of 0 licenses in use)
+
+Users of rd_mechmfc:  (Total of 8 licenses issued;  Total of 0 licenses in use)
+
+Users of rd_mechsoot:  (Total of 8 licenses issued;  Total of 0 licenses in use)
+
+Users of picatv5:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+
+lmutil - Copyright (c) 1989-2012 Flexera Software LLC. All Rights Reserved.
+Flexible License Manager status on Tue 4/14/2020 07:01
+
+[Detecting lmgrd processes...]
+License server status: 27000@DIRWIN002
+    License file(s) on DIRWIN002: C:\Autodesk\Network License Manager\doosan_20200302.lic:
+
+ DIRWIN002: license server UP (MASTER) v11.16
+
+Vendor daemon status (on DIRWIN002):
+
+  adskflex: UP v11.16
+Feature usage info:
+
+Users of 86312VRDPRO_T_F:  (Total of 3 licenses issued;  Total of 0 licenses in use)
+
+Users of 85300SURFST_T_F:  (Total of 7 licenses issued;  Total of 0 licenses in use)
+
+Users of 87289SURFST_2020_0F:  (Total of 7 licenses issued;  Total of 0 licenses in use)
+
+Users of 86429SURFST_2016_0F:  (Total of 10 licenses issued;  Total of 0 licenses in use)
+
+Users of 87083SURFST_2019_0F:  (Total of 7 licenses issued;  Total of 0 licenses in use)
+
+Users of 86865SURFST_2018_0F:  (Total of 7 licenses issued;  Total of 0 licenses in use)
+
+Users of 86637SURFST_2017_0F:  (Total of 7 licenses issued;  Total of 0 licenses in use)
+
+Users of 86223SURFST_2015_0F:  (Total of 7 licenses issued;  Total of 0 licenses in use)
+
+Users of 87369VRDPRO_2020_0F:  (Total of 3 licenses issued;  Total of 0 licenses in use)
+
+Users of 87182VRDPRO_2019_0F:  (Total of 3 licenses issued;  Total of 0 licenses in use)
+
+Users of 87000VRDPRO_2018_0F:  (Total of 3 licenses issued;  Total of 0 licenses in use)
+
+Users of 86771VRDPRO_2017_0F:  (Total of 3 licenses issued;  Total of 0 licenses in use)
+
+Users of 86568VRDPRO_2016_0F:  (Total of 3 licenses issued;  Total of 0 licenses in use)
+
+Users of 86367VRDPRO_2015_0F:  (Total of 3 licenses issued;  Total of 0 licenses in use)
+
+
+lmutil - Copyright (c) 1989-2012 Flexera Software LLC. All Rights Reserved.
+Flexible License Manager status on Tue 4/14/2020 07:01
+
+[Detecting lmgrd processes...]
+License server status: 27001@diitlicense05
+    License file(s) on diitlicense05: C:\Program Files\Autodesk Network License Manager\New_Alias_Showcase_2017.06\AutoCAD_Vred_Alias_Showcase20171123_4.lic:
+
+diitlicense05: license server UP (MASTER) v11.13
+
+Vendor daemon status (on diitlicense05):
+
+  adskflex: UP v11.12
+Feature usage info:
+
+Users of 86627AMECH_PP_2017_0F:  (Total of 58 licenses issued;  Total of 3 licenses in use)
+
+  "86627AMECH_PP_2017_0F" v1.000, vendor: adskflex
+  floating license
+
+    i0352839 i0352839W60826 i0352839W60826 (v1.0) (diitlicense05/27001 1809), start Mon 3/30 15:31
+    i0590446 i0590278D1118 i0590278D1118 (v1.0) (diitlicense05/27001 641), start Thu 4/9 9:29
+    i0590535 I0590535W1016 I0590535W1016 (v1.0) (diitlicense05/27001 1038), start Tue 4/7 17:31
+
+Users of 86429SURFST_2016_0F:  (Total of 9 licenses issued;  Total of 0 licenses in use)
+
+Users of 85300SURFST_F:  (Total of 6 licenses issued;  Total of 0 licenses in use)
+
+Users of 86312VRDPRO_F:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of 87000VRDPRO_2018_0F:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of 86771VRDPRO_2017_0F:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of 86568VRDPRO_2016_0F:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of 86367VRDPRO_2015_0F:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of 86208VRDPRO_2014_0F:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of 86118SHOWPRO_2014_0F:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of 86195OSPRO_2014_0F:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of 86865SURFST_2018_0F:  (Total of 6 licenses issued;  Total of 0 licenses in use)
+
+Users of 86637SURFST_2017_0F:  (Total of 6 licenses issued;  Total of 0 licenses in use)
+
+Users of 86223SURFST_2015_0F:  (Total of 6 licenses issued;  Total of 0 licenses in use)
+
+Users of 86084SURFST_2014_0F:  (Total of 6 licenses issued;  Total of 0 licenses in use)
+
+
+lmutil - Copyright (c) 1989-2012 Flexera Software LLC. All Rights Reserved.
+Flexible License Manager status on Tue 4/14/2020 07:01
+
+[Detecting lmgrd processes...]
+License server status: 27002@diitlicense05
+    License file(s) on diitlicense05: C:\Program Files\zuken\flexlm\E14010128.dat:
+
+diitlicense05: license server UP (MASTER) v11.10
+
+Vendor daemon status (on diitlicense05):
+
+    ECADLM: UP v11.10
+Feature usage info:
+
+Users of E3cable:  (Total of 4 licenses issued;  Total of 0 licenses in use)
+
+Users of E3formboard:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of E3pdf:  (Total of 99 licenses issued;  Total of 0 licenses in use)
+
+Users of E3_CATIA_V5:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of E3_HARNESS_IMPORT:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of E3_HARNESS_FLATTENING:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of E3view:  (Uncounted, node-locked)
+
+
+lmutil - Copyright (c) 1989-2012 Flexera Software LLC. All Rights Reserved.
+Flexible License Manager status on Tue 4/14/2020 07:01
+
+[Detecting lmgrd processes...]
+License server status: 32646@diitlicense05
+    License file(s) on diitlicense05: C:\Program Files\Cradle\Drivers_net\SC_Tetra_20120329(Server5).dat:
+
+diitlicense05: license server UP (MASTER) v11.6
+
+Vendor daemon status (on diitlicense05):
+
+    cradle: UP v11.6
+Feature usage info:
+
+Users of SCTWPP9:  (Total of 5 licenses issued;  Total of 0 licenses in use)
+
+Users of SCTWSOL9:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of SCTOTHER9:  (Total of 7 licenses issued;  Total of 0 licenses in use)
+
+Users of SCTMANUAL9:  (Total of 7 licenses issued;  Total of 0 licenses in use)
+
+Users of SCTMPIJOB9:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of SCTSOLMPI9:  (Total of 4 licenses issued;  Total of 0 licenses in use)
+
+Users of SCTMPIGRP:  (Total of 4 licenses issued;  Total of 0 licenses in use)
+
+Users of SCTOTHERMPI9:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of SCTMPMANUAL9:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+
+lmutil - Copyright (c) 1989-2012 Flexera Software LLC. All Rights Reserved.
+Flexible License Manager status on Tue 4/14/2020 07:01
+
+[Detecting lmgrd processes...]
+License server status: 32646@diitlicense06
+    License file(s) on diitlicense06: C:\Program Files\Cradle\Drivers_net\SC_Tetra_20120329(Server6).dat:
+
+diitlicense06: license server UP (MASTER) v11.6
+
+Vendor daemon status (on diitlicense06):
+
+    cradle: UP v11.6
+Feature usage info:
+
+Users of SCTMPIJOB9:  (Total of 6 licenses issued;  Total of 0 licenses in use)
+
+Users of SCTSOLMPI9:  (Total of 48 licenses issued;  Total of 0 licenses in use)
+
+Users of SCTMPIGRP:  (Total of 48 licenses issued;  Total of 0 licenses in use)
+
+Users of SCTOTHER9:  (Total of 6 licenses issued;  Total of 0 licenses in use)
+
+Users of SCTOTHERMPI9:  (Total of 6 licenses issued;  Total of 0 licenses in use)
+
+Users of SCTMPMANUAL9:  (Total of 6 licenses issued;  Total of 0 licenses in use)
+
+
+lmutil - Copyright (c) 1989-2012 Flexera Software LLC. All Rights Reserved.
+Flexible License Manager status on Tue 4/14/2020 07:01
+
+[Detecting lmgrd processes...]
+License server status: 27011@DIRWIN002
+    License file(s) on DIRWIN002: C:\flexlm\2020-02-28.DOOSAN_INFRACORE(DIRWIN002).2019-12-09.lic:
+
+ DIRWIN002: license server UP (MASTER) v11.11
+
+Vendor daemon status (on DIRWIN002):
+
+   pam_lmd: The desired vendor daemon is down. (-97,121)
+
+lmutil - Copyright (c) 1989-2012 Flexera Software LLC. All Rights Reserved.
+Flexible License Manager status on Tue 4/14/2020 07:01
+
+[Detecting lmgrd processes...]
+License server status: 27001@diitlicense06
+    License file(s) on diitlicense06: C:\Program Files\Sigmetrix\licenseserver\license\license.dat:
+
+diitlicense06: license server UP (MASTER) v11.10
+
+Vendor daemon status (on diitlicense06):
+
+   TITOLLM: UP v11.10
+Feature usage info:
+
+Users of cetol_catia:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+
+lmutil - Copyright (c) 1989-2012 Flexera Software LLC. All Rights Reserved.
+Flexible License Manager status on Tue 4/14/2020 07:01
+
+[Detecting lmgrd processes...]
+License server status: 27003@DIRWIN002
+    License file(s) on DIRWIN002: C:\ProgramData\Ricardo\licmgr\licenses\ricardo.lic:
+
+ DIRWIN002: license server UP (MASTER) v11.15
+
+Vendor daemon status (on DIRWIN002):
+
+   RICARDO: UP v11.15
+Feature usage info:
+
+Users of FEARCE_AbaqusTrans:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of FEARCE_IdeasTrans:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of FEARCE_NastranTrans:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of FEARCE_Viewer:  (Total of 4 licenses issued;  Total of 0 licenses in use)
+
+Users of MATERIAL_EDITOR:  (Total of 5 licenses issued;  Total of 0 licenses in use)
+
+Users of PISDYN_Base:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of PISDYN_PisBrg:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of PISDYN_PisView:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of RAPID_Base:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of RDESK_GUI:  (Total of 8 licenses issued;  Total of 0 licenses in use)
+
+Users of RDESK_VIEWER:  (Total of 4 licenses issued;  Total of 0 licenses in use)
+
+Users of RINGPAK_Base:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of RINGPAK_RingVis:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of RPLOT_Base:  (Total of 8 licenses issued;  Total of 0 licenses in use)
+
+Users of RPOST_Base:  (Total of 8 licenses issued;  Total of 0 licenses in use)
+
+Users of SDFBROWSE_Base:  (Total of 9 licenses issued;  Total of 0 licenses in use)
+
+Users of VALDYN_GUI:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of VALDYN_Solver:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of VALKIN_GUI:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of VALKIN_Solver:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of IGNITE_GUI:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of IGNITE_Powertrain:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of IGNITE_Standard:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of IGNITE_ThermoFluid:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of MODELON_OCT:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of RsimLinkNet:  (Total of 4 licenses issued;  Total of 0 licenses in use)
+
+Users of WAVE_CadMesher:  (Total of 4 licenses issued;  Total of 0 licenses in use)
+
+Users of WAVE_Diesel3DPost:  (Total of 4 licenses issued;  Total of 0 licenses in use)
+
+Users of WAVE_Solver:  (Total of 4 licenses issued;  Total of 0 licenses in use)
+
+Users of WAVE_WaveBuild:  (Total of 4 licenses issued;  Total of 1 license in use)
+
+  "WAVE_WaveBuild" v2020.1, vendor: RICARDO
+  floating license
+
+    i0212560 i0212560W1016 i0212560W1016 (v2019.2) (DIRWIN002/27003 1910), start Mon 4/13 16:17
+
+Users of WAVE_WavePost:  (Total of 4 licenses issued;  Total of 0 licenses in use)
+
+Users of ENGDYN_GUIBase:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of ENGDYN_GUIEHD:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of ENGDYN_GUIStress:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of ENGDYN_PisdTrans:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of ENGDYN_Solver:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of SABR_Base:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of SABR_Gear:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of VECTIS_Phase1:  (Total of 3 licenses issued;  Total of 0 licenses in use)
+
+Users of VECTIS_Phase2:  (Total of 3 licenses issued;  Total of 0 licenses in use)
+
+Users of VECTIS_Phase4:  (Total of 3 licenses issued;  Total of 0 licenses in use)
+
+Users of WAVE_Diesel3D:  (Total of 3 licenses issued;  Total of 0 licenses in use)
+
+Users of WAVE_Diesel3DPre:  (Total of 3 licenses issued;  Total of 0 licenses in use)
+
+
+lmutil - Copyright (c) 1989-2012 Flexera Software LLC. All Rights Reserved.
+Flexible License Manager status on Tue 4/14/2020 07:01
+
+[Detecting lmgrd processes...]
+License server status: 5280@DIRWIN001
+    License file(s) on DIRWIN001: C:\Cadence\LicenseManager\license.dat:
+
+ DIRWIN001: license server UP (MASTER) v11.14
+
+Vendor daemon status (on DIRWIN001):
+
+    cdslmd: UP v11.14
+Feature usage info:
+
+Users of Capture:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of OrCAD_PCB_Designer_Basics:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of OrCAD_PCB_Editor_Basics:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of OrCAD_Unison_EE:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+
+lmutil - Copyright (c) 1989-2012 Flexera Software LLC. All Rights Reserved.
+Flexible License Manager status on Tue 4/14/2020 07:01
+
+[Detecting lmgrd processes...]
+License server status: 7788@DIITLicense07
+    License file(s) on DIITLicense07: C:\Program Files\Mathcad\MathCAD_20150120.lic:
+
+DIITLicense07: license server UP (MASTER) v10.8
+
+Vendor daemon status (on DIITLicense07):
+
+     ptc_d: UP v10.8
+Feature usage info:
+
+Users of 254:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of 255:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of 256:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of 257:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of MATHCAD:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+
+lmutil - Copyright (c) 1989-2012 Flexera Software LLC. All Rights Reserved.
+Flexible License Manager status on Tue 4/14/2020 07:01
+
+[Detecting lmgrd processes...]
+License server status: 27000@DIITLicense08
+    License file(s) on DIITLicense08: C:\exsite\excite_20200102.dat:
+
+DIITLicense08: license server UP (MASTER) v11.14
+
+Vendor daemon status (on DIITLicense08):
+
+       avl: UP v11.14
+Feature usage info:
+
+Users of lifetimeLimit:  (Total of 99999 licenses issued;  Total of 0 licenses in use)
+
+Users of sdt_base:  (Total of 99999 licenses issued;  Total of 0 licenses in use)
+
+Users of sdt_optimization_process:  (Total of 99999 licenses issued;  Total of 0 licenses in use)
+
+Users of sdt_fame_caddm:  (Total of 99999 licenses issued;  Total of 0 licenses in use)
+
+Users of sdt_impress:  (Total of 99999 licenses issued;  Total of 0 licenses in use)
+
+Users of act:  (Total of 99999 licenses issued;  Total of 0 licenses in use)
+
+Users of boost_gui_interface:  (Total of 99999 licenses issued;  Total of 0 licenses in use)
+
+Users of boost_main_interface:  (Total of 99999 licenses issued;  Total of 0 licenses in use)
+
+Users of boost_hyd_matlab:  (Total of 99999 licenses issued;  Total of 0 licenses in use)
+
+Users of excite_matlab:  (Total of 99999 licenses issued;  Total of 0 licenses in use)
+
+Users of excite_td_matlab:  (Total of 99999 licenses issued;  Total of 0 licenses in use)
+
+Users of design_explorer_gui:  (Total of 99999 licenses issued;  Total of 0 licenses in use)
+
+Users of design_explorer_process:  (Total of 99999 licenses issued;  Total of 0 licenses in use)
+
+Users of aws_optimization:  (Total of 99999 licenses issued;  Total of 0 licenses in use)
+
+Users of impress_xd:  (Total of 99999 licenses issued;  Total of 0 licenses in use)
+
+Users of pp2:  (Total of 99999 licenses issued;  Total of 0 licenses in use)
+
+Users of pp3:  (Total of 99999 licenses issued;  Total of 0 licenses in use)
+
+Users of aws_impress:  (Total of 99999 licenses issued;  Total of 0 licenses in use)
+
+Users of excite_fei_abaqus:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of excite_fei_nastran:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of excite_td_tdd_gui:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of excite_td_tdd_solver:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of aws_camdes:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of excite_td_gui:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of excite_td_valve_train:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of excite_td_shaft:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of excite_td_belt_chain:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mbs_valve_train:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of excite_td_solver:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of excite_solver:  (Total of 4 licenses issued;  Total of 0 licenses in use)
+
+Users of aws_shaftmodeler:  (Total of 5 licenses issued;  Total of 0 licenses in use)
+
+Users of mbs_gui:  (Total of 6 licenses issued;  Total of 0 licenses in use)
+
+Users of excite_gui:  (Total of 6 licenses issued;  Total of 2 licenses in use)
+
+  "excite_gui" v2019.0, vendor: avl
+  nodelocked license locked to NOTHING (hostid=ANY)
+
+    i0211594 i0211594W1202 i0211594W1202 (v2019.0) (DIITLicense08/27000 515), start Mon 4/13 14:04
+    i0214336 i0214336W0618 i0214336W0618 (v2019.0) (DIITLicense08/27000 2980), start Thu 4/9 7:48
+
+Users of excite_bearing:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of excite_bearing_axhd:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of excite_designer_load:  (Total of 4 licenses issued;  Total of 0 licenses in use)
+
+Users of excite_designer_modules:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of aws_autoshaft:  (Total of 4 licenses issued;  Total of 0 licenses in use)
+
+Users of sdt_fame_process:  (Total of 4 licenses issued;  Total of 0 licenses in use)
+
+Users of cfd_gui:  (Total of 4 licenses issued;  Total of 0 licenses in use)
+
+Users of excite_mount_layout:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of cfdwm_fame_2006:  (Total of 4 licenses issued;  Total of 0 licenses in use)
+
+Users of excite_crankshaft:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+
+lmutil - Copyright (c) 1989-2012 Flexera Software LLC. All Rights Reserved.
+Flexible License Manager status on Tue 4/14/2020 07:01
+
+[Detecting lmgrd processes...]
+License server status: 27008@DIRWIN001
+    License file(s) on DIRWIN001: C:\OriginLicenseServer\Licenses\Origin2019.lic:
+
+ DIRWIN001: license server UP (MASTER) v11.13
+
+Vendor daemon status (on DIRWIN001):
+
+    orglab: UP v11.13
+Feature usage info:
+
+Users of Origin:  (Total of 12 licenses issued;  Total of 0 licenses in use)
+
+
+lmutil - Copyright (c) 1989-2012 Flexera Software LLC. All Rights Reserved.
+Flexible License Manager status on Tue 4/14/2020 07:01
+
+[Detecting lmgrd processes...]
+License server status: 27002@diitlicense06
+    License file(s) on diitlicense06: C:\Program Files\Originlab\FLEXnet Server\Licenses\origin8.5.lic:
+
+diitlicense06: license server UP (MASTER) v11.4
+
+Vendor daemon status (on diitlicense06):
+
+    orglab: UP v11.4
+Feature usage info:
+
+Users of Origin:  (Total of 6 licenses issued;  Total of 0 licenses in use)
+
+
+lmutil - Copyright (c) 1989-2012 Flexera Software LLC. All Rights Reserved.
+Flexible License Manager status on Tue 4/14/2020 07:01
+
+[Detecting lmgrd processes...]
+License server status: 27002@diitlicense08
+    License file(s) on diitlicense08: C:\Program Files\OriginLab\FLEXnet Server\Licenses\Origin8.6_20120625.lic:
+
+diitlicense08: license server UP (MASTER) v11.10
+
+Vendor daemon status (on diitlicense08):
+
+    orglab: UP v11.10
+Feature usage info:
+
+Users of OriginPro:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+
+lmutil - Copyright (c) 1989-2012 Flexera Software LLC. All Rights Reserved.
+Flexible License Manager status on Tue 4/14/2020 07:01
+
+[Detecting lmgrd processes...]
+License server status: 1717@diitlicense08
+    License file(s) on diitlicense08: C:\MentorGraphics\Licensing\license.txt:
+
+diitlicense08: license server UP (MASTER) v11.10
+
+Vendor daemon status (on diitlicense08):
+
+     mgcld: UP v11.10
+Feature usage info:
+
+Users of blzanyangle:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of blzautoroute:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of blzdbunl:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of blzdreunl:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of blzgenedit:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of blzlayersunl:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of blzshell:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of blzverify:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of cespads:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of dxdesigner040_c:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of lpepads:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of plogpdf:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of pwradvedtrf:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of pwranalog:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of pwrautoplace:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of pwrcam:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of pwrcam350:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of pwrcamplus:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of pwrcluplace:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of pwrcopperflood:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of pwrdbunl:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of pwrdrafting:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of pwrdre:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of pwrdxf:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of pwreco:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of pwrgenedit:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of pwrlibedit:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of pwrpdf:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of pwrradialplace:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of pwrshell:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of pwrspecctralink:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of pwrsplitplanes:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of pwrvariants:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of pwrverify:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+
+lmutil - Copyright (c) 1989-2012 Flexera Software LLC. All Rights Reserved.
+Flexible License Manager status on Tue 4/14/2020 07:01
+
+[Detecting lmgrd processes...]
+License server status: 27005@DIRWIN001
+    License file(s) on DIRWIN001: C:\GTSuite\license_20200228.dat:
+
+ DIRWIN001: license server UP (MASTER) v11.14
+
+Vendor daemon status (on DIRWIN001):
+
+   GTISOFT: UP v11.14
+Feature usage info:
+
+Users of GTsuite:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of CONVERGELITEcfd:  (Total of 3 licenses issued;  Total of 0 licenses in use)
+
+Users of CONVERGELITEcfdulim:  (Total of 3 licenses issued;  Total of 0 licenses in use)
+
+Users of GTgui:  (Total of 4 licenses issued;  Total of 3 licenses in use)
+
+  "GTgui" v2020, vendor: GTISOFT
+  floating license
+
+    i0212560 i0212560W1016 i0212560W1016 (v2019) (DIRWIN001/27005 910), start Mon 4/13 13:48
+    jaemin1.hwang 2634097W0327 2634097W0327 (v2018) (DIRWIN001/27005 1214), start Mon 4/13 8:09
+    myungjik.bae myungjikW0329 myungjikW0329 (v2017) (DIRWIN001/27005 703), start Mon 4/13 14:41
+
+Users of ThreeDModelingKernel:  (Total of 4 licenses issued;  Total of 0 licenses in use)
+
+Users of GTspaceclaim:  (Total of 4 licenses issued;  Total of 0 licenses in use)
+
+Users of GTpowerX:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+
+lmutil - Copyright (c) 1989-2012 Flexera Software LLC. All Rights Reserved.
+Flexible License Manager status on Tue 4/14/2020 07:01
+
+[Detecting lmgrd processes...]
+License server status: 27002@DIRWIN002
+    License file(s) on DIRWIN002: C:\Flexlm_mF\license_20200228.dat:
+
+ DIRWIN002: license server UP (MASTER) v11.14
+
+Vendor daemon status (on DIRWIN002):
+
+    esteco: UP v11.13
+Feature usage info:
+
+Users of cad_cae:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of ds_base:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of ds_gui:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of wf_base:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_gui:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of pm_gui:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_batch_pilopt_sched:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_gui_pilopt_sched:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_batch_base_doe:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_gui_base_doe:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_easydriver_base:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_integration_beanshell:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_integration_calculator:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_integration_cygwin:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_integration_dosbatch:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_integration_file:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_integration_jscript:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_integration_jython:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_integration_logic:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_integration_powershell:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_integration_python:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_integration_sfu:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_integration_sh:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_integration_vbscript:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_integration_excel:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_batch:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of pm_batch:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_batch_npe:  (Total of 4 licenses issued;  Total of 0 licenses in use)
+
+Users of application:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_integration_curvefitting:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_integration_labview:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_integration_lut:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_integration_maplesim:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_integration_mathcad:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_integration_matlab:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_integration_octave:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_integration_openoffice:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_integration_rsm:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_integration_scilab:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_integration_abaqus:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_integration_adamscar:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_integration_adamsview:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_integration_amesim:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_integration_ansa:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_integration_avl:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_integration_catia:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_integration_cst:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_integration_flowmaster:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_integration_gtsuite:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_integration_hypermesh:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_integration_jmag:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_integration_madymo:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_integration_metapost:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_integration_mpi:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_integration_mscnastran:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_integration_opticstudio:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_integration_powerflow:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_integration_proengineer:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_integration_romax:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_integration_sctetra:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_integration_sfe:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_integration_simulationx:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_integration_solidworks:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_integration_spaceclaim:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_integration_vlab:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of mf_integration_workbench:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+
+lmutil - Copyright (c) 1989-2012 Flexera Software LLC. All Rights Reserved.
+Flexible License Manager status on Tue 4/14/2020 07:01
+
+[Detecting lmgrd processes...]
+License server status: 28001@DIRWIN002
+    License file(s) on DIRWIN002: C:\Program Files\Siemens\PLMLicenseServer\splm10.lic:
+
+ DIRWIN002: license server UP (MASTER) v11.16
+
+Vendor daemon status (on DIRWIN002):
+
+    ugslmd: UP v11.16
+Feature usage info:
+
+Users of SC12500:  (Total of 5 licenses issued;  Total of 0 licenses in use)
+
+Users of ansys_meshers:  (Total of 5 licenses issued;  Total of 0 licenses in use)
+
+Users of gfem_ansys:  (Total of 5 licenses issued;  Total of 0 licenses in use)
+
+Users of gfem_nastran:  (Total of 5 licenses issued;  Total of 0 licenses in use)
+
+Users of ideas_integration:  (Total of 5 licenses issued;  Total of 0 licenses in use)
+
+Users of nx_acoustic_modeling:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of nx_integration:  (Total of 5 licenses issued;  Total of 0 licenses in use)
+
+Users of nx_nas_acou_hpc_lite:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of nx_nas_acous_adv:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of nx_nas_aero_ent:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of nx_nas_basic_ent:  (Total of 4 licenses issued;  Total of 0 licenses in use)
+
+Users of nx_nas_dmap_ent:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of nx_nas_dmp_ent:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of nx_nas_dyn_ent:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of nx_nas_nonlin_ent:  (Total of 4 licenses issued;  Total of 0 licenses in use)
+
+Users of nx_nas_rdmodes:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of nx_nas_red_rep:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of nx_nas_supel_ent:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of nx_sysnoise_bem:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of nx_sysnoisebem_ui:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of sc3d_dsktop_presence:  (Total of 5 licenses issued;  Total of 0 licenses in use)
+
+Users of sc_aco_pre_solver:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of sc_acou_meshing:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of sc_nv_modeling:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of simcenter_token:  (Total of 300 licenses issued;  Total of 0 licenses in use)
+
+Users of teamcenter_admin:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of teamcenter_designer:  (Total of 5 licenses issued;  Total of 0 licenses in use)
+
+Users of ug_scenario:  (Total of 5 licenses issued;  Total of 0 licenses in use)
+
+Users of visview_base:  (Total of 5 licenses issued;  Total of 0 licenses in use)
+
+Users of sc_load_ident:  (Error: 2 licenses, unsupported by licensed server)
+
+Users of borrowing:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of gateway_id:  (Total of 1000 licenses issued;  Total of 0 licenses in use)
+
+Users of server_id:  (Total of 1 license issued;  Total of 0 licenses in use)
+
+Users of SC12500_3d_to_2d_flattener:  (Total of 5 licenses issued;  Total of 0 licenses in use)
+
+Users of SC12500_assemblies:  (Total of 5 licenses issued;  Total of 0 licenses in use)
+
+Users of SC12500_dxfdwg:  (Total of 5 licenses issued;  Total of 0 licenses in use)
+
+Users of SC12500_features_modeling:  (Total of 5 licenses issued;  Total of 0 licenses in use)
+
+Users of SC12500_gateway:  (Total of 5 licenses issued;  Total of 0 licenses in use)
+
+Users of SC12500_grip_execute:  (Total of 5 licenses issued;  Total of 0 licenses in use)
+
+Users of SC12500_id_ext_fem_beam:  (Total of 5 licenses issued;  Total of 0 licenses in use)
+
+Users of SC12500_iges:  (Total of 5 licenses issued;  Total of 0 licenses in use)
+
+Users of SC12500_nx_freeform_1:  (Total of 5 licenses issued;  Total of 0 licenses in use)
+
+Users of SC12500_nx_freeform_2:  (Total of 5 licenses issued;  Total of 0 licenses in use)
+
+Users of SC12500_nx_ftk:  (Total of 5 licenses issued;  Total of 0 licenses in use)
+
+Users of SC12500_nx_masterfem:  (Total of 5 licenses issued;  Total of 0 licenses in use)
+
+Users of SC12500_nx_material_system:  (Total of 5 licenses issued;  Total of 0 licenses in use)
+
+Users of SC12500_nx_nastran_export:  (Total of 5 licenses issued;  Total of 0 licenses in use)
+
+Users of SC12500_nx_nastran_import:  (Total of 5 licenses issued;  Total of 0 licenses in use)
+
+Users of SC12500_pcf_package_file:  (Total of 5 licenses issued;  Total of 0 licenses in use)
+
+Users of SC12500_pstudio_cons:  (Total of 5 licenses issued;  Total of 0 licenses in use)
+
+Users of SC12500_pv_ugdatagenerator:  (Total of 5 licenses issued;  Total of 0 licenses in use)
+
+Users of SC12500_sc_enabled:  (Total of 5 licenses issued;  Total of 0 licenses in use)
+
+Users of SC12500_sla_3d_systems:  (Total of 5 licenses issued;  Total of 0 licenses in use)
+
+Users of SC12500_solid_modeling:  (Total of 5 licenses issued;  Total of 0 licenses in use)
+
+Users of SC12500_step_ap203:  (Total of 5 licenses issued;  Total of 0 licenses in use)
+
+Users of SC12500_step_ap214:  (Total of 5 licenses issued;  Total of 0 licenses in use)
+
+Users of SC12500_studio_render:  (Total of 5 licenses issued;  Total of 0 licenses in use)
+
+Users of SC12500_studio_visualize:  (Total of 5 licenses issued;  Total of 0 licenses in use)
+
+Users of SC12500_ug_checkmate:  (Total of 5 licenses issued;  Total of 0 licenses in use)
+
+Users of SC12500_ug_kf_checker:  (Total of 5 licenses issued;  Total of 0 licenses in use)
+
+Users of SC12500_ug_kf_execute:  (Total of 5 licenses issued;  Total of 0 licenses in use)
+
+Users of SC12500_ug_smart_models:  (Total of 5 licenses issued;  Total of 0 licenses in use)
+
+Users of SC12500_ug_web_express:  (Total of 5 licenses issued;  Total of 0 licenses in use)
+
+Users of SC12500_ugopen_menuscript:  (Total of 5 licenses issued;  Total of 0 licenses in use)
+
+Users of SC12500_usr_defined_features:  (Total of 5 licenses issued;  Total of 0 licenses in use)
+
+
+lmutil - Copyright (c) 1989-2012 Flexera Software LLC. All Rights Reserved.
+Flexible License Manager status on Tue 4/14/2020 07:01
+
+[Detecting lmgrd processes...]
+License server status: 28001@DIRWIN001
+    License file(s) on DIRWIN001: D:\3DCS\License\20200313\dcs_lic_DIRWIN001.dat:
+
+ DIRWIN001: license server UP (MASTER) v11.7
+
+Vendor daemon status (on DIRWIN001):
+
+  DCS2FLMD: UP v11.7
+Feature usage info:
+
+Users of DCS_3DCS_CAT6:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of DCS_GEOFACTOR_3DCS_CAT6:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+
+lmutil - Copyright (c) 1989-2012 Flexera Software LLC. All Rights Reserved.
+Flexible License Manager status on Tue 4/14/2020 07:01
+
+[Detecting lmgrd processes...]
+License server status: 27030@10.32.150.132
+    License file(s) on 10.32.150.132: C:\FEGate\fegate.lic:
+
+10.32.150.132: license server UP (MASTER) v11.6
+
+Vendor daemon status (on 10.32.150.132):
+
+   fegated: UP v11.6
+Feature usage info:
+
+Users of APP:  (Total of 2 licenses issued;  Total of 1 license in use)
+
+  "APP" v3.000, vendor: fegated
+  floating license
+
+    chansol.h chansolhW0723 chansolhW0723 (v3.0) (10.32.150.132/27030 1023), start Fri 4/10 13:57
+
+Users of WELD:  (Total of 2 licenses issued;  Total of 1 license in use)
+
+  "WELD" v3.000, vendor: fegated
+  floating license
+
+    chansol.h chansolhW0723 chansolhW0723 (v3.0) (10.32.150.132/27030 1725), start Fri 4/10 13:57
+
+Users of POST:  (Total of 2 licenses issued;  Total of 1 license in use)
+
+  "POST" v3.000, vendor: fegated
+  floating license
+
+    chansol.h chansolhW0723 chansolhW0723 (v3.0) (10.32.150.132/27030 4910), start Fri 4/10 13:57
+
+Users of NVH:  (Total of 2 licenses issued;  Total of 1 license in use)
+
+  "NVH" v3.000, vendor: fegated
+  floating license
+
+    chansol.h chansolhW0723 chansolhW0723 (v3.0) (10.32.150.132/27030 4710), start Fri 4/10 13:57
+
+Users of DSA:  (Total of 2 licenses issued;  Total of 0 licenses in use)
+
+Users of DIAG:  (Total of 2 licenses issued;  Total of 1 license in use)
+
+  "DIAG" v3.000, vendor: fegated
+  floating license
+
+    chansol.h chansolhW0723 chansolhW0723 (v3.0) (10.32.150.132/27030 5904), start Fri 4/10 13:59
+
+Users of SNM:  (Total of 2 licenses issued;  Total of 1 license in use)
+
+  "SNM" v3.000, vendor: fegated
+  floating license
+
+    chansol.h chansolhW0723 chansolhW0723 (v3.0) (10.32.150.132/27030 4510), start Fri 4/10 13:57
+
+Users of SITE:  (Total of 2 licenses issued;  Total of 1 license in use)
+
+  "SITE" v3.000, vendor: fegated
+  floating license
+
+    chansol.h chansolhW0723 chansolhW0723 (v3.0) (10.32.150.132/27030 5409), start Fri 4/10 13:57
+
+

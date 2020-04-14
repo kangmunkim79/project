@@ -1,0 +1,354 @@
+Setting license file path to 5053@DIRWIN002
+rlmutil v9.3
+Copyright (C) 2006-2012, Reprise Software, Inc. All rights reserved.
+
+
+	------------------------
+
+	lms ISV server status on DIRWIN002 (port 49166), up 15d 06:22:50
+	lms software version v11.1 (build: 2)
+	lms comm version: v1.2
+	lms Debug log filename: C:\Converge\lms.dlog
+	lms Report log filename: <stdout>
+	Startup time: Sun Mar 29 11:36:21 2020
+	Todays Statistics (17:58:32), init time: Mon Apr 13 00:00:39 2020
+	Recent Statistics (00:11:03), init time: Mon Apr 13 17:48:08 2020
+
+	             Recent Stats         Todays Stats         Total Stats
+	              00:11:03             17:58:32         15d 06:22:50
+	Messages:    7 (0/sec)           856 (0/sec)          19829 (0/sec)
+	Connections: 1 (0/sec)           99 (0/sec)          3317 (0/sec)
+	Checkouts:   0 (0/sec)           74 (0/sec)          2056 (0/sec)
+	Denials:     0 (0/sec)           0 (0/sec)          56 (0/sec)
+	Removals:    0 (0/sec)           0 (0/sec)          0 (0/sec)
+
+
+	------------------------
+
+	lms license pool status on DIRWIN002 (port 49166)
+
+	lms_il_rto_03 v17.0 hostid: f40343599ba6
+		count: 1, # reservations: 0, inuse: 0, exp: permanent
+		obsolete: 0, min_remove: 120, transactions: 0
+	lms_il_ame_03 v17.0 hostid: f40343599ba6
+		count: 1, # reservations: 0, inuse: 0, exp: permanent
+		obsolete: 0, min_remove: 120, transactions: 0
+	lms_il_ame_03_run v17.0 hostid: f40343599ba6
+		count: 1, # reservations: 0, inuse: 0, exp: permanent
+		obsolete: 0, min_remove: 120, transactions: 0
+	amecustom v17.0 hostid: f40343599ba6
+		count: 1, # reservations: 0, inuse: 0, exp: permanent
+		obsolete: 0, min_remove: 120, transactions: 0
+	export_runtime v17.0 hostid: f40343599ba6
+		count: 1, # reservations: 0, inuse: 0, exp: permanent
+		obsolete: 0, min_remove: 120, transactions: 0
+	ameset v17.0 hostid: f40343599ba6
+		count: 1, # reservations: 0, inuse: 0, exp: permanent
+		obsolete: 0, min_remove: 120, transactions: 0
+	design_exploration_runtime v17.0 hostid: f40343599ba6
+		count: 1, # reservations: 0, inuse: 0, exp: permanent
+		obsolete: 0, min_remove: 120, transactions: 0
+	design_explor_adv_runtime v17.0 hostid: f40343599ba6
+		count: 1, # reservations: 0, inuse: 0, exp: permanent
+		obsolete: 0, min_remove: 120, transactions: 0
+	lms_il_tol_52_run v17.0 hostid: f40343599ba6
+		count: 1, # reservations: 0, inuse: 0, exp: permanent
+		obsolete: 0, min_remove: 120, transactions: 0
+	design_explor_adv_runtime v17.0
+		count: 4, # reservations: 0, inuse: 0, exp: permanent
+		obsolete: 0, min_remove: 120, transactions: 0
+	design_exploration_runtime v17.0
+		count: 4, # reservations: 0, inuse: 0, exp: permanent
+		obsolete: 0, min_remove: 120, transactions: 0
+	ameset v17.0
+		count: 4, # reservations: 0, inuse: 0, exp: permanent
+		obsolete: 0, min_remove: 120, transactions: 0
+	export_runtime v17.0
+		count: 4, # reservations: 0, inuse: 0, exp: permanent
+		obsolete: 0, min_remove: 120, transactions: 0
+	amecustom v17.0
+		count: 4, # reservations: 0, inuse: 0, exp: permanent
+		obsolete: 0, min_remove: 120, transactions: 0
+	lms_il_ame_01_run v17.0
+		count: 4, # reservations: 0, inuse: 0, exp: permanent
+		obsolete: 0, min_remove: 120, transactions: 776
+	lms_il_ame_01 v17.0
+		count: 4, # reservations: 0, inuse: 1, exp: permanent
+		obsolete: 0, min_remove: 120, transactions: 70
+	ifp_combfit_runtime v17.0
+		count: 1, # reservations: 0, inuse: 0, exp: permanent
+		obsolete: 0, min_remove: 120, transactions: 0
+	lms_il_dss_02_run v17.0
+		count: 1, # reservations: 0, inuse: 0, exp: permanent
+		obsolete: 0, min_remove: 120, transactions: 0
+	lms_il_dss_02 v17.0
+		count: 1, # reservations: 0, inuse: 0, exp: permanent
+		obsolete: 0, min_remove: 120, transactions: 0
+	lms_il_dss_10_run v17.0
+		count: 4, # reservations: 0, inuse: 0, exp: permanent
+		obsolete: 0, min_remove: 120, transactions: 778
+	lms_il_dss_10 v17.0
+		count: 4, # reservations: 0, inuse: 1, exp: permanent
+		obsolete: 0, min_remove: 120, transactions: 49
+	lms_il_dss_11_run v17.0
+		count: 3, # reservations: 0, inuse: 0, exp: permanent
+		obsolete: 0, min_remove: 120, transactions: 98
+	lms_il_dss_11 v17.0
+		count: 3, # reservations: 0, inuse: 1, exp: permanent
+		obsolete: 0, min_remove: 120, transactions: 67
+	lms_il_dss_12_run v17.0
+		count: 1, # reservations: 0, inuse: 0, exp: permanent
+		obsolete: 0, min_remove: 120, transactions: 0
+	lms_il_dss_12 v17.0
+		count: 1, # reservations: 0, inuse: 0, exp: permanent
+		obsolete: 0, min_remove: 120, transactions: 3
+	lms_il_dss_21_run v17.0
+		count: 1, # reservations: 0, inuse: 0, exp: permanent
+		obsolete: 0, min_remove: 120, transactions: 0
+	lms_il_dss_21 v17.0
+		count: 1, # reservations: 0, inuse: 0, exp: permanent
+		obsolete: 0, min_remove: 120, transactions: 0
+	lms_il_dss_22_run v17.0
+		count: 1, # reservations: 0, inuse: 0, exp: permanent
+		obsolete: 0, min_remove: 120, transactions: 0
+	lms_il_dss_22 v17.0
+		count: 1, # reservations: 0, inuse: 0, exp: permanent
+		obsolete: 0, min_remove: 120, transactions: 0
+	lms_il_dss_23_run v17.0
+		count: 1, # reservations: 0, inuse: 0, exp: permanent
+		obsolete: 0, min_remove: 120, transactions: 0
+	lms_il_dss_23 v17.0
+		count: 1, # reservations: 0, inuse: 0, exp: permanent
+		obsolete: 0, min_remove: 120, transactions: 0
+	lms_il_dss_31_run v17.0
+		count: 1, # reservations: 0, inuse: 0, exp: permanent
+		obsolete: 0, min_remove: 120, transactions: 0
+	lms_il_dss_31 v17.0
+		count: 1, # reservations: 0, inuse: 0, exp: permanent
+		obsolete: 0, min_remove: 120, transactions: 0
+	lms_il_dss_52_run v17.0
+		count: 2, # reservations: 0, inuse: 0, exp: permanent
+		obsolete: 0, min_remove: 120, transactions: 156
+	lms_il_dss_52 v17.0
+		count: 2, # reservations: 0, inuse: 1, exp: permanent
+		obsolete: 0, min_remove: 120, transactions: 77
+	lms_il_int_01 v17.0
+		count: 1, # reservations: 0, inuse: 1, exp: permanent
+		obsolete: 0, min_remove: 120, transactions: 13
+	lms_il_int_04_run v17.0
+		count: 1, # reservations: 0, inuse: 0, exp: permanent
+		obsolete: 0, min_remove: 120, transactions: 0
+	lms_il_int_04 v17.0
+		count: 1, # reservations: 0, inuse: 0, exp: permanent
+		obsolete: 0, min_remove: 120, transactions: 17
+	lms_il_int_10 v17.0
+		count: 3, # reservations: 0, inuse: 0, exp: permanent
+		obsolete: 0, min_remove: 120, transactions: 0
+	server_id_il v1.0 hostid: ANY
+		UNCOUNTED, inuse: 0
+
+
+	------------------------
+
+	lms license usage status on DIRWIN002 (port 49166)
+
+	lms_il_ame_01 v17.0: i0195559@i0195559w0309 1/0 at 04/13 08:27  (handle: 395)
+	lms_il_dss_10 v17.0: i0195559@i0195559w0309 1/0 at 04/13 08:27  (handle: 255)
+	lms_il_dss_11 v17.0: i0195559@i0195559w0309 1/0 at 04/13 08:27  (handle: 2f6)
+	lms_il_dss_52 v17.0: i0195559@i0195559w0309 1/0 at 04/13 08:27  (handle: 3e9)
+	lms_il_int_01 v17.0: i0195559@i0195559w0309 1/0 at 04/13 08:27  (handle: 435)
+
+Setting license file path to 28000@DIRWIN002
+rlmutil v9.3
+Copyright (C) 2006-2012, Reprise Software, Inc. All rights reserved.
+
+
+	------------------------
+
+	humansol ISV server status on DIRWIN002 (port 49164), up 15d 06:22:52
+	humansol software version v7.0 (build: 4)
+	humansol comm version: v1.1
+	Startup time: Sun Mar 29 11:36:20 2020
+	Todays Statistics (17:58:33), init time: Mon Apr 13 00:00:39 2020
+	Recent Statistics (00:04:05), init time: Mon Apr 13 17:55:07 2020
+
+	             Recent Stats         Todays Stats         Total Stats
+	              00:04:05             17:58:33         15d 06:22:52
+	Messages:    2 (0/sec)           706 (0/sec)          17929 (0/sec)
+	Connections: 1 (0/sec)           65 (0/sec)          2394 (0/sec)
+	Checkouts:   0 (0/sec)           0 (0/sec)          12 (0/sec)
+	Denials:     0 (0/sec)           0 (0/sec)          14 (0/sec)
+	Removals:    0 (0/sec)           0 (0/sec)          0 (0/sec)
+
+
+	------------------------
+
+	humansol license pool status on DIRWIN002 (port 49164)
+
+	main_core_bb v1.4750
+		count: 2, # reservations: 0, inuse: 0, exp: 30-jun-2020
+		obsolete: 0, min_remove: 120, transactions: 0
+	mod_std_bb_win v3.8750
+		count: 2, # reservations: 0, inuse: 0, exp: 30-jun-2020
+		obsolete: 0, min_remove: 120, transactions: 0
+	main_core_ind_vehicles_icv5 v3.8750
+		count: 2, # reservations: 0, inuse: 0, exp: 30-jun-2020
+		obsolete: 0, min_remove: 120, transactions: 4
+	mod_std_v5iv_win v3.8750
+		count: 2, # reservations: 0, inuse: 0, exp: 30-jun-2020
+		obsolete: 0, min_remove: 120, transactions: 4
+	cognitive_add_on_v5iv_win v3.8750
+		count: 1, # reservations: 0, inuse: 0, exp: 30-jun-2020
+		obsolete: 0, min_remove: 120, transactions: 0
+	cognitive_v5iv_win v3.8750
+		count: 1, # reservations: 0, inuse: 0, exp: 30-jun-2020
+		obsolete: 0, min_remove: 120, transactions: 1
+	china v3.8750
+		count: 2, # reservations: 0, inuse: 0, exp: 30-jun-2020
+		obsolete: 0, min_remove: 120, transactions: 0
+	germany_2004 v3.8750
+		count: 2, # reservations: 0, inuse: 0, exp: 30-jun-2020
+		obsolete: 0, min_remove: 120, transactions: 0
+	korea_2004 v3.8750
+		count: 2, # reservations: 0, inuse: 0, exp: 30-jun-2020
+		obsolete: 0, min_remove: 120, transactions: 3
+	usa_nhanes_iii v3.8750
+		count: 2, # reservations: 0, inuse: 0, exp: 30-jun-2020
+		obsolete: 0, min_remove: 120, transactions: 0
+	size_india_arai_2011 v3.8750
+		count: 2, # reservations: 0, inuse: 0, exp: 30-jun-2020
+		obsolete: 0, min_remove: 120, transactions: 0
+
+
+Setting license file path to 5055@DIRWIN001
+rlmutil v9.3
+Copyright (C) 2006-2012, Reprise Software, Inc. All rights reserved.
+
+
+	------------------------
+
+	ips ISV server status on DIRWIN001 (port 49168), up 15d 06:24:47
+	ips software version v12.0 (build: 2)
+	ips comm version: v1.2
+	ips Debug log filename: c:\IPS_Server\ips.dlog
+	ips Report log filename: <stdout>
+	Startup time: Sun Mar 29 11:34:27 2020
+	Todays Statistics (17:58:33), init time: Mon Apr 13 00:00:41 2020
+	Recent Statistics (00:11:04), init time: Mon Apr 13 17:48:10 2020
+
+	             Recent Stats         Todays Stats         Total Stats
+	              00:11:04             17:58:33         15d 06:24:47
+	Messages:    2 (0/sec)           106 (0/sec)          2794 (0/sec)
+	Connections: 1 (0/sec)           53 (0/sec)          1214 (0/sec)
+	Checkouts:   0 (0/sec)           0 (0/sec)          73 (0/sec)
+	Denials:     0 (0/sec)           0 (0/sec)          0 (0/sec)
+	Removals:    0 (0/sec)           0 (0/sec)          0 (0/sec)
+
+
+	------------------------
+
+	ips license pool status on DIRWIN001 (port 49168)
+
+	ipsm01 v2021.12
+		count: 2, # reservations: 0, inuse: 0, exp: 14-dec-2020
+		obsolete: 0, min_remove: 120, transactions: 27
+	ipsm02 v2021.12
+		count: 2, # reservations: 0, inuse: 0, exp: 14-dec-2020
+		obsolete: 0, min_remove: 120, transactions: 19
+	ipsm04 v2021.12
+		count: 2, # reservations: 0, inuse: 0, exp: 14-dec-2020
+		obsolete: 0, min_remove: 120, transactions: 27
+	ipsm24 v2021.12
+		count: 2, # reservations: 0, inuse: 0, exp: 14-dec-2020
+		obsolete: 0, min_remove: 120, transactions: 0
+	ipsp00 v2021.12
+		count: 1, # reservations: 0, inuse: 0, exp: 14-dec-2020
+		obsolete: 0, min_remove: 120, transactions: 0
+
+
+Setting license file path to 2765@DIRWIN001
+rlmutil v9.3
+Copyright (C) 2006-2012, Reprise Software, Inc. All rights reserved.
+
+
+	------------------------
+
+	csci ISV server status on DIRWIN001 (port 49167), up 15d 06:24:48
+	csci software version v12.0 (build: 2)
+	csci comm version: v1.2
+	csci Debug log filename: c:\IPS_Server\csci.dlog
+	csci Report log filename: <stdout>
+	Startup time: Sun Mar 29 11:34:27 2020
+	Todays Statistics (17:58:34), init time: Mon Apr 13 00:00:41 2020
+	Recent Statistics (00:11:05), init time: Mon Apr 13 17:48:10 2020
+
+	             Recent Stats         Todays Stats         Total Stats
+	              00:11:05             17:58:34         15d 06:24:48
+	Messages:    14 (0/sec)           1932 (0/sec)          38640 (0/sec)
+	Connections: 7 (0/sec)           965 (0/sec)          19240 (0/sec)
+	Checkouts:   0 (0/sec)           0 (0/sec)          2 (0/sec)
+	Denials:     0 (0/sec)           0 (0/sec)          4 (0/sec)
+	Removals:    0 (0/sec)           0 (0/sec)          0 (0/sec)
+
+
+	------------------------
+
+	csci license pool status on DIRWIN001 (port 49167)
+
+	converge v3.0
+		count: 2, # reservations: 0, inuse: 0, exp: 30-apr-2020
+		obsolete: 0, min_remove: 120, transactions: 2
+	converge_child v3.0
+		count: 42, # reservations: 0, inuse: 0, exp: 30-apr-2020
+		obsolete: 0, min_remove: 120, transactions: 0
+	converge_gui v1.0
+		count: 10, # reservations: 0, inuse: 0, exp: 30-apr-2020
+		obsolete: 0, min_remove: 120, transactions: 0
+	converge_tecplot v1.0
+		count: 10, # reservations: 0, inuse: 0, exp: 30-apr-2020
+		obsolete: 0, min_remove: 120, transactions: 0
+
+
+Setting license file path to 2765@DIRWIN002
+rlmutil v9.3
+Copyright (C) 2006-2012, Reprise Software, Inc. All rights reserved.
+
+
+	------------------------
+
+	csci ISV server status on DIRWIN002 (port 49165), up 15d 06:22:56
+	csci software version v11.1 (build: 2)
+	csci comm version: v1.2
+	csci Debug log filename: C:\Converge\csci.dlog
+	csci Report log filename: <stdout>
+	Startup time: Sun Mar 29 11:36:20 2020
+	Todays Statistics (17:58:37), init time: Mon Apr 13 00:00:39 2020
+	Recent Statistics (00:11:08), init time: Mon Apr 13 17:48:08 2020
+
+	             Recent Stats         Todays Stats         Total Stats
+	              00:11:08             17:58:37         15d 06:22:56
+	Messages:    2 (0/sec)           130 (0/sec)          4789 (0/sec)
+	Connections: 1 (0/sec)           65 (0/sec)          2392 (0/sec)
+	Checkouts:   0 (0/sec)           0 (0/sec)          0 (0/sec)
+	Denials:     0 (0/sec)           0 (0/sec)          0 (0/sec)
+	Removals:    0 (0/sec)           0 (0/sec)          0 (0/sec)
+
+
+	------------------------
+
+	csci license pool status on DIRWIN002 (port 49165)
+
+	converge v3.0
+		count: 1, # reservations: 0, inuse: 0, exp: 30-apr-2020
+		obsolete: 0, min_remove: 120, transactions: 0
+	converge_gui v1.0
+		count: 5, # reservations: 0, inuse: 0, exp: 30-apr-2020
+		obsolete: 0, min_remove: 120, transactions: 0
+	converge_tecplot v1.0
+		count: 5, # reservations: 0, inuse: 0, exp: 30-apr-2020
+		obsolete: 0, min_remove: 120, transactions: 0
+	converge_child v3.0
+		count: 10, # reservations: 0, inuse: 0, exp: 24-mar-2021
+		obsolete: 0, min_remove: 120, transactions: 0
+
+
