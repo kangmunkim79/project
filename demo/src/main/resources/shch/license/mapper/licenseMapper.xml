@@ -150,8 +150,62 @@
 	</select>	
 	
 	<select id="getGridLicServerList" parameterType="hashmap" resultType="hashmap">
-	
+		select *
+		from tb_lic_server_info
+		order by sort
 	</select>
+
+	<insert id="saveLic">	
+		merge tb_lic_server_info as t
+		using (select #{oid}        as oid
+				 	 ,#{licserver}  as licserver
+					 ,#{licnm}      as licnm
+					 ,#{fileurl}    as fileurl
+					 ,#{filenmtype} as filenmtype
+					 ,#{useflag}    as useflag
+					 ,#{sort}       as sort
+					 ,#{sid}	    as regcd
+					 ,getdate()     as regdt
+					 ,#{sid}        as modcd
+					 ,getdate()	    as moddt
+		) s on t.oid = s.oid
+		when matched then
+			update set
+				 licserver   = s.licserver
+				,licnm       = s.licnm
+				,fileurl     = s.fileurl
+				,filenmtype  = s.filenmtype
+				,useflag     = s.useflag
+				,sort        = s.sort
+				,modcd       = s.modcd
+				,moddt	   = s.moddt
+		when not matched then
+			insert (
+					 oid       
+					,licserver 
+					,licnm     
+					,fileurl   
+					,filenmtype
+					,useflag   
+					,sort      
+					,regcd     
+					,regdt     
+					,modcd     
+					,moddt     			
+			)values(
+					 s.oid       
+					,s.licserver 
+					,s.licnm     
+					,s.fileurl   
+					,s.filenmtype
+					,s.useflag   
+					,s.sort      
+					,s.regcd     
+					,s.regdt     
+					,s.modcd     
+					,s.moddt     						
+			);
+	</insert>
 	
 	<insert id="insertLicUserLog">
 		INSERT INTO tb_lic_cae_user_log_v2(
@@ -186,4 +240,6 @@
 			#{logedtime}
 		)			
 	</insert>	
+	
+	
 </mapper>

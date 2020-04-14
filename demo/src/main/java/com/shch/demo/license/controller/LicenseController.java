@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,11 +14,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.shch.demo.license.service.LicenseService;
+import com.shch.demo.security.Session;
 
 @Controller
 @RequestMapping(value = "license")
 public class LicenseController {
-
+	
 	@Autowired
 	LicenseService licenseService;
 	
@@ -67,15 +69,27 @@ public class LicenseController {
 		return result; 
 	}
 	
-	@RequestMapping(value = "/getGridLicServerList", method = RequestMethod.POST) 
-	public @ResponseBody Map<String, Object> getGridLicServerList(@RequestBody Map<String, Object> param) throws Exception { 
+	@RequestMapping(value = "/getGridLicServerList", method = RequestMethod.GET) 
+	public @ResponseBody Map<String, Object> getGridLicServerList() throws Exception { 
 		Map<String, Object> result = new HashMap<String, Object>(); 
 		try { 
-			List<Map<String, Object>> list = licenseService.getGridLicServerList(param);
+			List<Map<String, Object>> list = licenseService.getGridLicServerList();
 			result.put("mList", list);
 		} catch (Exception e) { 
 			result.put("status", "False"); 
 		} 
 		return result; 
+	}
+	
+	@RequestMapping(value = "/saveLicList", method = RequestMethod.POST) 
+	public @ResponseBody Map<String, Object> saveLicList(@RequestBody List<Map<String, Object>> saveList, Session user) throws Exception {
+		Map<String, Object> result = new HashMap<String, Object>();
+		try { 
+			licenseService.saveLicList(saveList, user);
+			result.put("status", "Ok");
+		} catch (Exception e) { 
+			result.put("status", "False"); 
+		}
+		return result;		
 	}
 }

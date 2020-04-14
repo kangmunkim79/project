@@ -63,6 +63,15 @@ $(document.body).ready(function () {
                         falseValue: "N"
                     }
             	}
+            },
+            {key: "sort", label: "Sort", width: 80, align: "center",
+	            enableFilter: true,
+	            editor: {
+	                type: "text", disabled: function () {
+	                    // item, value
+	                    return false;
+	                }
+	            }
             }
         ],
         body: {
@@ -78,7 +87,7 @@ $(document.body).ready(function () {
     $('[data-grid-control]').click(function () {
     	switch (this.getAttribute("data-grid-control")) {
         case "add":
-			var addRowParam = {"licserver":null,"licnm":null,"fileurl":null,"filenmtype":null,"useflag":"Y"};
+			var addRowParam = {"licserver":null,"licnm":null,"fileurl":null,"filenmtype":null,"useflag":"Y","sort":1};
             firstGrid.addRow($.extend({}, addRowParam, 0));
             break;
         case "remove":
@@ -135,7 +144,7 @@ $(document.body).ready(function () {
     // 그리드 데이터 가져오기
     function go(){
 	    $.ajax({
-	        method: "POST",
+	        method: "GET",
 	        url: "/license/getGridLicServerList",
 	        success: function (res) {
 	            firstGrid.setData(res.mList);

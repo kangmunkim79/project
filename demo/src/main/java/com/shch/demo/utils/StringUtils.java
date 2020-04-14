@@ -10,6 +10,10 @@ public class StringUtils {
         return str == null ? defaultStr : str ;
 	}
 	
+	public static String nvl(Object str, String defaultStr) {
+        return str == null ? defaultStr : String.valueOf(str) ;
+	}
+	
 	public static String[] nvl(String[] input) {
 		if(input == null) {
 			return new String[0];
