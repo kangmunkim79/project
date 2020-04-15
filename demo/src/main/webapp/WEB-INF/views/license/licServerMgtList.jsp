@@ -36,7 +36,7 @@ $(document.body).ready(function () {
 	                }
 	            }
             },
-            {key: "fileurl", label: "파일경로", width: 120, align: "left",
+            {key: "topmodulenm", label: "Main module", width: 150, align: "left",
 	            enableFilter: true,
 	            editor: {
 	                type: "text", disabled: function () {
@@ -45,7 +45,16 @@ $(document.body).ready(function () {
 	                }
 	            }
             },
-            {key: "filenmtype", label: "파일명 형식", width: 120, align: "center",
+            {key: "fileurl", label: "파일경로", width: 150, align: "left",
+	            enableFilter: true,
+	            editor: {
+	                type: "text", disabled: function () {
+	                    // item, value
+	                    return false;
+	                }
+	            }
+            },
+            {key: "filenmtype", label: "파일명 형식", width: 200, align: "center",
 	            enableFilter: true,
 	            editor: {
 	                type: "text", disabled: function () {
@@ -87,7 +96,7 @@ $(document.body).ready(function () {
     $('[data-grid-control]').click(function () {
     	switch (this.getAttribute("data-grid-control")) {
         case "add":
-			var addRowParam = {"licserver":null,"licnm":null,"fileurl":null,"filenmtype":null,"useflag":"Y","sort":1};
+			var addRowParam = {"licserver":null,"licnm":null,"topmodulenm":null,"fileurl":null,"filenmtype":null,"useflag":"Y","sort":1};
             firstGrid.addRow($.extend({}, addRowParam, 0));
             break;
         case "remove":

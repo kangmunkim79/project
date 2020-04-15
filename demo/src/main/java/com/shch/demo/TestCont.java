@@ -1,99 +1,34 @@
 package com.shch.demo;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.InputStreamReader;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
 
 public class TestCont {
 
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
-		String fileName = "D:/PLM_LM/DSLS/R_20200227_110000.log";
-		String  year = "2020";
-		BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(fileName), "euc-kr"));
-		String s = null;
-		List<Map<String, Object>> mapLicList = new ArrayList<Map<String,Object>>();
-		List<Map<String, Object>> mapLicUserList = new ArrayList<Map<String,Object>>();
-		
-		String licserver = "4084@10.32.150.101";
-		String modulenm = "";
-		String maxcredit = "";
-		String usage = "";
-		String userchk = "N";
-		while ((s = in.readLine()) != null) {
-			Map<String, Object> map = new HashMap<String, Object>();
-			Map<String, Object> map2 = new HashMap<String, Object>();
-	    	if(s.length() > 0){
-	    		if(s.indexOf("maxReleaseNumber: ") > -1) {
-	    			modulenm = s.substring(0,s.indexOf("maxReleaseNumber: ")).trim();
-	    			usage = s.substring(s.indexOf("inuse:")+6,s.lastIndexOf("customerId:")).trim();
-	    			maxcredit = s.substring(s.lastIndexOf("count:")+6,s.lastIndexOf("inuse:")).trim();
-	    			map.put("licserver", licserver); 
-					map.put("modulenm", modulenm);
-					map.put("maxcredit", maxcredit); 
-					map.put("usage", usage);
-					mapLicList.add(map);
-	    		} else if(s.indexOf("internal Id:") > -1) {
-	    			String id = s.substring(s.indexOf("by user:")+8, s.indexOf("on host:")).trim();
-	    			String logintime = s.substring(s.indexOf("last used at:")+13, s.indexOf("by user:")).trim();
-	    			logintime = logintime.replace(". ", "/");	    			
-	    			DateFormat dateParser = new SimpleDateFormat("yyyy/MM/dd a KK:mm:ss");	    			 
-	    			logintime = String.valueOf(dateParser.parse(logintime));
-	    			SimpleDateFormat recvSimpleFormat = new SimpleDateFormat("E MMM dd HH:mm:ss z yyyy", Locale.ENGLISH);	    			 
-	    	        SimpleDateFormat tranSimpleFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
-	    	        Date data = recvSimpleFormat.parse(logintime);
-	    	        logintime = tranSimpleFormat.format(data);
-	    	        logintime = logintime.replace("-", "/");
-	    			java.util.Date date = new Date(logintime); 
-    				SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddHHmmss"); // yyyy-MM-dd HH:mm:ss 
-    				String format = formatter.format(date);
-    				
-    				map2.put("id", id);
-	    			map2.put("licserver", licserver); 
-					map2.put("modulenm", modulenm);	
-					map2.put("logintime", format);
-					mapLicUserList.add(map2);
-	    		}
-	    	}
-	    }
-		in.close();
-		
-		
-		
-		
-		for(int i=0;i<mapLicList.size();i++) { System.out.println("licserver: " +
-		mapLicList.get(i).get("licserver") + " ,modulenm: " +
-		mapLicList.get(i).get("modulenm") + " ,maxcredit: " +
-		mapLicList.get(i).get("maxcredit") + " ,usage: " +
-		mapLicList.get(i).get("usage")); }
-		
-		
-		
-		System.out.println("-------------------------------------------------------");
-		System.out.println("-------------------------------------------------------");
-		System.out.println("-------------------------------------------------------");
-		
-		
-		for(int i=0;i<mapLicUserList.size();i++) { System.out.println("licserver: " +
-		mapLicUserList.get(i).get("licserver") + " ,modulenm: " +
-		mapLicUserList.get(i).get("modulenm") + " ,id: " +
-		mapLicUserList.get(i).get("id") + " ,logintime: " +
-		mapLicUserList.get(i).get("logintime")); }
-		
-		
-		
-		
+        final String DATE_PATTERN = "yyyy_MM_dd_HH";
+        String inputStartDate = "2017_02_28_00";
+        String inputEndDate = "2017_03_05_11";
+        SimpleDateFormat sdf = new SimpleDateFormat(DATE_PATTERN);
+        Date startDate = sdf.parse(inputStartDate);
+        Date endDate = sdf.parse(inputEndDate);
+        ArrayList<String> dates = new ArrayList<String>();
+        System.out.println(startDate + " ::: " + endDate);
+        Date currentDate = startDate;
+        while (currentDate.compareTo(endDate) <= 0) {
+            dates.add(sdf.format(currentDate));
+            Calendar c = Calendar.getInstance();
+            c.setTime(currentDate);
+            c.add(Calendar.HOUR_OF_DAY, 1);
+            currentDate = c.getTime();
+        }
+        for (String date : dates) {
+            System.out.println(date + "_00.log");
+        }
+
 	}
 
 }

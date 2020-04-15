@@ -49,12 +49,12 @@ $(document.body).ready(function () {
         target: $('[data-ax5grid="first-grid"]'),
         columns: [
             {key: "licnm", label: "License Name", width: 150, align: "left"},
-            {key: "modulenm", label: "Main Module", width: 150, align: "left"}
+            {key: "topmodulenm", label: "Main Module", width: 150, align: "left"}
         ],
         body: {
             onClick: function () {
                 if (this.column.key == "licnm" || this.column.key == "modulenm"){
-                	moduleList(this.item.licnm, this.item.modulenm);
+                	moduleList(this.item.licserver, this.item.modulenm);
                 }
             }
         },
@@ -100,7 +100,7 @@ $(document.body).ready(function () {
         body: {
             onClick: function () {
                 if (this.column.key == "licnm" || this.column.key == "modulenm"){
-                  	licUserList(this.item.licnm, this.item.modulenm);
+                  	licUserList(this.item.licserver, this.item.modulenm);
                 }
             }
         },
@@ -184,12 +184,12 @@ $(document.body).ready(function () {
         }                   
     }); 
 
-    function moduleList(licnm, modulenm){
+    function moduleList(licserver, modulenm){
     	var param = {};	
     	var stDate = $("#stDateTime").val();
     	var etDate = $("#etDateTime").val();
     	var daychk = $("#daychk")[0].checked;
-    	param = {"stDateTime":stDate,"etDateTime":etDate,"daychk":daychk,"licnm":licnm,"modulenm":modulenm};
+    	param = {"stDateTime":stDate,"etDateTime":etDate,"daychk":daychk,"licserver":licserver,"modulenm":modulenm};
     	
     	common_gridloading_open("grid-parent2");
         $.ajax({
@@ -207,12 +207,12 @@ $(document.body).ready(function () {
         });		
     }        
 
-    function licUserList(licnm, modulenm){
+    function licUserList(licserver, modulenm){
     	var param = {};	
     	var stDate = $("#stDateTime").val();
     	var etDate = $("#etDateTime").val();
     	var daychk = $("#daychk")[0].checked;
-    	param = {"stDateTime":stDate,"etDateTime":etDate,"daychk":daychk,"licnm":licnm,"modulenm":modulenm};
+    	param = {"stDateTime":stDate,"etDateTime":etDate,"daychk":daychk,"licserver":licserver,"modulenm":modulenm};
     	
     	common_gridloading_open("grid-parent3");
         $.ajax({
@@ -236,7 +236,7 @@ function licenseList(){
 	var stDate = $("#stDateTime").val();
 	var etDate = $("#etDateTime").val();
 	var daychk = $("#daychk")[0].checked;
-	param = {"stDateTime":stDate,"etDateTime":etDate,"daychk":daychk,"licnm":"","modulenm":""};
+	param = {"stDateTime":stDate,"etDateTime":etDate,"daychk":daychk,"licserver":"","modulenm":""};
 	
     common_gridloading_open("grid-parent");	
     $.ajax({

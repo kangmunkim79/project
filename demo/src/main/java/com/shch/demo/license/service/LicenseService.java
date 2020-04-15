@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -54,6 +55,120 @@ public class LicenseService {
 			licenseMapper.saveLic(data);
 		} 
 	}
+
+	public void miglogFileReadWrite() throws Exception  {
+		// TODO Auto-generated method stub
+        final String DATE_PATTERN = "yyyy_MM_dd_HH";
+        String inputStartDate = "2019_01_01_00";
+        String inputEndDate = "2019_01_31_23";
+        SimpleDateFormat sdf = new SimpleDateFormat(DATE_PATTERN);
+        Date startDate = sdf.parse(inputStartDate);
+        Date endDate = sdf.parse(inputEndDate);
+        ArrayList<String> dates = new ArrayList<String>();
+        System.out.println(startDate + " ::: " + endDate);
+        Date currentDate = startDate;
+        while (currentDate.compareTo(endDate) <= 0) {
+            dates.add(sdf.format(currentDate));
+            Calendar c = Calendar.getInstance();
+            c.setTime(currentDate);
+            c.add(Calendar.HOUR_OF_DAY, 1);
+            currentDate = c.getTime();
+        }
+        for (String date : dates) {
+            String fname = date + "_00.log";
+            List<Map<String, Object>> logFileNameUrlList = licenseMapper.getLogFileNameUrlList();
+    		for(Map<String, Object> map : logFileNameUrlList) {
+    			String fileurl = StringUtils.nvl(map.get("fileurl"), "");
+    			String fileName = fileurl + fname;
+    			String functionurl = StringUtils.nvl(map.get("functionurl"), "");
+    			String timename = StringUtils.nvl(map.get("timename"), "");
+    			
+    			if("LM_Tools".equals(functionurl)) {
+    				try {
+    					readFileLM(fileName,timename);
+    				}catch (Exception e) {
+    					// TODO: handle exception
+    				}
+    			} else if("LMX_Tools".equals(functionurl)) {
+    				try {
+    					readFileLMX(fileName,timename);
+    				}catch (Exception e) {
+    					// TODO: handle exception
+    				}
+    			} else if("RLM".equals(functionurl)) {
+    				try {
+    					readFileRLM(fileName,timename);
+    				}catch (Exception e) {
+    					// TODO: handle exception
+    				}
+    			} else if("ANSA".equals(functionurl)) {
+    				try {
+    					readFileANSA(fileName,timename);
+    				}catch (Exception e) {
+    					// TODO: handle exception
+    				}
+    			/*} else if("DSLS".equals(functionurl)) {
+    				try {
+    					readFileGPDM(fileName,timename);
+    				}catch (Exception e) {
+    					// TODO: handle exception
+    				}*/
+    			} else if("smd_lm".equals(functionurl)) {
+    				try {
+    					readFileSMD(fileName,timename);
+    				}catch (Exception e) {
+    					// TODO: handle exception
+    				}
+    			}
+    		}
+        }
+	}	
+	
+	public void logFileReadWrite() throws Exception  {
+		List<Map<String, Object>> logFileNameUrlList = licenseMapper.getLogFileNameUrlList();
+		for(Map<String, Object> map : logFileNameUrlList) {
+			String filename = StringUtils.nvl(map.get("filename"), "");
+			String functionurl = StringUtils.nvl(map.get("functionurl"), "");
+			String timename = StringUtils.nvl(map.get("timename"), "");
+			if("LM_Tools".equals(functionurl)) {
+				try {
+					readFileLM(filename,timename);
+				}catch (Exception e) {
+					// TODO: handle exception
+				}
+			} else if("LMX_Tools".equals(functionurl)) {
+				try {
+					readFileLMX(filename,timename);
+				}catch (Exception e) {
+					// TODO: handle exception
+				}
+			} else if("RLM".equals(functionurl)) {
+				try {
+					readFileRLM(filename,timename);
+				}catch (Exception e) {
+					// TODO: handle exception
+				}
+			} else if("ANSA".equals(functionurl)) {
+				try {
+					readFileANSA(filename,timename);
+				}catch (Exception e) {
+					// TODO: handle exception
+				}
+			} else if("DSLS".equals(functionurl)) {
+				try {
+					readFileGPDM(filename,timename);
+				}catch (Exception e) {
+					// TODO: handle exception
+				}
+			} else if("smd_lm".equals(functionurl)) {
+				try {
+					readFileSMD(filename,timename);
+				}catch (Exception e) {
+					// TODO: handle exception
+				}
+			}
+		}
+	}
 	
 	public void readFileGPDM(String fileName, String timeName) throws Exception {
 		BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(fileName), "euc-kr"));
@@ -65,7 +180,7 @@ public class LicenseService {
 		String modulenm = "";
 		String maxcredit = "";
 		String usage = "";
-		String userchk = "N";
+
 		while ((s = in.readLine()) != null) {
 			Map<String, Object> map = new HashMap<String, Object>();
 			Map<String, Object> map2 = new HashMap<String, Object>();
@@ -78,6 +193,7 @@ public class LicenseService {
 					map.put("modulenm", modulenm);
 					map.put("maxcredit", maxcredit); 
 					map.put("usage", usage);
+					map.put("logedtime", timeName);
 					mapLicList.add(map);
 	    		} else if(s.indexOf("internal Id:") > -1) {
 	    			String id = s.substring(s.indexOf("by user:")+8, s.indexOf("on host:")).trim();
@@ -98,6 +214,7 @@ public class LicenseService {
 	    			map2.put("licserver", licserver); 
 					map2.put("modulenm", modulenm);	
 					map2.put("logintime", format);
+					map2.put("logedtime", timeName);
 					mapLicUserList.add(map2);
 	    		}
 	    	}
@@ -135,12 +252,13 @@ public class LicenseService {
 	    		if(modulechk == "Y") {
 	    			if(s.indexOf("product key  :") == -1) {
 		    			modulenm = s.substring(0, s.indexOf(":")).trim();
-		    			usage = s.substring(s.indexOf(":"),s.lastIndexOf("/")).trim();
+		    			usage = s.substring(s.indexOf(":")+1,s.lastIndexOf("/")).trim();
 		    			maxcredit = s.substring(s.lastIndexOf("/")+1,s.lastIndexOf("(")).trim();
 		    			map.put("licserver", licserver); 
 						map.put("modulenm", modulenm);
 						map.put("maxcredit", maxcredit); 
 						map.put("usage", usage);
+						map.put("logedtime", timeName);
 						mapLicList.add(map);
 	    			}
 	    		}
@@ -152,6 +270,7 @@ public class LicenseService {
 	    			map2.put("licserver", licserver); 
 					map2.put("modulenm", modulenm);	
 					map2.put("logintime", timeName);
+					map2.put("logedtime", timeName);
 					mapLicUserList.add(map2);
 	    		}
 	    	}
@@ -190,6 +309,7 @@ public class LicenseService {
 	    			map2.put("licserver", licserver); 
 					map2.put("modulenm", modulenm);	
 					map2.put("logintime", format);
+					map2.put("logedtime", timeName);
 					mapLicUserList.add(map2);
 	    		} else if(s.indexOf("license(s) used") > -1) {
 	    			if(s.indexOf("used by") == -1 && s.indexOf("Checkout time:") == -1) {
@@ -199,6 +319,7 @@ public class LicenseService {
 						map.put("modulenm", modulenm);
 						map.put("maxcredit", maxcredit); 
 						map.put("usage", usage);
+						map.put("logedtime", timeName);
 						mapLicList.add(map);
 	    			}
 	    		}
@@ -238,6 +359,7 @@ public class LicenseService {
 					map.put("modulenm", modulenm);
 					map.put("maxcredit", maxcredit); 
 					map.put("usage", usage);
+					map.put("logedtime", timeName);
 					mapLicList.add(map);
 	    		} else if(s.indexOf("  floating license") > -1) {
 	    			chk = "Y";
@@ -259,6 +381,7 @@ public class LicenseService {
 		    			map2.put("licserver", licserver); 
 						map2.put("modulenm", modulenm);	
 						map2.put("logintime", format);
+						map2.put("logedtime", timeName);
 						mapLicUserList.add(map2);
 	    			}
 	    		}
@@ -292,6 +415,7 @@ public class LicenseService {
 					map.put("modulenm", modulenm);
 					map.put("maxcredit", Integer.valueOf(maxcredit)/100); 
 					map.put("usage", usage);
+					map.put("logedtime", timeName);
 					mapLicList.add(map);
 	    		} else if(s.indexOf("@") > -1) {
 	    			if(s.indexOf("USER NAME@HOST") == -1) {
@@ -308,6 +432,7 @@ public class LicenseService {
 		    			map2.put("licserver", licserver); 
 						map2.put("modulenm", modulenm);	
 						map2.put("logintime", format);
+						map2.put("logedtime", timeName);
 						mapLicUserList.add(map2);
 	    			}	    			
 	    		}	    		
@@ -352,6 +477,7 @@ public class LicenseService {
 						map.put("modulenm", modulenm);
 						map.put("maxcredit", maxcredit); 
 						map.put("usage", usage);
+						map.put("logedtime", timeName);
 						mapLicList.add(map);
 		    		} else {
 		    			if(s.indexOf("obsolete:") == -1 && s.indexOf("UNCOUNTED") == -1) {
@@ -363,11 +489,12 @@ public class LicenseService {
 	    			if(s.indexOf("license usage status on") == -1) { 
 		    			modulenm = s.trim().substring(0,s.indexOf(" ")).trim();
 		    			String id = s.trim().substring(s.indexOf(":")+1,s.indexOf("@")-1).trim();
-		    			String logintime = year + s.substring(s.indexOf("at ")+3,s.indexOf("at ")+14).replaceAll("/", "").replaceAll(" ", "").replaceAll(":", "");
+		    			String logintime = year + s.substring(s.indexOf("at ")+3,s.indexOf("at ")+14).replaceAll("/", "").replaceAll(" ", "").replaceAll(":", "")+"00";
 		    			map2.put("id", id); 
 		    			map2.put("licserver", licserver); 
 						map2.put("modulenm", modulenm);	
 						map2.put("logintime", logintime);
+						map2.put("logedtime", timeName);
 						mapLicUserList.add(map2);
 	    			}
 	    		}
