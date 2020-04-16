@@ -120,10 +120,10 @@
 				WHERE Dates <![CDATA[<]]> convert(datetime,convert(datetime,#{etDateTime}))			
 			)			
 			select row_number() over (order by z.regdate) as rnum
-				 , z.usage
-				 , z.maxlic
-				 , z.usercnt
-				 , z.per
+				 , isnull(z.usage,'0') as usage
+				 , isnull(z.maxlic,'0') as maxlic
+				 , isnull(z.usercnt,'0') as usercnt
+				 , isnull(z.per,'0') as per
 				 , b.defaultdate as regdate
 			from (
 				    select substring(a.logedtime,1,8) as regdate
@@ -161,10 +161,10 @@
 				WHERE Dates <![CDATA[<]]> convert(datetime,convert(datetime,#{etDateTime}+' 23:00:00.000'))			
 			)			
 			select row_number() over (order by z.regdate) as rnum
-				 , z.usage
-				 , z.maxlic
-				 , z.usercnt
-				 , z.per
+				 , isnull(z.usage,'0') as usage
+				 , isnull(z.maxlic,'0') as maxlic
+				 , isnull(z.usercnt,'0') as usercnt
+				 , isnull(z.per,'0') as per
 				 , b.defaultdate as regdate
 			from (
 				    select substring(a.logedtime,1,10) as regdate

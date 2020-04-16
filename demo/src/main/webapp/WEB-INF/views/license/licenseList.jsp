@@ -9,8 +9,8 @@
 <link href="${pageContext.request.contextPath}/resources/common/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <!-- Custom styles for this template -->
 <link href="${pageContext.request.contextPath}/resources/common/css/small-business.css" rel="stylesheet">
-</head>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
 <script type="text/javascript">
 var firstGrid = new ax5.ui.grid();
 var firstGrid2 = new ax5.ui.grid();
@@ -265,16 +265,21 @@ function licenseList(){
 }
 google.charts.load("current", {packages:['bar']});
 google.charts.setOnLoadCallback(licchartgraph);	
-function licchartgraph(licserver, modulenm, licnm, ) {
+function licchartgraph(licserver, modulenm, licnm, maxcredit) {
 	var param = {};	
 	var stDate = $("#stDateTime").val();
 	var etDate = $("#etDateTime").val();
 	var daychk = $("#daychk")[0].checked;
 	var datetype = $('input[name="datetype"]:checked').val();
-
+	var stitleTemp = "";
+	if(datetype == "time") {
+		stitleTemp = stDate + " 01:00 ~" + etDate + " 23:00";
+	}else{
+		stitleTemp = stDate+" ~ "+etDate;
+	}
 	var xlabel = datetype;
 	var gtitle = "License: "+licnm+", Module: "+modulenm+", 라이선스 총 수량: "+maxcredit;
-	var stitle = stDate+" ~ "+etDate; 
+	var stitle = stitleTemp;
 	
 	param = {"stDateTime":stDate,"etDateTime":etDate,"daychk":daychk,"licserver":licserver,"modulenm":modulenm,"datetype":datetype};
 	
@@ -297,6 +302,15 @@ function licchartgraph(licserver, modulenm, licnm, ) {
 				chart: {
 				  	title: gtitle,
 				  	subtitle: stitle
+				},
+				hAxis: {
+					slantedTextAngle:-90
+				},	
+				vAxis: {
+					viewWindow: {
+						max:Number(maxcredit),
+						min:Number(maxcredit)
+					}
 				}
 			};
 			var chart = new google.charts.Bar(document.getElementById('licchart'));
@@ -398,8 +412,8 @@ function licchartgraph(licserver, modulenm, licnm, ) {
 	    <div class="row">
 	        <div class="col-md-12 mb-5">
 	            <div class="card h-100">
-	                <div class="card-body">													                
-	          			<div id="licchart" style="width: 100%; height: 300px;"></div>
+	                <div class="card-body">		
+	                	<div id="licchart" style="width: 100%; height: 300px;"></div>
 	                </div>
 	            </div>
 	        </div>        
