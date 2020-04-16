@@ -40,6 +40,10 @@ public class LicenseService {
 		return licenseMapper.getGridLicUserList(param);
 	}
 	
+	public List<Map<String, Object>> getlicchartList(Map<String, Object> param){
+		return licenseMapper.getlicchartList(param);
+	}
+	
 	public List<Map<String, Object>> getGridLicServerList(){
 		return licenseMapper.getGridLicServerList();
 	}

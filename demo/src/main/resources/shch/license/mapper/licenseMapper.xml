@@ -108,6 +108,93 @@
 		order by cnt desc
 
 	</select>	
+
+	<select id="getlicchartList" parameterType="hashmap" resultType="hashmap">
+		<choose>
+			<when test='datetype == "day"'>
+			WITH DateRange(Dates, DateWD) AS (
+				SELECT convert(datetime,convert(datetime,#{stDateTime})) as Date, DATEPART(WEEKDAY, convert(datetime,convert(datetime,#{stDateTime})))
+				UNION ALL
+				SELECT DATEADD(d,1,Dates), DATEPART(HOUR, DATEADD(WEEKDAY,1,Dates))
+				FROM DateRange
+				WHERE Dates <![CDATA[<]]> convert(datetime,convert(datetime,#{etDateTime}))			
+			)			
+			select row_number() over (order by z.regdate) as rnum
+				 , z.usage
+				 , z.maxlic
+				 , z.usercnt
+				 , z.per
+				 , b.defaultdate as regdate
+			from (
+				    select substring(a.logedtime,1,8) as regdate
+						 , avg(convert(float, convert(float,replace(a.usage,'','0')))) as usage
+						 , avg(convert(float, convert(float,replace(a.maxcredit,'','0')))) as maxlic	
+						 , max(convert(integer,a.usage)) as usercnt				
+						 , case when avg(convert(float, convert(float,replace(a.usage,'','0')))) = 0 then 0
+						   else round(avg(convert(float, convert(float,replace(a.usage,'','0'))))/avg(convert(float, convert(float,replace(a.maxcredit,'','0'))))*100,1)
+						   end as per
+					from tb_lic_cae_korea_total_amt_v2 a 
+					where a.licserver = #{licserver} 
+					  and a.modulenm = #{modulenm}
+					  <if test='stDateTime != null and stDateTime != ""'>
+					  and convert(datetime, substring(a.logedtime,1,8)) >= convert(datetime,#{stDateTime}) 	
+					  </if>
+					  <if test='etDateTime != null and etDateTime != ""'>
+					  and convert(datetime, substring(a.logedtime,1,8)) <![CDATA[<=]]> convert(datetime,#{etDateTime})
+					  </if>
+					  <if test="daytyp != true">
+				      and substring(a.logedtime,9,2) > 7
+				      and substring(a.logedtimE,9,2) <![CDATA[<]]> 19			  
+					  </if>	
+					group by a.licserver, a.modulenm, substring(a.logedtime,1,8)
+			) z	right outer join (SELECT substring(replace(convert(varchar(8), Dates, 112)+convert(varchar(8), Dates, 114), ':',''),1,8) as defaultdate
+							      FROM DateRange) b on z.regdate = b.defaultdate		
+			order by b.defaultdate
+			OPTION (MAXRECURSION 0)	
+			</when>				
+			<otherwise>
+			WITH DateRange(Dates, DateWD) AS (
+				SELECT convert(datetime,convert(datetime,#{stDateTime}+' 01:00:00.000')) as Date, DATEPART(HOUR, convert(datetime,convert(datetime,#{stDateTime}+' 01:00:00.000')))
+				UNION ALL
+				SELECT DATEADD(HH,1,Dates), DATEPART(HOUR, DATEADD(HH,1,Dates))
+				FROM DateRange
+				WHERE Dates <![CDATA[<]]> convert(datetime,convert(datetime,#{etDateTime}+' 23:00:00.000'))			
+			)			
+			select row_number() over (order by z.regdate) as rnum
+				 , z.usage
+				 , z.maxlic
+				 , z.usercnt
+				 , z.per
+				 , b.defaultdate as regdate
+			from (
+				    select substring(a.logedtime,1,10) as regdate
+						 , avg(convert(float, convert(float,replace(a.usage,'','0')))) as usage
+						 , avg(convert(float, convert(float,replace(a.maxcredit,'','0')))) as maxlic	
+						 , max(convert(integer,a.usage)) as usercnt				
+						 , case when avg(convert(float, convert(float,replace(a.usage,'','0')))) = 0 then 0
+								else round(avg(convert(float, convert(float,replace(a.usage,'','0'))))/avg(convert(float, convert(float,replace(a.maxcredit,'','0'))))*100,1)
+						   end as per
+					from tb_lic_cae_korea_total_amt_v2 a 
+					where a.licserver = #{licserver} 
+					  and a.modulenm = #{modulenm}
+					  <if test='stDateTime != null and stDateTime != ""'>
+					  and convert(datetime, substring(a.logedtime,1,8)) >= convert(datetime,#{stDateTime}) 	
+					  </if>
+					  <if test='etDateTime != null and etDateTime != ""'>
+					  and convert(datetime, substring(a.logedtime,1,8)) <![CDATA[<=]]> convert(datetime,#{etDateTime})
+					  </if>
+					  <if test="daytyp != true">
+				      and substring(a.logedtime,9,2) > 7
+				      and substring(a.logedtimE,9,2) <![CDATA[<]]> 19			  
+					  </if>	
+					group by a.licserver, a.modulenm, substring(a.logedtime,1,10)
+			) z	right outer join (SELECT substring(replace(convert(varchar(8), Dates, 112)+convert(varchar(8), Dates, 114), ':',''),1,10) as defaultdate
+							      FROM DateRange) b on z.regdate = b.defaultdate		
+			order by b.defaultdate
+			OPTION (MAXRECURSION 0)							      
+			</otherwise>
+		</choose>
+	</select>
 	
 	<select id="getGridLicServerList" parameterType="hashmap" resultType="hashmap">
 		select *

@@ -69,6 +69,18 @@ public class LicenseController {
 		return result; 
 	}
 	
+	@RequestMapping(value = "/getlicchartList", method = RequestMethod.POST) 
+	public @ResponseBody Map<String, Object> getlicchartList(@RequestBody Map<String, Object> param) throws Exception { 
+		Map<String, Object> result = new HashMap<String, Object>();
+		try { 
+			List<Map<String, Object>> list = licenseService.getlicchartList(param);
+			result.put("gList", list);
+		} catch (Exception e) { 
+			result.put("status", "False"); 
+		} 
+		return result; 
+	}	
+	
 	@RequestMapping(value = "/getGridLicServerList", method = RequestMethod.GET) 
 	public @ResponseBody Map<String, Object> getGridLicServerList() throws Exception { 
 		Map<String, Object> result = new HashMap<String, Object>(); 
