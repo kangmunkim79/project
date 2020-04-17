@@ -63,8 +63,8 @@ public class LicenseService {
 	public void miglogFileReadWrite() throws Exception  {
 		// TODO Auto-generated method stub
         final String DATE_PATTERN = "yyyy_MM_dd_HH";
-        String inputStartDate = "2019_01_01_00";
-        String inputEndDate = "2019_01_31_23";
+        String inputStartDate = "2017_01_01_00";
+        String inputEndDate = "2020_04_17_23";
         SimpleDateFormat sdf = new SimpleDateFormat(DATE_PATTERN);
         Date startDate = sdf.parse(inputStartDate);
         Date endDate = sdf.parse(inputEndDate);
@@ -116,13 +116,13 @@ public class LicenseService {
     					readFileGPDM(fileName,timename);
     				}catch (Exception e) {
     					// TODO: handle exception
-    				}*/
+    				}
     			} else if("smd_lm".equals(functionurl)) {
     				try {
     					readFileSMD(fileName,timename);
     				}catch (Exception e) {
     					// TODO: handle exception
-    				}
+    				}*/
     			}
     		}
         }
