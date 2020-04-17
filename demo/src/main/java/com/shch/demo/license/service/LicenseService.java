@@ -69,7 +69,7 @@ public class LicenseService {
         Date startDate = sdf.parse(inputStartDate);
         Date endDate = sdf.parse(inputEndDate);
         ArrayList<String> dates = new ArrayList<String>();
-        System.out.println(startDate + " ::: " + endDate);
+
         Date currentDate = startDate;
         while (currentDate.compareTo(endDate) <= 0) {
             dates.add(sdf.format(currentDate));
@@ -80,12 +80,12 @@ public class LicenseService {
         }
         for (String date : dates) {
             String fname = date + "_00.log";
+            String timename = date.replaceAll("_", "") + "0000";
             List<Map<String, Object>> logFileNameUrlList = licenseMapper.getLogFileNameUrlList();
     		for(Map<String, Object> map : logFileNameUrlList) {
     			String fileurl = StringUtils.nvl(map.get("fileurl"), "");
     			String fileName = fileurl + fname;
-    			String functionurl = StringUtils.nvl(map.get("functionurl"), "");
-    			String timename = StringUtils.nvl(map.get("timename"), "");
+    			String functionurl = StringUtils.nvl(map.get("functionurl"), "");    			
     			
     			if("LM_Tools".equals(functionurl)) {
     				try {
@@ -191,8 +191,8 @@ public class LicenseService {
 	    	if(s.length() > 0){
 	    		if(s.indexOf("maxReleaseNumber: ") > -1) {
 	    			modulenm = s.substring(0,s.indexOf("maxReleaseNumber: ")).trim();
-	    			usage = s.substring(s.indexOf("inuse:")+6,s.lastIndexOf("customerId:")).trim();
-	    			maxcredit = s.substring(s.lastIndexOf("count:")+6,s.lastIndexOf("inuse:")).trim();
+	    			usage = s.substring(s.indexOf("inuse:")+6,s.lastIndexOf("customerId:")).replaceAll("[^0-9]", "").trim();
+	    			maxcredit = s.substring(s.lastIndexOf("count:")+6,s.lastIndexOf("inuse:")).replaceAll("unlimited","9999999").replaceAll("[^0-9]", "").trim();
 	    			map.put("licserver", licserver); 
 					map.put("modulenm", modulenm);
 					map.put("maxcredit", maxcredit); 
@@ -256,8 +256,8 @@ public class LicenseService {
 	    		if(modulechk == "Y") {
 	    			if(s.indexOf("product key  :") == -1) {
 		    			modulenm = s.substring(0, s.indexOf(":")).trim();
-		    			usage = s.substring(s.indexOf(":")+1,s.lastIndexOf("/")).trim();
-		    			maxcredit = s.substring(s.lastIndexOf("/")+1,s.lastIndexOf("(")).trim();
+		    			usage = s.substring(s.indexOf(":")+1,s.lastIndexOf("/")).replaceAll("[^0-9]", "").trim();
+		    			maxcredit = s.substring(s.lastIndexOf("/")+1,s.lastIndexOf("(")).replaceAll("unlimited","9999999").replaceAll("[^0-9]", "").trim();
 		    			map.put("licserver", licserver); 
 						map.put("modulenm", modulenm);
 						map.put("maxcredit", maxcredit); 
@@ -317,8 +317,8 @@ public class LicenseService {
 					mapLicUserList.add(map2);
 	    		} else if(s.indexOf("license(s) used") > -1) {
 	    			if(s.indexOf("used by") == -1 && s.indexOf("Checkout time:") == -1) {
-		    			usage = s.substring(0,s.indexOf(" of")).trim();
-		    			maxcredit = s.substring(s.indexOf("of")+2,s.indexOf("license(s)"));	    			
+		    			usage = s.substring(0,s.indexOf(" of")).replaceAll("[^0-9]", "").trim();
+		    			maxcredit = s.substring(s.indexOf("of")+2,s.indexOf("license(s)")).replaceAll("unlimited","9999999").replaceAll("[^0-9]", "").trim();	    			
 		    			map.put("licserver", licserver); 
 						map.put("modulenm", modulenm);
 						map.put("maxcredit", maxcredit); 
@@ -357,8 +357,8 @@ public class LicenseService {
 	    				continue;
 	    			}
 	    			modulenm = s.substring(s.indexOf("Users of ")+9,s.indexOf(":  (")).trim();
-	    			maxcredit = s.substring(s.indexOf("(Total of ")+10,s.indexOf(" issued;")-8);
-	    			usage = s.substring(s.indexOf(" Total of ")+10,s.indexOf(" in use)")-8).trim();
+	    			maxcredit = s.substring(s.indexOf("(Total of ")+10,s.indexOf(" issued;")-8).replaceAll("unlimited","9999999").replaceAll("[^0-9]", "").trim();
+	    			usage = s.substring(s.indexOf(" Total of ")+10,s.indexOf(" in use)")-8).replaceAll("[^0-9]", "").trim();
 	    			map.put("licserver", licserver); 
 					map.put("modulenm", modulenm);
 					map.put("maxcredit", maxcredit); 
@@ -413,8 +413,8 @@ public class LicenseService {
 	    		} else if(s.indexOf("PRE_POST:") > -1) {
 	    			modulenm = s.substring(s.indexOf("PRE_POST:")+9,s.indexOf(" |")).trim();
 	    			String chk = s.substring(s.indexOf("|")+1);
-	    			maxcredit = chk.substring(0,chk.indexOf(" |")).trim();
-	    			usage = s.substring(s.lastIndexOf("|")+1).trim();
+	    			maxcredit = chk.substring(0,chk.indexOf(" |")).replaceAll("unlimited","9999999").replaceAll("[^0-9]", "").trim();
+	    			usage = s.substring(s.lastIndexOf("|")+1).replaceAll("[^0-9]", "").trim();
 	    			map.put("licserver", licserver); 
 					map.put("modulenm", modulenm);
 					map.put("maxcredit", Integer.valueOf(maxcredit)/100); 
@@ -475,8 +475,8 @@ public class LicenseService {
 	    		
 	    		if(mChk == "Y") {
 		    		if(s.indexOf("count:") > -1) {
-		    			maxcredit = s.substring(s.indexOf("count:")+6,s.indexOf(",")).trim();	
-		    			usage = s.substring(s.indexOf("inuse:")+6,s.indexOf("exp:")).trim();
+		    			maxcredit = s.substring(s.indexOf("count:")+6,s.indexOf(",")).replaceAll("unlimited","9999999").replaceAll("[^0-9]", "").trim();	
+		    			usage = s.substring(s.indexOf("inuse:")+6,s.indexOf("exp:")).replaceAll("[^0-9]", "").trim();
 						map.put("licserver", licserver); 
 						map.put("modulenm", modulenm);
 						map.put("maxcredit", maxcredit); 

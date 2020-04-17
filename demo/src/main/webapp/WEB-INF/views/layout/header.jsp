@@ -47,7 +47,7 @@ $(document).ready(function () {
 });
 </script>
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-    <a class="navbar-brand" href="${pageContext.request.contextPath}/">License Monitoring System</a>
+    <a class="navbar-brand" href="${pageContext.request.contextPath}/">DILMS</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -59,8 +59,6 @@ $(document).ready(function () {
             <li class="nav-item dropdown">
             	<a class="nav-link dropdown-toggle" href="#" id="userMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><sec:authentication property="principal.username"/></a>
                 <div class="dropdown-menu" aria-labelledby="userMenu">
-                	<a class="dropdown-item" href="${pageContext.request.contextPath}/">Edit Profile</a>
-                	<a class="dropdown-item" href="${pageContext.request.contextPath}/">Change Password</a>
                 	<a class="dropdown-item" href="${pageContext.request.contextPath}/logout">Logout</a>
                 </div>
             </li>        

@@ -233,6 +233,7 @@
 					 ,#{licnm}      as licnm
 					 ,#{fileurl}    as fileurl
 					 ,#{filenmtype} as filenmtype
+					 ,#{topmodulenm} as topmodulenm
 					 ,#{useflag}    as useflag
 					 ,#{sort}       as sort
 					 ,#{sid}	    as regcd
@@ -246,6 +247,7 @@
 				,licnm       = s.licnm
 				,fileurl     = s.fileurl
 				,filenmtype  = s.filenmtype
+				,topmodulenm = s.topmodulenm
 				,useflag     = s.useflag
 				,sort        = s.sort
 				,modcd       = s.modcd
@@ -258,6 +260,7 @@
 					,fileurl   
 					,filenmtype
 					,useflag   
+					,topmodulenm
 					,sort      
 					,regcd     
 					,regdt     
@@ -269,7 +272,8 @@
 					,s.licnm     
 					,s.fileurl   
 					,s.filenmtype
-					,s.useflag   
+					,s.useflag  
+					,s.topmodulenm 
 					,s.sort      
 					,s.regcd     
 					,s.regdt     
@@ -279,37 +283,63 @@
 	</insert>
 	
 	<insert id="insertLicUserLog">
-		INSERT INTO tb_lic_cae_user_log_v2(
-			id,
-			licserver,
-			modulenm,
-			logintime,
-			logedtime
-		)VALUES(
-			#{id},
-			#{licserver},
-			#{modulenm},
-			#{logintime},
-			#{logedtime}
-		)	
+		merge tb_lic_cae_user_log_v2 as t
+		using (select #{id}        as id
+				 	 ,#{licserver} as licserver
+					 ,#{modulenm}  as modulenm
+					 ,#{logintime} as logintime
+					 ,#{logedtime} as logedtime					 
+		) s on t.id = s.id 
+		   and t.licserver = s.licserver
+		   and t.modulenm = s.modulenm
+		   and t.logintime = s.logintime 
+		   and t.logedtime = s.logedtime
+		when not matched then	   
+			INSERT (
+				 id
+				,licserver
+				,modulenm
+				,logintime
+				,logedtime
+			)VALUES(
+				 s.id
+				,s.licserver
+				,s.modulenm
+				,s.logintime
+				,s.logedtime
+			);	
 	</insert>
 
-	<insert id="insertLicTotalAmtLog">   		
-   		INSERT INTO tb_lic_cae_korea_total_amt_v2(
-			licserver,
-			modulenm,
-			maxcredit,
-			usage,
-			percentage,
-			logedtime
-		)VALUES(
-			#{licserver},
-			#{modulenm},
-			#{maxcredit},
-			#{usage},
-			cast(#{usage} as int)/cast(#{maxcredit} as int)*100,
-			#{logedtime}
-		)			
+	<insert id="insertLicTotalAmtLog">   	
+		merge tb_lic_cae_korea_total_amt_v2 as t
+		using (select #{licserver}        as licserver
+				 	 ,#{modulenm} as modulenm
+					 ,#{maxcredit}  as maxcredit
+					 ,#{usage} as usage
+					 ,cast(#{usage} as int)/cast(#{maxcredit} as int)*100 as percentage
+					 ,#{logedtime} as logedtime				 
+		) s on t.licserver = s.licserver
+		   and t.modulenm = s.modulenm
+		   and t.maxcredit = s.maxcredit
+		   and t.usage = s.usage
+		   and t.percentage = s.percentage
+		   and t.logedtime = s.logedtime
+		when not matched then	   
+			INSERT (
+				 licserver
+				,modulenm
+				,maxcredit
+				,usage
+				,percentage
+				,logedtime
+			)VALUES(
+				 s.licserver
+				,s.modulenm
+				,s.maxcredit
+				,s.usage
+				,s.percentage
+				,s.logedtime
+			);					
 	</insert>	
 	
 	

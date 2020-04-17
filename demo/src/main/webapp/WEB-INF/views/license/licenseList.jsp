@@ -272,6 +272,8 @@ function licchartgraph(licserver, modulenm, licnm, maxcredit) {
 	var daychk = $("#daychk")[0].checked;
 	var datetype = $('input[name="datetype"]:checked').val();
 	var stitleTemp = "";
+	var ticks = common_npercent(Number(maxcredit));
+	
 	if(datetype == "time") {
 		stitleTemp = stDate + " 01:00 ~" + etDate + " 23:00";
 	}else{
@@ -293,23 +295,26 @@ function licchartgraph(licserver, modulenm, licnm, maxcredit) {
         cache: false,
         timeout: 600000,
         success: function (res) {	    	
-			var gdata = [['Year('+xlabel+')', 'User Count']];	
+			var gdata = [['Year('+xlabel+')', 'Use Count']];	
 			for(var d=0;d<res.gList.length;d++){
 				gdata[d+1] = [res.gList[d].regdate,res.gList[d].usercnt];
 			}	
 			var data = google.visualization.arrayToDataTable(gdata);	
 			var options = {
 				chart: {
-				  	title: gtitle,
-				  	subtitle: stitle
-				},
+					title: gtitle,
+					subtitle: stitle
+				},				
 				hAxis: {
-					slantedTextAngle:-90
-				},	
+					title: "Years("+datetype+")" , 
+					direction:-1, 
+					slantedText:true, 
+					slantedTextAngle:90 
+				},
 				vAxis: {
+					ticks: ticks,
 					viewWindow: {
-						max:Number(maxcredit),
-						min:Number(maxcredit)
+						min:0
 					}
 				}
 			};
@@ -329,7 +334,7 @@ function licchartgraph(licserver, modulenm, licnm, maxcredit) {
 <article>
 	<div class="container">
 		<h2>license List</h2>
-		<div class="card text-white bg-secondary my-5 py-4 text-center">
+		<div class="card text-white bg-secondary my-1 text-center">
       		<div class="card-body">	
 				<form class="form-horizontal">
 			       <div class="container">

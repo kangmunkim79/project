@@ -54,3 +54,48 @@ function common_rpad(str, padLen, padStr) {
     str = str.length >= padLen ? str.substring(0, padLen) : str;
     return str;
 }
+
+function common_npercent(cnt){
+	var str = [];
+    var k = 0;
+    if(cnt <= 10) {
+    	k = 1;
+    }
+    if(cnt > 10 && test <= 20) {
+    	k = 2;
+    }
+    if(cnt > 20 && test <= 40) {
+    	k = 4;
+    }
+    if(cnt > 40 && test <= 80) {
+    	k = 8;
+    }
+    if(cnt > 80 && test <= 160) {
+    	k = 16;
+    }
+    if(cnt > 160 && test <= 320) {
+    	k = 32;
+    }
+    if(cnt > 320 && test <= 640) {
+    	k = 64;
+    }
+    if(cnt > 640) {
+    	k = 100;
+    }
+    
+    var kk = 0;
+    for(var i=0;i<cnt;i++) {    	
+    	if(i == 0) {
+    		str[kk] = i;
+    		kk++;
+    	} else {
+        	if(i%k == 0) {
+        		str[kk] = i;
+        		kk++;
+        	}
+    	}        	        	
+    }
+    
+    str[kk] = cnt;
+	return str;
+}

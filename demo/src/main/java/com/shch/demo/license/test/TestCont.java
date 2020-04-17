@@ -1,36 +1,31 @@
-package com.shch.demo;
+package com.shch.demo.license.test;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import com.shch.demo.utils.StringUtils;
 
 public class TestCont {
 
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
-        final String DATE_PATTERN = "yyyy_MM_dd_HH";
-        String inputStartDate = "2017_02_28_00";
-        String inputEndDate = "2017_03_05_11";
-        SimpleDateFormat sdf = new SimpleDateFormat(DATE_PATTERN);
-        Date startDate = sdf.parse(inputStartDate);
-        Date endDate = sdf.parse(inputEndDate);
-        ArrayList<String> dates = new ArrayList<String>();
-        System.out.println(startDate + " ::: " + endDate);
-        Date currentDate = startDate;
-        while (currentDate.compareTo(endDate) <= 0) {
-            dates.add(sdf.format(currentDate));
-            Calendar c = Calendar.getInstance();
-            c.setTime(currentDate);
-            c.add(Calendar.HOUR_OF_DAY, 1);
-            currentDate = c.getTime();
-        }
-        for (String date : dates) {
-            System.out.println(date + "_00.log");
-        }
+		String string1 = "' unlimited '";
+		String string2 = "' unlimited '";
+		String string3 = "' unlimited '";
+		String clean1 = string1.replaceAll("unlimited","9999999").replaceAll("[^0-9]", "");
 
+		String clean2 = string2.replaceAll("unlimited","9999999").replaceAll("[^\\d]", "");
+
+		String clean3 = string3.replaceAll("unlimited","9999999").replaceAll("\\D", "");
+		System.out.println(clean1);
+		System.out.println(clean2);
+		System.out.println(clean3);
 	}
-
 }
 /*
 		
