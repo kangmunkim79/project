@@ -8,7 +8,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.shch.demo.userinfo.dto.UserInfo;
+import com.shch.demo.userinfo.dto.UserParam;
 import com.shch.demo.userinfo.mapper.UserInfoMapper;
+import com.shch.demo.utils.StringUtils;
+import com.shch.demo.utils.keyGeneratorUtils;
 
 @Service
 public class UserInfoService {
@@ -29,18 +32,32 @@ public class UserInfoService {
 		return userInfoMapper.getUserList(); 
 	} 
 
+	public UserInfo getGridUserInfo(UserParam user) throws Exception { 
+		return userInfoMapper.getGridUserInfo(user); 
+	} 
+	
 	public UserInfo getUserInfo(String username) throws Exception { 
 		return userInfoMapper.getUserInfo(username); 
 	} 
 
-	public void insertUser(UserInfo userInfo) throws Exception { 
+	public void mergeUserInfo(UserParam param) throws Exception { 
+		String password =param.getPassword();
+    	String encryptPassword = passwordEncoder.encode(password);
+    	param.setPassword(encryptPassword);
+    	if("".equals(StringUtils.nvl(param.getUserno(),""))) {
+    		param.setUserno(keyGeneratorUtils.timeKey("USER"));
+    	}
+		userInfoMapper.mergeUserInfo(param); 
+	}
+	
+	public void insertUser(UserParam userInfo) throws Exception { 
     	String password =userInfo.getPassword();
     	String encryptPassword = passwordEncoder.encode(password);
     	userInfo.setPassword(encryptPassword);
 		userInfoMapper.insertUser(userInfo); 
 	}
 	
-	public void updateUser(UserInfo userInfo) throws Exception { 
+	public void updateUser(UserParam userInfo) throws Exception { 
 		userInfoMapper.updateUser(userInfo); 
 	}
 

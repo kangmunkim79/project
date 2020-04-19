@@ -6,8 +6,7 @@ import org.springframework.security.core.GrantedAuthority;
 
 import com.shch.demo.security.Session;
 
-public class UserInfo {
-	
+public class UserParam extends Session{
 	private String userno;
 	private String usertype;
 	private String uid;

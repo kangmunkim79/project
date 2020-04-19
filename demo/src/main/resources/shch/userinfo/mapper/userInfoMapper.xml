@@ -10,10 +10,33 @@
         SELECT authorityname FROM USER_AUTH WHERE username = #{username}
     </select>
 
+	<select id="getGridUserInfo" resultType="com.shch.demo.userinfo.dto.UserInfo">
+		SELECT userno
+		     , usertype
+		     , username
+		     , name
+		     , password
+             , email
+             , deptcd
+             , poscd
+             , tel
+             , addr
+             , addrdtl
+             , useflag
+             , langcd
+             , lastlogindt
+             , lastloginip
+             , regcd
+             , regdt
+             , modcd
+             , moddt 
+		FROM USER_INFO 
+		WHERE username = #{username} 	
+	</select>
+
 	<select id="getUserInfo" resultType="com.shch.demo.userinfo.dto.UserInfo"> 
 		SELECT userno
 		     , usertype
-		     , '' as uid
 		     , username
 		     , name
              , email
@@ -37,7 +60,6 @@
 	<select id="getUserList" resultType="com.shch.demo.userinfo.dto.UserInfo"> 
 		SELECT userno
 		     , usertype
-		     , '' as uid
 		     , username
 		     , name
              , email
@@ -56,6 +78,77 @@
              , moddt 
 		FROM USER_INFO 
 	</select> 
+
+	<insert id="mergeUserInfo"> 
+		merge user_info t
+		using (select  #{userno} as userno
+				     , 'IN' as usertype
+				     , #{username} as username
+				     , #{name} as name
+				     , #{password} as password
+		             , #{email} as email
+		             , #{deptcd} as deptcd
+		             , #{poscd} as poscd
+		             , #{tel} as tel
+		             , #{addr} as addr
+		             , #{addrdtl} as addrdtl
+		             , 'Y' as useflag
+		             , 'KO' as  langcd
+		             , #{sid} as regcd 
+		             , getdate() as regdt 		
+		             , #{sid} as modcd
+		             , getdate() as moddt
+		) s on t.userno = s.userno and t.username = s.username
+		when matched then
+			update set
+		        usertype = s.usertype   
+		      , name      = s.name        
+		      , password  = s.password    
+              , email     = s.email       
+              , deptcd    = s.deptcd      
+              , poscd     = s.poscd       
+              , tel       = s.tel         
+              , addr      = s.addr        
+              , addrdtl   = s.addrdtl     
+              , useflag   = s.useflag     
+              , langcd    = s.langcd      
+              , modcd     = s.modcd       
+              , moddt	  = s.moddt						
+		when not matched then
+			insert (
+			   userno
+		     , usertype
+		     , username
+		     , name
+		     , password
+             , email
+             , deptcd
+             , poscd
+             , tel
+             , addr
+             , addrdtl
+             , useflag
+             , langcd
+             , regcd
+             , regdt		
+			) values (
+			   s.userno
+		     , s.usertype
+		     , s.username
+		     , s.name
+		     , s.password
+             , s.email
+             , s.deptcd
+             , s.poscd
+             , s.tel
+             , s.addr
+             , s.addrdtl
+             , s.useflag
+             , s.langcd
+             , s.regcd
+             , s.regdt	
+		    ); 
+	</insert> 
 	
 	<insert id="insertUser" parameterType="com.shch.demo.userinfo.dto.UserInfo"> 
 		INSERT INTO USER_INFO (

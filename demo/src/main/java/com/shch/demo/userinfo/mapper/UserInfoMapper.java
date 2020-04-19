@@ -3,6 +3,7 @@ package com.shch.demo.userinfo.mapper;
 import java.util.List;
 
 import com.shch.demo.userinfo.dto.UserInfo;
+import com.shch.demo.userinfo.dto.UserParam;
 
 public interface UserInfoMapper {
 
@@ -12,11 +13,15 @@ public interface UserInfoMapper {
 	
 	public List<UserInfo> getUserList(); 
 	
+	public UserInfo getGridUserInfo(UserParam userInfo);
+	
 	public UserInfo getUserInfo(String username); 
 	
-	public void insertUser(UserInfo userInfo); 
+	public void mergeUserInfo(UserParam userInfo);
 	
-	public void updateUser(UserInfo userInfo); 
+	public void insertUser(UserParam userInfo); 
+	
+	public void updateUser(UserParam userInfo); 
 	
 	public void deleteUser(String username);
 	
