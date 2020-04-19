@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shch.demo.role.mapper.RoleMapper">
+	<select id="roleList" resultType="com.shch.demo.role.dto.Role">
+	    select *
+	    from role
+	</select>
+	
+	<select id="roleMenuList" parameterType="com.shch.demo.role.dto.Role" resultType="com.shch.demo.menu.dto.Menu">
+		select a.pmenucd
+		      ,a.menucd
+		      ,a.menunm
+		      ,(select 'Y' from role_menu b where b.menucd = a.menucd and b.rolecd = #{rolecd})	as useflag
+		      ,#{rolecd} as rolecd
+		from menu a
+		order by a.sortseq, a.menucd
+	
+	</select>
+	
+	<insert id="mergeRole">
+		merge role t
+		using ( select #{rolecd} as rolecd
+					  ,#{rolenm} as rolenm
+					  ,#{useflag} as useflag
+					  ,#{sid} as regcd
+					  ,getdate() as regdt
+					  ,#{sid} as modcd
+					  ,getdate() as moddt
+		) s on t.rolecd = s.rolecd
+		when matched then
+			update set
+				rolenm = s.rolenm
+			   ,useflag = s.useflag
+			   ,modcd = s.modcd
+			   ,moddt = s.moddt
+		when not matched then
+			insert (
+				rolecd
+			   ,rolenm
+			   ,useflag
+			   ,regcd
+			   ,regdt
+			   ,modcd
+			   ,moddt
+			)values(
+				s.rolecd
+			   ,s.rolenm
+			   ,s.useflag
+			   ,s.regcd
+			   ,s.regdt
+			   ,s.modcd
+			   ,s.moddt
+			);   
+	</insert>
+	
+	<delete id="deleteRole">
+		delete from role where rolecd = #{rolecd}
+	</delete>
+	
+	<delete id="deleteRoleMenu">
+		delete from role_menu where rolecd = #{rolecd}
+	</delete>
+	
+	<insert id="insertRoleMenu">
+		insert into role_menu (
+			 rolecd
+			,menucd
+		)values(
+			 #{rolecd}
+			,#{menucd}
+		)
+	</insert>
+
+</mapper>

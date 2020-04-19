@@ -237,7 +237,14 @@ $(document.body).ready(function () {
         });		
     } 
 
-  
+    $('[data-grid-control]').click(function () {
+    	switch (this.getAttribute("data-grid-control")) {
+        case "search":
+        	licenseList();
+            break;
+    	}        
+    	            
+    });   
     
 });        
 	// 그리드 데이터 가져오기
@@ -330,10 +337,19 @@ function licchartgraph(licserver, modulenm, licnm, maxcredit) {
 }  
 
 </script>
-<body style="padding-top: 0px;">
+<body>
 <article>
 	<div class="container">
-		<h2>license List</h2>
+		<div class="row">
+			<div class="col-sm-6">
+				<h2>License Management</h2>
+			</div>
+			<div class="col-sm-6">
+				<div style="padding: 10px;" align="right">
+					<button class="btn btn-sm btn-primary" data-grid-control="search">Search</button>
+				</div>
+			</div>
+		</div>	
 		<div class="card text-white bg-secondary my-1 text-center">
       		<div class="card-body">	
 				<form class="form-horizontal">
@@ -355,72 +371,55 @@ function licchartgraph(licserver, modulenm, licnm, maxcredit) {
 			                   <div class="checkbox"> 
 			                   	   <label for="daychk"><input type="checkbox" name="daychk" id="daychk">  All Time</label> 
 			                   </div>
-			               </div>			               
-			               <div class="form-group form-group-sm col-sm-2">
-							  <div class="radio">
-								  <label><input type="radio" name="datetype" value="day" checked> day </label>
-								  <label><input type="radio" name="datetype" value="time"> time </label>
-							  </div>
-			               </div>			               			               			
+			               </div>			               			               			               			
 			           </div>			
 			       </div>
 				</form>      		
-				<button type="button" class="btn btn-primary float-right" onclick="javascript:licenseList()">Search</button>
 		  	</div>
 		</div>
-		
-	    <div class="row">
-	        <div class="col-md-4 mb-5">
-	            <div class="card h-100">
-	                <div class="card-body">		  		
-				        <div style="position: relative;width:100%;height:300px;" id="grid-parent">
-						    <div data-ax5grid="first-grid" data-ax5grid-config="{
-							                    showLineNumber: true,
-							                    showRowSelector: false,
-							                    sortable: true,
-							                    header: {align:'center'}
-							                    }" style="width:100%;height:300px;"></div>
-						</div>
-					</div>
-				</div>		
+		<div class="row">
+			<div class="col-sm-4">
+		        <div style="position: relative;width:100%;height:300px;" id="grid-parent">
+				    <div data-ax5grid="first-grid" data-ax5grid-config="{
+					                    showLineNumber: true,
+					                    showRowSelector: false,
+					                    sortable: true,
+					                    header: {align:'center'}
+					                    }" style="width:100%;height:300px;"></div>
+				</div>			
 			</div>
-			<div class="col-md-4 mb-5">
-		        <div class="card h-100">
-		            <div class="card-body">				
-					    <div style="position: relative;width:100%;height:300px;" id="grid-parent2">
-					        <div data-ax5grid="first-grid2" data-ax5grid-config="{
-						                    showLineNumber: true,
-						                    showRowSelector: false,
-						                    sortable: true,
-						                    header: {align:'center'}
-						                    }" style="width:100%;height:300px;"></div>
-						</div>
-					</div>
-				</div>
-			</div>		
-			<div class="col-md-4 mb-5">
-		        <div class="card h-100">
-		            <div class="card-body">					
-						<div style="position: relative;width:100%;height:300px;" id="grid-parent3">
-						    <div data-ax5grid="first-grid3" data-ax5grid-config="{
-							                    showLineNumber: true,
-							                    showRowSelector: false,
-							                    sortable: true,
-							                    header: {align:'center'}
-							                    }" style="width:100%;height:300px;"></div>
-						</div>
-					</div>
-				</div>
-			</div>	
-		</div>	
-		
+			<div class="col-sm-4">
+			    <div style="position: relative;width:100%;height:300px;" id="grid-parent2">
+			        <div data-ax5grid="first-grid2" data-ax5grid-config="{
+				                    showLineNumber: true,
+				                    showRowSelector: false,
+				                    sortable: true,
+				                    header: {align:'center'}
+				                    }" style="width:100%;height:300px;"></div>
+				</div>			
+			</div>
+			<div class="col-sm-4">
+				<div style="position: relative;width:100%;height:300px;" id="grid-parent3">
+				    <div data-ax5grid="first-grid3" data-ax5grid-config="{
+					                    showLineNumber: true,
+					                    showRowSelector: false,
+					                    sortable: true,
+					                    header: {align:'center'}
+					                    }" style="width:100%;height:300px;"></div>
+				</div>			
+			</div>
+		</div>		
 	    <div class="row">
-	        <div class="col-md-12 mb-5">
-	            <div class="card h-100">
-	                <div class="card-body">		
-	                	<div id="licchart" style="width: 100%; height: 300px;"></div>
-	                </div>
-	            </div>
+	        <div class="col-md-12">
+            	<div class="radio">
+					<label><input type="radio" name="datetype" value="day" checked> day </label>
+				    <label><input type="radio" name="datetype" value="time"> time </label>
+				</div>
+	        </div>        
+	    </div>		
+	    <div class="row">
+	        <div class="col-md-12">
+               	<div id="licchart" style="width: 100%; height: 300px;"></div>
 	        </div>        
 	    </div>      				
 	</div>

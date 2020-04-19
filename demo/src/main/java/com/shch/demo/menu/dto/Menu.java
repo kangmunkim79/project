@@ -18,6 +18,8 @@ public class Menu extends Session{
 	private String regdt;  
 	private String modcd;  
 	private String moddt;
+	
+	private String rolecd;
 
 	private int pid;
 	private int id;
@@ -125,5 +127,11 @@ public class Menu extends Session{
 	}
 	public void setSubmenuChk(String submenuChk) {
 		this.submenuChk = submenuChk;
+	}
+	public String getRolecd() {
+		return rolecd;
+	}
+	public void setRolecd(String rolecd) {
+		this.rolecd = rolecd;
 	}  
 }
