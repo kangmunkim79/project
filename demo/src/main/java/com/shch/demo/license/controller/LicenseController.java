@@ -1,7 +1,10 @@
 package com.shch.demo.license.controller;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
@@ -114,71 +117,52 @@ public class LicenseController {
 	}
 	
 	@RequestMapping(value = "/rawDataDown", method = RequestMethod.POST) 
-	public @ResponseBody Map<String, Object> rawDataDown(@RequestBody Map<String, Object> param, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		Map<String, Object> result = new HashMap<String, Object>();
-		String url = "D:/excel/";
-		String filenm = keyGeneratorUtils.timeKey("RawData_") + ".xls";
-		String fileUrlName = url + filenm;		
-		File file = new File(url);
-        if(!file.exists()){
-            file.mkdirs();
-        }
+	@ResponseBody
+	public void rawDataDown(@RequestBody Map<String, Object> param, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		PrintWriter out = response.getWriter();
 		try { 
+			String url = "D:/excel/";
+			String filenm = keyGeneratorUtils.timeKey("RawData_") + ".xls";
+			String fileUrlName = url + filenm;		
+			File file = new File(url);
+	        if(!file.exists()){
+	            file.mkdirs();
+	        }
 			HSSFWorkbook workbook = licenseService.rawDataDown(param);	        
-			FileOutputStream eOut = new FileOutputStream(fileUrlName);
-			workbook.write(eOut);
-			
-		    byte fileByte[] = FileUtils.readFileToByteArray(new File(fileUrlName));
-		     
-		    response.setContentType("application/octet-stream");
-		    response.setContentLength(fileByte.length);
-		    response.setHeader("Content-Disposition", "attachment; fileName=\"" + URLEncoder.encode(filenm,"UTF-8")+"\";");
-		    response.setHeader("Content-Transfer-Encoding", "binary");
-		    response.getOutputStream().write(fileByte);
-		     
-		    response.getOutputStream().flush();
-		    response.getOutputStream().close();		
-		    result.put("state", "ok");
-		    result.put("filename", fileUrlName);
-		} catch (Exception e) { 
-			e.printStackTrace();
-			result.put("state", "fail");
-		}	
-		return result;
+			File xlsFile = new File(fileUrlName);
+            FileOutputStream fileOut = new FileOutputStream(xlsFile);
+            workbook.write(fileOut);
+            out.println(fileUrlName);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }	
 	}
 	
 	@RequestMapping(value = "/reportDown", method = RequestMethod.POST) 
-	public @ResponseBody Map<String, Object> reportDown(@RequestBody Map<String, Object> param, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		Map<String, Object> result = new HashMap<String, Object>();
-		String url = "D:/excel/";
-		String filenm = keyGeneratorUtils.timeKey("Report_") + ".xls";
-		String fileUrlName = url + filenm;
-		File file = new File(url);
-        if(!file.exists()){
-            file.mkdirs();
+	@ResponseBody
+	public void reportDown(@RequestBody Map<String, Object> param, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		PrintWriter out = response.getWriter();
+        try {
+        	String url = "D:/excel/";
+    		String filenm = keyGeneratorUtils.timeKey("ReportData_") + ".xls";
+    		String fileUrlName = url + filenm;		
+    		File file = new File(url);
+            if(!file.exists()){
+                file.mkdirs();
+            }
+            HSSFWorkbook workbook = licenseService.reportDown(param);
+            File xlsFile = new File(fileUrlName);
+            FileOutputStream fileOut = new FileOutputStream(xlsFile);
+            workbook.write(fileOut);
+            out.println(fileUrlName);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-		try { 	
-			HSSFWorkbook workbook = licenseService.reportDown(param);	
-			FileOutputStream eOut = new FileOutputStream(fileUrlName);
-			workbook.write(eOut);
-			
-		    byte fileByte[] = FileUtils.readFileToByteArray(new File(fileUrlName));
-		     
-		    response.setContentType("application/octet-stream");
-		    response.setContentLength(fileByte.length);
-		    response.setHeader("Content-Disposition", "attachment; fileName=\"" + URLEncoder.encode(filenm,"UTF-8")+"\";");
-		    response.setHeader("Content-Transfer-Encoding", "binary");
-		    response.getOutputStream().write(fileByte);
-		     
-		    response.getOutputStream().flush();
-		    response.getOutputStream().close();	
-		    result.put("state", "ok");
-		    result.put("filename", fileUrlName);
-		} catch (Exception e) { 
-			e.printStackTrace();
-			result.put("state", "fail");
-		}
-		return result;
+		
 	}	
 	
 	@RequestMapping(value = "/detailPop", method = RequestMethod.POST) 

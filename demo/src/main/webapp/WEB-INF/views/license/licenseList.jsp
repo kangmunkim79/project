@@ -388,15 +388,15 @@ function reportDown(){
     common_gridloading_open("container");	
     $.ajax({
         type: "POST",
-        contentType: "application/json",
+        contentType : "application/json; charset=UTF-8",
         url: "/license/reportDown",
         data: JSON.stringify(param),
-        success: function (res) {
-        	dialog.alert("Success Report Download!!!!");
+        success: function (response) {
+        	dialog.alert("Success Report Download!!!!--> " + response);
         	common_gridloading_close();
         },
-        error: function (e) {
-        	dialog.alert("Success Report Download!!");
+        error: function (request, status, error) {
+        	dialog.alert("Failed Report Download!!");
         	common_gridloading_close();
         }
     });		
