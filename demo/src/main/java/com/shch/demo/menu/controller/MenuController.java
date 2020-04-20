@@ -28,11 +28,11 @@ public class MenuController {
 	}
 	
 	@RequestMapping(value = "/getMenuList", method = RequestMethod.POST) 
-	public @ResponseBody Map<String, Object> getMenuList() throws Exception { 
+	public @ResponseBody Map<String, Object> getMenuList(@RequestBody Menu menu) throws Exception { 
 		Map<String, Object> result = new HashMap<String, Object>(); 
 		try { 
-			result.put("menuList", menuService.getMenuList()); 
-			result.put("subMenuList", menuService.getSubMenuList()); 
+			result.put("menuList", menuService.getMenuList(menu)); 
+			result.put("subMenuList", menuService.getSubMenuList(menu)); 
 			result.put("status", "OK"); 
 		} catch (Exception e) { 
 			result.put("status", "False"); 

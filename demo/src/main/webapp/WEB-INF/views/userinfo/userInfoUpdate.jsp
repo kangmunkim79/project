@@ -27,7 +27,7 @@ function init(){
 	$('#email').val('');
 }
 </script> 
-<body>
+<body style="padding-top: 0px;">
 <article> 
 	<div class="container col-md-6" role="main"> 
 		<div class="card"> 

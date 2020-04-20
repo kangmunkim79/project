@@ -14,12 +14,12 @@ public class MenuService {
 	@Autowired
 	MenuMapper menuMapper;
 	
-	public List<Menu> getMenuList() throws Exception { 
-		return menuMapper.getMenuList(); 
+	public List<Menu> getMenuList(Menu menu) throws Exception { 
+		return menuMapper.getMenuList(menu); 
 	}
 	
-	public List<Menu> getSubMenuList() throws Exception { 
-		return menuMapper.getSubMenuList(); 
+	public List<Menu> getSubMenuList(Menu menu) throws Exception { 
+		return menuMapper.getSubMenuList(menu); 
 	}
 	
 	public List<Menu> getGridMenuList() throws Exception { 

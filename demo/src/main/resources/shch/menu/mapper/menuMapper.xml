@@ -12,6 +12,11 @@
 				select b.menucd as submenucd
 				      ,a.*
 				from menu a left OUTER join menu b on  a.MENUCD = b.PMENUCD
+				where a.menucd in (select a.menucd
+								   from role_menu a, user_auth b
+								   where a.rolecd = b.rolecd
+									 and b.roleuser = #{sid}
+								   group by a.menucd) 
 		) z
 		where z.depth = '1'
 		group by z.menucd,z.menunm,z.urlpath,z.sortseq
@@ -22,6 +27,11 @@
         select * 
         from menu 
         where depth = '2' 
+		and menucd in (select a.menucd
+					   from role_menu a, user_auth b
+					   where a.rolecd = b.rolecd
+						 and b.roleuser = #{sid}
+					   group by a.menucd)        
         order by sortseq
     </select>
     

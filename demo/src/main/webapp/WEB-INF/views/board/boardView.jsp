@@ -23,7 +23,7 @@ $(document).on('click', '#btnDelete', function(){
 });
 </script>
 </head>
-<body>
+<body style="padding-top: 0px;">
 	<article>
 		<div class="container" role="main">
 			<h2>board View</h2>

@@ -26,7 +26,8 @@ $(document.body).ready(function () {
         body: {
             onClick: function () {
                 if (this.column.key == "username" || this.column.key == "name"){
-                	userInfo(this.item.username);                  	
+                	userInfo(this.item.username);  
+                	userRoleList(this.item.username);                	
                 }
             }
         },          
@@ -62,6 +63,55 @@ $(document.body).ready(function () {
             }
         }                   
     });
+
+    var firstGrid2 = new ax5.ui.grid({
+        target: $('[data-ax5grid="first-grid2"]'),
+        columns: [
+            {key: "rolecd", label: "권한코드", width: 120, align: "center"},
+            {key: "rolenm", label: "권한명", width: 120, align: "cneter"},          
+            {key: "useflag", label: "사용여부", align: "center", sortable: false,
+            	editor: {
+                    type: "checkbox", 
+                    config: {
+                        height: 17, 
+                        trueValue: "Y", 
+                        falseValue: "N"
+                    }
+            	}
+            }
+        ],      
+	    contextMenu: {
+	        iconWidth: 20,
+	        acceleratorWidth: 100,
+	        itemClickAndClose: false,
+	        icons: {
+	            'arrow': '<i class="fa fa-caret-right"></i>'
+	        },
+	        items: [
+	            {type: 1, label: "menu"},
+	            {divide: true},
+	            {
+	                label: "Tools",
+	                items: [
+	                    {type: 1, label: "Excel Export"}
+	                ]
+	            }
+	        ],
+	        popupFilter: function (item, param) {
+	            //console.log(item, param);
+	            if(param.element) {
+	                return true;
+	            }else{
+	                return item.type == 1;
+	            }
+	        },
+	        onClick: function (item, param) {
+	        	firstGrid2.exportExcel("grid-to-excel.xls");
+	            firstGrid2.contextMenu.close();
+	            //또는 return true;
+	        }
+	    }
+    });    
     userlist();
     
 	function userlist(){
@@ -97,6 +147,23 @@ $(document.body).ready(function () {
 	    });
 	}
 
+	function userRoleList(username){
+		var param = {"username":username};
+	    // 그리드 데이터 가져오기
+	    $.ajax({
+	    	type: "POST",
+	        contentType: "application/json",
+	        url: "/userInfo/userRoleList",
+	        data: JSON.stringify(param),
+	        dataType: 'json',
+	        cache: false,
+	        timeout: 600000,
+	        success: function (res) {
+	        	firstGrid2.setData(res.rList);
+	        }
+	    });
+	}	
+	
 	function saveUserInfo(){
 		if($('#password').val() != $('#repassword').val()){
 			dialog.alert("비밀번호를 다시 확인하세요.");
@@ -134,9 +201,28 @@ $(document.body).ready(function () {
             }else if(this.key == "cancel"){
                 dialog.close();
                 userInfo($('#username').val());
+                userRoleList($('#username').val());
             }
         });
 	}
+
+    function roleAuthSave(upList, roleuser){
+	    $.ajax({
+	        type: "POST",
+	        contentType: "application/json",
+	        url: "/auth/mergeRoleAuth",
+	        data: JSON.stringify(upList),
+	        dataType: 'json',
+	        cache: false,
+	        timeout: 600000,
+	        success: function (data) {
+                dialog.alert("저장되었습니다.");
+                userInfo(roleuser);
+                userRoleList(roleuser);
+	        }
+
+	    });
+    }
 	
     $('[data-grid-control]').click(function () {
     	switch (this.getAttribute("data-grid-control")) {
@@ -148,12 +234,34 @@ $(document.body).ready(function () {
             break;
         case "btnSave":
         	saveUserInfo();
-            break;    
+            break;
+        case "btnAuthSave":
+            var updateList = firstGrid2.list;
+            if(updateList.length == 0){
+            	dialog.alert("변경된 사항이 없습니다.");
+            }else{
+            	dialog.confirm({
+                    title: "Message",
+                    msg: '저장하시겠습니까?'
+                }, function(){
+                    if(this.key == "ok"){
+                    	var upList = [];
+                    	var roleuser = updateList[0].roleuser
+                        for(var i=0;i<updateList.length;i++){
+                        	upList.push(updateList[i]);
+                        }
+                    	roleAuthSave(upList, roleuser);
+                    }else if(this.key == "cancel"){
+                        dialog.close();
+                    }
+                });
+            }   
+            break;         
     	}    
     });        
 }); 
 </script> 
-<body>
+<body style="padding-top: 0px;">
 <article> 
 	<div class="container">
 		<div class="row">
@@ -166,31 +274,31 @@ $(document.body).ready(function () {
 				    <button class="btn btn-sm btn-primary" data-grid-control="userAddBtn" id="userAddBtn">Add</button>
 				</div>			
 			</div>
-			<div class="col-sm-6">
+			<div class="col-sm-6 mt-1">
+				<ul class="nav nav-tabs">
+				    <li class="nav-item">
+				        <a class="nav-link" data-toggle="tab" href="#userinfo">INFO</a>
+				    </li>
+				    <li class="nav-item">
+				    	<a class="nav-link active" data-toggle="tab" href="#userauth">권한</a>
+				    </li>
+				</ul>			
 			</div>
 		</div>
 		<div class="row"> 
-			<div class="col-sm-6">
-				<div style="position: relative;height:500px;" id="grid-parent">
+			<div class="col-sm-6">			
+				<div style="position: relative;height:550px;" id="grid-parent">
 				    <div data-ax5grid="first-grid" data-ax5grid-config="{
 					                    showLineNumber: true,
 					                    showRowSelector: true,
 					                    sortable: true,
 					                    header: {align:'center'}
-					                    }" style="height:500px;"></div>
+					                    }" style="height:550px;"></div>
 				</div>	
 			</div>
 			<div class="col-sm-6">
-				<ul class="nav nav-tabs">
-				    <li class="nav-item">
-				        <a class="nav-link active" data-toggle="tab" href="#userinfo">INFO</a>
-				    </li>
-				    <li class="nav-item">
-				    	<a class="nav-link" data-toggle="tab" href="#userauth">권한</a>
-				    </li>
-				</ul>
 				<div class="tab-content">
-				    <div class="tab-pane fade show active" id="userinfo">
+				    <div class="tab-pane fade" id="userinfo">
 				    	<div class="row">
 				    		<div class="col-sm-12">
 								<div style="padding: 10px;" align="right">
@@ -230,8 +338,25 @@ $(document.body).ready(function () {
 							</div> 
 						</div> 
 				  	</div>
-				  	<div class="tab-pane fade" id="userauth">
-				    	<p>Nunc vitae turpis id nibh sodales commodo et non augue. Proin fringilla ex nunc. Integer tincidunt risus ut facilisis tristique.</p>
+				  	<div class="tab-pane fade show active" id="userauth">
+				    	<div class="row">
+				    		<div class="col-sm-12">
+								<div style="padding: 10px;" align="right">
+								    <button class="btn btn-sm btn-primary" data-grid-control="btnAuthSave">Save</button>
+								</div>				 
+							</div>   	
+				    	</div>
+				    	<div class="row">
+				    		<div class="col-sm-12">				  	
+								<div style="position: relative;height:500px;" id="grid-parent2">
+						    		<div data-ax5grid="first-grid2" data-ax5grid-config="{
+						    							showLineNumber: true,
+						    							showRowSelector: false,
+						    							header: {selector: false, align:'center'}
+						    							}" style="height:500px;"></div>
+								</div>	
+							</div>   	
+				    	</div>			    	
 				  	</div>
 				</div>			
 			</div>

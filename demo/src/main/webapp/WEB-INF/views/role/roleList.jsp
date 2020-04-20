@@ -81,25 +81,9 @@ $(document.body).ready(function () {
     var firstGrid2 = new ax5.ui.grid({        
         target: $('[data-ax5grid="first-grid2"]'),
         columns: [
-            {key: "menunm", label: "Name", width: 120, align: "left", treeControl: true,
-	            enableFilter: true,
-	            editor: {
-	                type: "text", disabled: function () {
-	                    // item, value
-	                    return false;
-	                }
-	            }
-            },            
-            {key: "menucd", label: "Id", width: 100, align: "center",
-	            enableFilter: true,
-	            editor: {
-	                type: "text", disabled: function () {
-	                    // item, value
-	                    return false;
-	                }
-	            }
-            },
-            {key: "useflag", label: "Use Flag", align: "center", sortable: false,
+            {key: "menunm", label: "Name", width: 120, align: "left", treeControl: true},            
+            {key: "menucd", label: "Id", width: 100, align: "center"},
+            {key: "useflag", label: "사용여부", align: "center", sortable: false,
             	editor: {
                     type: "checkbox", 
                     config: {
@@ -114,8 +98,6 @@ $(document.body).ready(function () {
             onDataChanged: function () {
                 if (this.key == 'useflag') {
                     this.self.updateChildRows(this.dindex, {isChecked: this.item.isChecked});
-                }else if(this.key == 'usrType'){
-                    this.self.updateChildRows(this.dindex, {__selected__: this.item.__selected__});
                 }
             }           
         },        
@@ -202,7 +184,7 @@ $(document.body).ready(function () {
             }            
             break; 
         case "updateAuth":
-            var updateList = firstGrid2.getList("modified");
+            var updateList = firstGrid2.list;
             if(updateList.length == 0){
             	dialog.alert("변경된 사항이 없습니다.");
             }else{
@@ -309,7 +291,7 @@ $(document.body).ready(function () {
         
 }); 
 </script> 
-<body>
+<body style="padding-top: 0px;">
 <article> 
 	<div class="container">
 		<div class="row">

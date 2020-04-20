@@ -11,6 +11,7 @@ public class Role extends Session{
 	private String regdt;
 	private String modcd;
 	private String moddt;
+	private String roleuser;
 	
 	public String getRolecd() {
 		return rolecd;
@@ -53,5 +54,11 @@ public class Role extends Session{
 	}
 	public void setModdt(String moddt) {
 		this.moddt = moddt;
+	}
+	public String getRoleuser() {
+		return roleuser;
+	}
+	public void setRoleuser(String roleuser) {
+		this.roleuser = roleuser;
 	}
 }

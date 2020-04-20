@@ -15,15 +15,15 @@
 var firstGrid = new ax5.ui.grid();
 var firstGrid2 = new ax5.ui.grid();
 var firstGrid3 = new ax5.ui.grid();
-
+var API_SERVER = "http://api-demo.ax5.io";  	
+var dialog = new ax5.ui.dialog({
+    title: "Message"
+});    
+$('#alert-close').click(function () {
+    dialog.close();
+});
 $(document.body).ready(function () {
-  	var API_SERVER = "http://api-demo.ax5.io";  	
-  	var dialog = new ax5.ui.dialog({
-  	    title: "Message"
-  	});    
-  	$('#alert-close').click(function () {
-  	    dialog.close();
-  	});
+
     
     picker.bind({
         target: $('[data-ax5picker="basic"]'),
@@ -61,6 +61,7 @@ $(document.body).ready(function () {
             onClick: function () {
                 if (this.column.key == "licnm" || this.column.key == "modulenm"){
                 	moduleList(this.item.licserver, this.item.modulenm);
+                	$('#lic').val(this.item.licserver);
                 }
             }
         },
@@ -106,7 +107,8 @@ $(document.body).ready(function () {
         body: {
             onClick: function () {
                 if (this.column.key == "licnm" || this.column.key == "modulenm"){
-                  	licUserList(this.item.licserver, this.item.modulenm, this.item.licnm, this.item.maxcredit);                  	
+                  	licUserList(this.item.licserver, this.item.modulenm, this.item.licnm, this.item.maxcredit);   
+                  	$('#mod').val(this.item.modulenm);               	
                 }
             }
         },
@@ -242,6 +244,18 @@ $(document.body).ready(function () {
         case "search":
         	licenseList();
             break;
+        case "rawData":
+        	if(!validationCheck()) return;
+        	rawDataDown();
+            break;
+        case "report":
+        	if(!validationCheck()) return;
+        	reportDown();
+            break;  
+        case "detail":
+        	if(!validationCheck()) return;
+        	detailPop();
+            break;          
     	}        
     	            
     });   
@@ -336,9 +350,118 @@ function licchartgraph(licserver, modulenm, licnm, maxcredit) {
 	});
 }  
 
+function rawDataDown(){
+	var param = {};
+	var licserver = $("#lic").val();
+	var modulenm = $("#mod").val();	
+	var stDate = $("#stDateTime").val();
+	var etDate = $("#etDateTime").val();
+	var daychk = $("#daychk")[0].checked;
+	param = {"stDateTime":stDate,"etDateTime":etDate,"licserver":licserver,"modulenm":modulenm};
+	
+    common_gridloading_open("container");	
+    $.ajax({
+        type: "POST",
+        contentType: "application/json",
+        url: "/license/rawDataDown",
+        data: JSON.stringify(param),
+        success: function (res) {
+        	dialog.alert("Success Rawdata Download!!!!");
+        	common_gridloading_close();
+        },
+        error: function (e) {
+        	dialog.alert("Success Rawdata Download!!");
+        	common_gridloading_close();
+        }
+    });		
+}
+
+function reportDown(){
+	var param = {};
+	var licserver = $("#lic").val();
+	var modulenm = $("#mod").val();	
+	var stDate = $("#stDateTime").val();
+	var etDate = $("#etDateTime").val();
+	var daychk = $("#daychk")[0].checked;
+	param = {"stDateTime":stDate,"etDateTime":etDate,"licserver":licserver,"modulenm":modulenm};
+	
+    common_gridloading_open("container");	
+    $.ajax({
+        type: "POST",
+        contentType: "application/json",
+        url: "/license/reportDown",
+        data: JSON.stringify(param),
+        success: function (res) {
+        	dialog.alert("Success Report Download!!!!");
+        	common_gridloading_close();
+        },
+        error: function (e) {
+        	dialog.alert("Success Report Download!!");
+        	common_gridloading_close();
+        }
+    });		
+}
+
+function detailPop(){
+	var param = {};
+	var licserver = $("#lic").val();
+	var modulenm = $("#mod").val();	
+	var stDate = $("#stDateTime").val();
+	var etDate = $("#etDateTime").val();
+	var daychk = $("#daychk")[0].checked;
+	param = {"stDateTime":stDate,"etDateTime":etDate,"licserver":licserver,"modulenm":modulenm};
+	
+    common_gridloading_open("container");	
+    $.ajax({
+        type: "POST",
+        contentType: "application/json",
+        url: "/license/detailPop",
+        data: JSON.stringify(param),
+        dataType: 'json',
+        cache: false,
+        timeout: 600000,
+        success: function (data) {
+        	$('#licnm').val(data.detail.licnm);
+        	$('#modulenm').val(data.detail.modulenm);
+        	$('#maxcnt').val(data.detail.maxcnt);
+        	$('#peakcnt').val(data.detail.peakcnt);
+        	$('#avgcnt').val(data.detail.avgcnt);
+        	$('#avgper').val(data.detail.avgper);
+        	$('#timelog').val(data.detail.timelog);
+        	$('#datelog').val(data.detail.datelog);
+        	common_gridloading_close();
+        }
+    });		
+}
+
+function validationCheck(){
+	var lic = $('#lic').val();
+	var mod = $('#mod').val();
+	var stDate = $('#stDateTime').val();
+	var etDate = $('#etDateTime').val();
+	
+	if(lic == ""){
+		dialog.alert("Please, License select row");
+		return false;
+	}
+	
+	if(mod == ""){
+		dialog.alert("Please, Module select row");
+		return false;
+	}
+	
+	if(stDate == "" || etDate == ""){
+		dialog.alert("Date Time Required !!");
+		return false;
+	}
+	
+	return true;
+}
 </script>
-<body>
+<body style="padding-top: 0px;">
 <article>
+	<input id="lic" type="hidden" value="">
+	<input id="mod" type="hidden" value="">
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-6">
@@ -346,6 +469,9 @@ function licchartgraph(licserver, modulenm, licnm, maxcredit) {
 			</div>
 			<div class="col-sm-6">
 				<div style="padding: 10px;" align="right">
+					<button class="btn btn-sm btn-primary" data-grid-control="rawData">Raw Data</button>
+					<button class="btn btn-sm btn-primary" data-grid-control="report">Report</button>
+					<button class="btn btn-sm btn-primary" data-grid-control="detail" data-toggle="modal" data-target="#detailModal">Detail</button>
 					<button class="btn btn-sm btn-primary" data-grid-control="search">Search</button>
 				</div>
 			</div>
@@ -421,7 +547,77 @@ function licchartgraph(licserver, modulenm, licnm, maxcredit) {
 	        <div class="col-md-12">
                	<div id="licchart" style="width: 100%; height: 300px;"></div>
 	        </div>        
-	    </div>      				
+	    </div> 
+
+		<!-- The Modal -->
+		<div class="modal" id="detailModal">
+		  	<div class="modal-dialog modal-dialog-scrollable">
+		    	<div class="modal-content">	    
+		      		<!-- Modal Header -->
+		     		<div class="modal-header">
+		       			<h3 class="modal-title">License Monitoring Detail</h3>
+		       			<button type="button" class="close" data-dismiss="modal">×</button>
+		     		</div>
+		     
+			     	<!-- Modal body -->
+			     	<div class="modal-body">
+					    <div class="form-group row">
+					    	<label for="licnm" class="col-sm-4 col-form-label">License Name : </label>
+					    	<div class="col-sm-8">
+					      		<input type="text" readonly class="form-control-plaintext" id="licnm" value="">
+					    	</div>
+					  	</div>
+					  	<div class="form-group row">
+					    	<label for="modulenm" class="col-sm-4 col-form-label">Module Name : </label>
+					    	<div class="col-sm-8">
+					      		<input type="text" readonly class="form-control-plaintext" id="modulenm" value="">
+					    	</div>
+					  	</div>			     	
+			     		<div class="form-group row">
+					    	<label for="maxcnt" class="col-sm-4 col-form-label">라이선스 총 수 : </label>
+					    	<div class="col-sm-8">
+					      		<input type="text" readonly class="form-control-plaintext" id="maxcnt" value="">
+					    	</div>
+					  	</div>
+			       		<div class="form-group row">
+					    	<label for="peakcnt" class="col-sm-4 col-form-label">Peak 사용량 : </label>
+					    	<div class="col-sm-8">
+					      		<input type="text" readonly class="form-control-plaintext" id="peakcnt" value="">
+					    	</div>
+					  	</div>
+			       		<div class="form-group row">
+					    	<label for="avgcnt" class="col-sm-4 col-form-label">평균 사용 수 : </label>
+					    	<div class="col-sm-8">
+					      		<input type="text" readonly class="form-control-plaintext" id="avgcnt" value="">
+					    	</div>
+					  	</div>
+					  	<div class="form-group row">
+					    	<label for="avgper" class="col-sm-4 col-form-label">평균 백분율 : </label>
+					    	<div class="col-sm-8">
+					      		<input type="text" readonly class="form-control-plaintext" id="avgper" value="">
+					    	</div>
+					  	</div>
+			       		<div class="form-group row">
+					    	<label for="timelog" class="col-sm-4 col-form-label">분석시간 : </label>
+					    	<div class="col-sm-8">
+					      		<input type="text" readonly class="form-control-plaintext" id="timelog" value="">
+					    	</div>
+					  	</div>
+					  	<div class="form-group row">
+					    	<label for="datelog" class="col-sm-4 col-form-label">분석기간 : </label>
+					    	<div class="col-sm-8">
+					      		<input type="text" readonly class="form-control-plaintext" id="datelog" value="">
+					    	</div>
+					  	</div>
+			     	</div>
+			     
+			     	<!-- Modal footer -->
+			     	<div class="modal-footer">
+			            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+			     	</div>		      
+				</div>
+		    </div>
+		</div>	    	         				
 	</div>
 </article>	
 </body>

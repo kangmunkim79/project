@@ -341,6 +341,103 @@
 				,s.logedtime
 			);					
 	</insert>	
+
+	<select id="rawDataDownList" resultType="Map">
+		select b.licnm
+		     , a.modulenm
+		     , a.logedtime
+		     , a.maxcredit
+		     , a.usage
+		     , a.percentage
+		from tb_lic_cae_korea_total_amt_v2 a, tb_lic_server_info b
+		where a.licserver = #{licserver}
+		  and a.modulenm = #{modulenm}
+		  and a.licserver = b.licserver
+		  and convert(datetime, substring(a.logedtime,1,8)) >= convert(datetime,#{stDateTime}) 	
+		  and convert(datetime, substring(a.logedtime,1,8)) <![CDATA[<=]]> convert(datetime,#{etDateTime})		  	 
+		order by a.logedtime
+	</select>	
 	
+	<select id="sheetCheckDateList"  resultType="Map">
+		select substring(logedtime,1,8) as checkdt
+		from tb_lic_cae_korea_total_amt_v2
+		where licserver = #{licserver}
+		  and modulenm = #{modulenm}
+		  and convert(datetime, substring(logedtime,1,8)) >= convert(datetime,#{stDateTime}) 	
+		  and convert(datetime, substring(logedtime,1,8)) <![CDATA[<=]]> convert(datetime,#{etDateTime})	 
+		group by substring(logedtime,1,8)	
+		order by substring(logedtime,1,8)
+	</select>	
+
+	<select id="excelDownUserList" resultType="Map">
+		select a.id
+		      ,b.user_nm as name
+		      ,b.dept_nm as deptnm
+		      ,a.logintime
+		      ,a.logedtime
+		from tb_lic_cae_user_log_v2 a left outer join tb_lic_ext_usertable b on a.id =b.user_id
+		where a.licserver = #{licserver}
+		  and a.modulenm = #{modulenm}
+		  and convert(datetime, substring(a.logedtime,1,8)) >= convert(datetime,#{stDateTime}) 	
+		  and convert(datetime, substring(a.logedtime,1,8)) <![CDATA[<=]]> convert(datetime,#{etDateTime})
+		  and substring(a.logedtime,1,8) = #{checkdt}	
+		order by a.logedtime 
+	</select>	
 	
+	<select id="reportDownMap" resultType="Map">
+		select b.licnm as lic
+		     , a.modulenm as mod
+		     , max(convert(integer,usage)) as pc
+		     , avg(convert(integer,usage)) as ac
+		     , max(convert(integer,maxcredit)) as mc
+		     , round((avg(convert(float,usage)))/avg(convert(float,maxcredit)) *100, 1) as per
+		     , convert(datetime,#{stDateTime}) as stdate 
+		     , convert(datetime,#{etDateTime}) as etdate
+		from tb_lic_cae_korea_total_amt_v2 a, tb_lic_server_info b
+		where a.licserver = #{licserver}
+		  and a.modulenm = #{modulenm}
+		  and a.licserver = b.licserver
+		  and convert(datetime, substring(a.logedtime,1,8)) >= convert(datetime,#{stDateTime}) 	
+		  and convert(datetime, substring(a.logedtime,1,8)) <![CDATA[<=]]> convert(datetime,#{etDateTime})	
+		  and substring(a.logedtime,9,2) > 7
+   		  and substring(a.logedtime,9,2) <![CDATA[<]]> 19		
+		group by a.licserver, b.licnm, a.modulenm		
+	</select>	
+	
+	<select id="reportDownUserList" resultType="Map">
+		select a.id
+		      ,b.user_nm as name
+		      ,b.dept_nm as deptnm
+		      ,'' as companynm
+		from tb_lic_cae_user_log_v2 a left outer join tb_lic_ext_usertable b on a.id = b.user_id
+		where a.licserver = #{licserver}
+		  and a.modulenm = #{modulenm}
+		  and convert(datetime, substring(a.logedtime,1,8)) >= convert(datetime,#{stDateTime}) 	
+		  and convert(datetime, substring(a.logedtime,1,8)) <![CDATA[<=]]> convert(datetime,#{etDateTime})
+		  and substring(a.logedtime,1,8) = #{checkdt}	
+		  and substring(a.logedtime,9,2) > 7
+   		  and substring(a.logedtime,9,2) <![CDATA[<]]> 19		  
+		group by a.id, b.user_nm, b.dept_nm 	 
+		
+	</select>	
+	
+	<select id="selectDetail" resultType="Map">
+		select b.licnm
+		     , a.modulenm
+		     , max(convert(integer,usage)) as peakcnt
+		     , avg(convert(integer,usage)) as avgcnt
+		     , max(convert(integer,maxcredit)) as maxcnt		     
+		     , round((avg(convert(float,usage)))/avg(convert(float,maxcredit)) *100, 1) as avgper
+		     , '08:00 ~ 18:00' as timelog
+		     , #{stDateTime} + ' ~ ' + #{etDateTime} as datelog
+		from tb_lic_cae_korea_total_amt_v2 a, tb_lic_server_info b
+		where a.licserver = #{licserver}
+		  and a.modulenm = #{modulenm}
+		  and a.licserver = b.licserver
+		  and convert(datetime, substring(a.logedtime,1,8)) >= convert(datetime,#{stDateTime}) 	
+		  and convert(datetime, substring(a.logedtime,1,8)) <![CDATA[<=]]> convert(datetime,#{etDateTime})			  
+		  and substring(a.logedtime,9,2) > 7
+   		  and substring(a.logedtime,9,2) <![CDATA[<]]> 19
+		group by a.licserver, b.licnm, a.modulenm	
+	</select>		
 </mapper>

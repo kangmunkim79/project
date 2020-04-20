@@ -17,6 +17,18 @@ public interface LicenseMapper {
 	
 	public List<Map<String, Object>> getLogFileNameUrlList();
 	
+	public List<Map<String, Object>> rawDataDownList(Map<String, Object> param);
+	
+	public List<Map<String, Object>> sheetCheckDateList(Map<String, Object> param);
+	
+	public List<Map<String, Object>> excelDownUserList(Map<String, Object> param);
+	
+	public List<Map<String, Object>> reportDownMap(Map<String, Object> param);
+	
+	public List<Map<String, Object>> reportDownUserList(Map<String, Object> param);
+	
+	public Map<String, Object> selectDetail(Map<String, Object> param);
+	
 	public void saveLic(Map<String, Object> param);
 	
 	public void insertLicUserLog(Map<String, Object> param);

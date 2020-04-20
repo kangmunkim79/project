@@ -7,7 +7,7 @@
     </select>
     
     <select id="readAuthority" parameterType="String" resultType="String">
-        SELECT authorityname FROM USER_AUTH WHERE username = #{username}
+        SELECT rolecd FROM USER_AUTH WHERE roleuser = #{username}
     </select>
 
 	<select id="getGridUserInfo" resultType="com.shch.demo.userinfo.dto.UserInfo">
@@ -78,6 +78,15 @@
              , moddt 
 		FROM USER_INFO 
 	</select> 
+	
+	<select id="userRoleList" parameterType="com.shch.demo.userinfo.dto.UserInfo" resultType="com.shch.demo.role.dto.Role">
+		select a.rolecd
+		      ,a.rolenm
+		      ,(select 'Y' from user_auth b where b.rolecd = a.rolecd and b.roleuser = #{username})	as useflag
+		      ,#{username} as roleuser		      
+	    from role a	
+	    order by a.rolecd
+	</select>
 
 	<insert id="mergeUserInfo"> 
 		merge user_info t

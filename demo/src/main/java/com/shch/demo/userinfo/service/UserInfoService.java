@@ -7,6 +7,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.shch.demo.auth.dto.Auth;
+import com.shch.demo.menu.dto.Menu;
+import com.shch.demo.role.dto.Role;
 import com.shch.demo.userinfo.dto.UserInfo;
 import com.shch.demo.userinfo.dto.UserParam;
 import com.shch.demo.userinfo.mapper.UserInfoMapper;
@@ -40,6 +43,10 @@ public class UserInfoService {
 		return userInfoMapper.getUserInfo(username); 
 	} 
 
+	public List<Role> userRoleList(UserParam userInfo){
+		return userInfoMapper.userRoleList(userInfo);
+	}
+	
 	public void mergeUserInfo(UserParam param) throws Exception { 
 		String password =param.getPassword();
     	String encryptPassword = passwordEncoder.encode(password);
@@ -64,5 +71,5 @@ public class UserInfoService {
 	public void deleteUser(String username) throws Exception { 
 		userInfoMapper.deleteUser(username); 
 	}
-
+	
 }

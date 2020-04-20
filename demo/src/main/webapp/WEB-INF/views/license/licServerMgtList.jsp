@@ -195,7 +195,7 @@ $(document.body).ready(function () {
     }
 }); 
 </script> 
-<body>
+<body style="padding-top: 0px;">
 <article> 
 	<div class="container"> 
 		<h2>License Server 관리</h2> 	

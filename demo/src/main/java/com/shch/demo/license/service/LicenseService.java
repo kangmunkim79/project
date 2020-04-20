@@ -14,6 +14,11 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.util.CellRangeAddress;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -516,5 +521,294 @@ public class LicenseService {
 		for(int i=0;i<tlist.size();i++){
 			licenseMapper.insertLicTotalAmtLog(tlist.get(i));				
 		}		
+	}
+	
+	public HSSFWorkbook rawDataDown(Map<String, Object> map) throws Exception {
+		HSSFWorkbook workbook = new HSSFWorkbook();
+		HSSFSheet sheet = workbook.createSheet();
+		HSSFRow row = sheet.createRow(0);
+		HSSFCell cell;
+					
+		cell = row.createCell(0);
+		cell.setCellValue("License Name");
+		
+		cell = row.createCell(1);
+		cell.setCellValue("Module Name");
+		
+		cell = row.createCell(2);
+		cell.setCellValue("License Count");
+		
+		cell = row.createCell(3);
+		cell.setCellValue("Use Count");
+		
+		cell = row.createCell(4);
+		cell.setCellValue("Percent");
+		
+		cell = row.createCell(5);
+		cell.setCellValue("Loged Time");
+		
+		List<Map<String,Object>> list = licenseMapper.rawDataDownList(map);			
+		
+		for(int rowIdx=0;rowIdx<list.size();rowIdx++){
+			Map<String, Object> param = list.get(rowIdx);
+			
+			row = sheet.createRow(rowIdx+1);
+
+			cell = row.createCell(0);
+			cell.setCellValue(String.valueOf(param.get("licnm")));
+			
+			cell = row.createCell(1);
+			cell.setCellValue(String.valueOf(param.get("modulenm")));
+			
+			cell = row.createCell(2);
+			cell.setCellValue(String.valueOf(param.get("maxcredit")));
+			
+			cell = row.createCell(3);
+			cell.setCellValue(String.valueOf(param.get("usage")));
+			
+			cell = row.createCell(4);
+			cell.setCellValue(String.valueOf(param.get("percentage")));
+			
+			cell = row.createCell(5);
+			cell.setCellValue(String.valueOf(param.get("logedtime")));
+			
+			sheet.autoSizeColumn(rowIdx,true);
+		}
+		
+		List<Map<String,Object>> sheetList = licenseMapper.sheetCheckDateList(map);
+		
+		for(int sIdx=0;sIdx<sheetList.size();sIdx++){
+			Map<String, Object> param = sheetList.get(sIdx);
+			sheet = workbook.createSheet(String.valueOf(param.get("checkdt")));
+			
+			row = sheet.createRow(0);
+			
+			cell = row.createCell(0);
+			cell.setCellValue("ID");
+			
+			cell = row.createCell(1);
+			cell.setCellValue("NAME");
+			
+			cell = row.createCell(2);
+			cell.setCellValue("DEPT");
+			
+			cell = row.createCell(3);
+			cell.setCellValue("Login Time");
+			
+			cell = row.createCell(4);
+			cell.setCellValue("Loged Time");
+			
+			map.put("checkdt", String.valueOf(param.get("checkdt")));			
+			List<Map<String,Object>> userList = licenseMapper.excelDownUserList(map);
+			for(int uIdx=0;uIdx<userList.size();uIdx++){
+				Map<String, Object> param2 = userList.get(uIdx);
+				row = sheet.createRow(uIdx+1);
+
+				cell = row.createCell(0);
+				cell.setCellValue(String.valueOf(param2.get("id")));
+				
+				cell = row.createCell(1);
+				cell.setCellValue(String.valueOf(param2.get("name")));
+				
+				cell = row.createCell(2);
+				cell.setCellValue(String.valueOf(param2.get("deptnm")));
+				
+				cell = row.createCell(3);
+				cell.setCellValue(String.valueOf(param2.get("logintime")));
+				
+				cell = row.createCell(4);
+				cell.setCellValue(String.valueOf(param2.get("logedtime")));
+							
+			}
+			sheet.setColumnWidth(2, 15000);
+		}
+		return workbook;
+
+	}
+	
+	public HSSFWorkbook reportDown(Map<String, Object> map) throws Exception {
+		HSSFWorkbook workbook = new HSSFWorkbook();
+		HSSFSheet sheet = workbook.createSheet();
+		HSSFRow row = sheet.createRow(0);
+		HSSFCell cell;
+					
+		List<Map<String,Object>> list = licenseMapper.reportDownMap(map);
+		
+		String lic = "";
+		String mod = "";
+		String pc = "";
+		String mc = "";
+		String ac = "";
+		String per = "";
+		String stdate = "";
+		String etdate = "";
+		
+		if(list.size() > 0){
+			lic = String.valueOf(list.get(0).get("lic"));   
+			mod = String.valueOf(list.get(0).get("mod"));   
+			pc = String.valueOf(list.get(0).get("pc"));    
+			mc = String.valueOf(list.get(0).get("mc"));    
+			ac = String.valueOf(list.get(0).get("ac"));    
+			per = String.valueOf(list.get(0).get("per"));   
+			stdate = String.valueOf(list.get(0).get("stdate"));
+			etdate = String.valueOf(list.get(0).get("etdate"));
+		}
+		
+		sheet.addMergedRegion(new CellRangeAddress(0,3,0,0));
+		
+		cell = row.createCell(0);
+		cell.setCellValue("라이선스 사용정보");
+		
+		cell = row.createCell(1);
+		cell.setCellValue("License Name");
+		
+		cell = row.createCell(2);
+		cell.setCellValue(lic);
+		
+		cell = row.createCell(3);
+		cell.setCellValue("Module Name");
+		
+		cell = row.createCell(4);
+		cell.setCellValue(mod);
+		
+		row = sheet.createRow(1);
+		
+		cell = row.createCell(1);
+		cell.setCellValue("라이선스 총 개수");
+		
+		cell = row.createCell(2);
+		cell.setCellValue(mc);
+		
+		cell = row.createCell(3);
+		cell.setCellValue("Peak 사용량");
+		
+		cell = row.createCell(4);
+		cell.setCellValue(pc);
+		
+		row = sheet.createRow(2);
+		
+		cell = row.createCell(1);
+		cell.setCellValue("평균 사용개수");
+		
+		cell = row.createCell(2);
+		cell.setCellValue(ac);
+		
+		cell = row.createCell(3);
+		cell.setCellValue("분석시간");
+		
+		cell = row.createCell(4);
+		cell.setCellValue("08:00 ~ 18:00");
+		
+		row = sheet.createRow(3);
+		
+		cell = row.createCell(1);
+		cell.setCellValue("평균 백분율");
+		
+		cell = row.createCell(2);
+		cell.setCellValue(per);
+		
+		cell = row.createCell(3);
+		cell.setCellValue("분석기간");
+		
+		cell = row.createCell(4);
+		cell.setCellValue(stdate + " ~ " + etdate);
+		
+		sheet.setColumnWidth(0, 5000);
+		sheet.setColumnWidth(1, 5000);
+		sheet.setColumnWidth(2, 5000);
+		sheet.setColumnWidth(3, 5000);
+		sheet.setColumnWidth(4, 5000);
+			
+		List<Map<String,Object>> sheetList = licenseMapper.sheetCheckDateList(map);
+		
+		for(int sIdx=0;sIdx<sheetList.size();sIdx++){
+			Map<String, Object> param = sheetList.get(sIdx);
+			sheet = workbook.createSheet(String.valueOf(param.get("checkdt")));
+			
+			map.put("checkdt", String.valueOf(param.get("checkdt")));			
+			List<Map<String,Object>> userList = licenseMapper.reportDownUserList(map);
+			
+			row = sheet.createRow(0);
+			
+			sheet.addMergedRegion(new CellRangeAddress(0,0,1,2));
+			sheet.addMergedRegion(new CellRangeAddress(3,3,5,6));
+			
+			cell = row.createCell(0);
+			cell.setCellValue("총 라이선스");
+			
+			cell = row.createCell(1);
+			cell.setCellValue("현재사용량");
+			
+			row = sheet.createRow(1);
+			
+			cell = row.createCell(0);
+			cell.setCellValue(mc);
+			
+			cell = row.createCell(1);
+			cell.setCellValue(userList.size());
+			
+			row = sheet.createRow(2);
+			row = sheet.createRow(3);
+			
+			cell = row.createCell(0);
+			cell.setCellValue("AD_NAME");
+						
+			cell = row.createCell(1);
+			cell.setCellValue("USER_NAME");
+			
+			cell = row.createCell(2);
+			cell.setCellValue("BG_NAME");
+			
+			cell = row.createCell(3);
+			cell.setCellValue("DEPARTMENT_NAME");
+			
+			cell = row.createCell(4);
+			cell.setCellValue("EMPLOYEE_TYPE");
+			
+			cell = row.createCell(5);
+			cell.setCellValue("COMPANY_NAME");
+			
+			cell = row.createCell(7);
+			cell.setCellValue("LICENSE_QUANTITY");
+			
+			cell = row.createCell(8);
+			cell.setCellValue("PERMISSION");
+			
+			sheet.setColumnWidth(0, 5000);
+			sheet.setColumnWidth(1, 5000);
+			sheet.setColumnWidth(2, 5000);
+			sheet.setColumnWidth(4, 5000);
+			sheet.setColumnWidth(5, 5000);
+			sheet.setColumnWidth(6, 5000);
+			sheet.setColumnWidth(7, 5000);
+			sheet.setColumnWidth(8, 5000);
+			
+			
+			for(int uIdx=0;uIdx<userList.size();uIdx++){
+				Map<String, Object> param2 = userList.get(uIdx);
+	
+				row = sheet.createRow(uIdx+4);
+
+				cell = row.createCell(0);
+				cell.setCellValue(String.valueOf(param2.get("id")));
+				
+				cell = row.createCell(1);
+				cell.setCellValue(String.valueOf(param2.get("name")));
+				
+				cell = row.createCell(3);
+				cell.setCellValue(String.valueOf(param2.get("deptnm")));
+				
+				cell = row.createCell(5);
+				cell.setCellValue(String.valueOf(param2.get("companynm")));			
+				
+			}
+			sheet.setColumnWidth(3, 15000);
+		}
+		return workbook;
+
+	}
+	
+	public Map<String, Object> selectDetail(Map<String, Object> param) {
+		return licenseMapper.selectDetail(param);
 	}
 }

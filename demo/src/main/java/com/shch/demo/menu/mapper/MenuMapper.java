@@ -6,9 +6,9 @@ import com.shch.demo.menu.dto.Menu;
 
 public interface MenuMapper {
 
-	public List<Menu> getMenuList();
+	public List<Menu> getMenuList(Menu menu);
 	
-	public List<Menu> getSubMenuList();
+	public List<Menu> getSubMenuList(Menu menu);
 	
 	public List<Menu> getGridMenuList();
 	

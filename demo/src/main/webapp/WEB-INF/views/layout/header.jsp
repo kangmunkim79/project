@@ -1,11 +1,12 @@
 <%@ include file="/WEB-INF/views/common/linkScriptSet.jsp"%>
 <script type="text/javascript">
 $(document).ready(function () {
+	var param = {};
     $.ajax({
         type: "POST",
         contentType: "application/json",
         url: "/menu/getMenuList",
-        data: "",
+        data: JSON.stringify(param),
         dataType: 'json',
         cache: false,
         timeout: 600000,

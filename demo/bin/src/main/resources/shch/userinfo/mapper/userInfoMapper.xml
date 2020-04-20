@@ -7,7 +7,7 @@
     </select>
     
     <select id="readAuthority" parameterType="String" resultType="String">
-        SELECT authorityname FROM USER_AUTH WHERE username = #{username}
+        SELECT rolecd FROM USER_AUTH WHERE username = #{username}
     </select>
 
     <select id="getUserAll" resultType="com.shch.demo.userinfo.dto.UserInfo">

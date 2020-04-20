@@ -1,12 +1,17 @@
 package com.shch.demo.auth.controller;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.shch.demo.auth.dto.Auth;
 import com.shch.demo.auth.service.AuthService;
 
 @Controller
@@ -16,13 +21,15 @@ public class AuthController {
 	@Autowired
 	AuthService authService;
 	
-	@RequestMapping(value = "/authList", method = RequestMethod.GET)
-	public String authList(Model model) throws Exception {
-		return "auth/authList";
-	}
-	
-	//@Scheduled(fixedRateString = "5", initialDelay = 3000)
-	private void scheduleTest() {
-		System.out.println("hello jeong-pro:18181818181818181818181818181818181");
+	@RequestMapping(value = "/mergeRoleAuth", method = RequestMethod.POST) 
+	public @ResponseBody Map<String, Object> mergeRoleAuth(@RequestBody List<Auth> updateList) throws Exception {
+		Map<String, Object> result = new HashMap<String, Object>();
+		try { 
+			authService.mergeRoleAuth(updateList);
+			result.put("status", "Ok");
+		} catch (Exception e) { 
+			result.put("status", "False"); 
+		}
+		return result;		
 	}
 }

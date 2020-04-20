@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.shch.demo.menu.dto.Menu;
 import com.shch.demo.role.dto.Role;
 import com.shch.demo.role.mapper.RoleMapper;
+import com.shch.demo.utils.StringUtils;
 
 @Service
 public class RoleService {
@@ -42,7 +43,9 @@ public class RoleService {
 				roleMapper.deleteRoleMenu(menu);
 				delCnt++;
 			}
-			roleMapper.insertRoleMenu(menu);
+			if("Y".equals(StringUtils.nvl(menu.getUseflag(),""))) {
+				roleMapper.insertRoleMenu(menu);
+			}
 		}
 	}
 	

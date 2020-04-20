@@ -43,7 +43,7 @@ $(document.body).ready(function () {
     });
 });
 </script>
-<body>
+<body style="padding-top: 0px;">
 <article> 
 	<div class="container">
 		<h2></h2>
