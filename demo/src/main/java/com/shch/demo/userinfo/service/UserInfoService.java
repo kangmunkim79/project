@@ -61,6 +61,7 @@ public class UserInfoService {
     	String password =userInfo.getPassword();
     	String encryptPassword = passwordEncoder.encode(password);
     	userInfo.setPassword(encryptPassword);
+    	userInfo.setUserno(keyGeneratorUtils.timeKey("USER"));
 		userInfoMapper.insertUser(userInfo); 
 	}
 	

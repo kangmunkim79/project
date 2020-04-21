@@ -4,51 +4,37 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>사용자관리</title>
+<title>License Monitoring System</title>
+<link rel="stylesheet" href="${pagecontext.request.contextpath}/resources/common/css/cover.css">
 </head>
 <script type="text/javascript">
-$(document.body).ready(function () {
-    var myViewer_0 = new ax5.ui.mediaViewer({
-        target: $("#media-viewer-target-0"),
-        loading: {
-            icon: '<i class="fa fa-spinner fa-pulse fa-2x fa-fw margin-bottom" aria-hidden="true"></i>',
-            text: '<div>Now Loading</div>'
-        },
-        media: {
-            prevHandle: '<i class="fa fa-chevron-left"></i>',
-            nextHandle: '<i class="fa fa-chevron-right"></i>',
-            width: 36, height: 36,
-            poster: '<i class="fa fa-youtube-play" style="line-height: 32px;font-size: 20px;"></i>',
-            list: [
-                {
-                    video: {
-                        html: '<iframe src="${pageContext.request.contextPath}/resources/Photos/20191230_153144.mp4" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>',
-                        poster: ''
-                    }
-                },
-                {
-                    video: {
-                        html: '<iframe src="${pageContext.request.contextPath}/resources/Photos/20191230_153510.mp4" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>',
-                        poster: ''
-                    }
-                },
-                {
-                    image: {
-                        src: 'http://www.improgrammer.net/wp-content/uploads/2015/11/top-20-node-js-Frameworks-1.jpg',
-                        poster: 'http://www.improgrammer.net/wp-content/uploads/2015/11/top-20-node-js-Frameworks-1.jpg'
-                    }
-                }
-            ]
-        }
-    });
-});
+
 </script>
 <body style="padding-top: 0px;">
 <article> 
-	<div class="container">
-		<h2></h2>
-		<div id="media-viewer-target-0"></div>		
-	</div> 
+    <div class="site-wrapper">
+      	<div class="site-wrapper-inner">
+        	<div class="cover-container">
+				<div class="inner cover">
+					<p class="lead"></p>
+					<p class="lead"></p>
+					<p class="lead"></p>
+					<p class="lead"></p>
+					<p class="lead"></p>
+          		</div>
+          		<div class="inner cover">
+		            <h1 class="cover-heading">DILMS</h1>
+		            <p class="lead">Doosan Infracore License Monitoring System.</p>
+		            <p class="lead">Help : kwanghyun.l@doosan.com / 032-211-6843</p>
+          		</div>
+          		<div class="mastfoot">
+            		<div class="inner">
+              			<p><a href="#">Copyright © 2017 DOOSAN. All rights reserved.</a></p>
+            		</div>
+          		</div>
+        	</div>
+      	</div>
+    </div>
 </article>
 </body>
 </html>

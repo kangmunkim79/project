@@ -175,23 +175,23 @@
              , useflag
              , langcd
              , regcd
-             , regdt		
+             , regdt	
 		) VALUES ( 
-			   (SELECT MAX(USERNO)+1 FROM USER_INFO ALIAS_FOR_SUBQUERY)
-		     , 'IN'
-		     , #{uid}
-		     , #{name}
-		     , #{password}
-             , #{email}
-             , #{deptcd}
-             , #{poscd}
-             , #{tel}
-             , #{addr}
-             , #{addrdtl}
-             , 'Y'
-             , 'KO'
-             , #{username}
-             , sysdate()	
+			   #{userno}
+			  , 'IN'
+		      , #{username}
+		      , #{name} 
+		      , #{password}
+		      , #{email}
+		      , #{deptcd}
+		      , #{poscd}
+		      , #{tel}
+		      , #{addr} 
+		      , #{addrdtl} 
+		      , 'Y'
+		      , 'KO'
+		      , #{sid}
+		      , getdate()
 		) 
 	</insert> 
 	
