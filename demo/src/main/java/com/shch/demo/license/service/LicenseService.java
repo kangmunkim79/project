@@ -825,4 +825,10 @@ public class LicenseService {
 	public Map<String, Object> selectDetail(Map<String, Object> param) {
 		return licenseMapper.selectDetail(param);
 	}
+	
+	public void mergeExpirDt(List<Map<String, Object>> updateList) {
+		for(Map<String, Object> param:updateList) {
+			licenseMapper.updateExpirDt(param);
+		}
+	}
 }

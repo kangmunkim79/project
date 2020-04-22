@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.shch.demo.license.service.LicenseService;
+import com.shch.demo.menu.dto.Menu;
 import com.shch.demo.security.Session;
 import com.shch.demo.utils.keyGeneratorUtils;
 
@@ -204,6 +205,18 @@ public class LicenseController {
 			result.put("status", "False"); 
 		} 
 		return result; 
+	}
+	
+	@RequestMapping(value = "/mergeExpirDt", method = RequestMethod.POST) 
+	public @ResponseBody Map<String, Object> mergeExpirDt(@RequestBody List<Map<String, Object>> updateList) throws Exception {
+		Map<String, Object> result = new HashMap<String, Object>();
+		try { 
+			licenseService.mergeExpirDt(updateList);
+			result.put("status", "Ok");
+		} catch (Exception e) { 
+			result.put("status", "False"); 
+		}
+		return result;		
 	}
 	
 }

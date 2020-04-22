@@ -18,8 +18,8 @@ $(document.body).ready(function () {
 	var firstGrid = new ax5.ui.grid({
 	    target: $('[data-ax5grid="first-grid"]'),
 	    columns: [
-	        {key: "licnm", label: "License Name", width: 200, align: "center"},
-	        {key: "status", label: "Status", width: 100, align: "cneter",formatter: function(){
+	        {key: "licnm", label: "License Name", width: 200, align: "left"},
+	        {key: "status", label: "Status", width: 70, align: "cneter",formatter: function(){
 		        var signal = "";
 		        if(this.item.status == "R"){
 		        	signal = "<img src='${pageContext.request.contextPath}/resources/common/img/icon_circle_w.png'/><img src='${pageContext.request.contextPath}/resources/common/img/icon_circle_w.png'/><img src='${pageContext.request.contextPath}/resources/common/img/icon_circle_r.png'/>";
@@ -76,8 +76,8 @@ $(document.body).ready(function () {
 	var firstGrid2 = new ax5.ui.grid({
 	    target: $('[data-ax5grid="first-grid2"]'),
 	    columns: [
-	        {key: "modulenm", label: "Module Name", width: 200, align: "center"},
-	        {key: "status", label: "Status", width: 100, align: "cneter",formatter: function(){
+	        {key: "modulenm", label: "Module Name", width: 200, align: "left"},
+	        {key: "status", label: "Status", width: 70, align: "cneter",formatter: function(){
 		        var signal = "";
 		        if(this.item.status == "R"){
 		        	signal = "<img src='${pageContext.request.contextPath}/resources/common/img/icon_circle_w.png'/><img src='${pageContext.request.contextPath}/resources/common/img/icon_circle_w.png'/><img src='${pageContext.request.contextPath}/resources/common/img/icon_circle_r.png'/>";
@@ -90,9 +90,24 @@ $(document.body).ready(function () {
 				}    
 	            return signal;
 	        }},
-	        {key: "unit", label: "Unit", width: 80, align: "cneter"},
-	        {key: "expiredt", label: "Expire Date", width: 100, align: "cneter"},
-	        {key: "remark", label: "Remark", width: 200, align: "cneter"}                  
+	        {key: "unit", label: "Unit", width: 70, align: "right"},
+	        {key: "expiredt", label: "Expire Date", width: 100, align: "cneter", 
+		        editor: {
+	                type: "date",
+	                config: {
+
+	                }
+	            }
+            },
+	        {key: "remark", label: "Remark", width: 200, align: "left",
+	            enableFilter: true,
+	            editor: {
+	                type: "text", disabled: function () {
+	                    // item, value
+	                    return false;
+	                }
+	            }
+            }                  
 	    ],      
 	    contextMenu: {
 	        iconWidth: 20,
@@ -140,7 +155,7 @@ $(document.body).ready(function () {
 
     function exModuleList(lic){
         var param = {"licserver":lic};
-	    common_gridloading_open("grid-parent");	
+	    common_gridloading_open("grid-parent2");	
 	    $.ajax({
 	        type: "POST",
 	        contentType: "application/json",
@@ -155,6 +170,52 @@ $(document.body).ready(function () {
 	        }
 	    });	
     }
+
+    function exSave(upList,lic){
+    	common_gridloading_open("grid-parent2");
+	    $.ajax({
+	        type: "POST",
+	        contentType: "application/json",
+	        url: "/license/mergeExpirDt",
+	        data: JSON.stringify(upList),
+	        dataType: 'json',
+	        cache: false,
+	        timeout: 600000,
+	        success: function (data) {
+                dialog.alert("저장되었습니다.");
+                exModuleList(lic);
+	        }
+
+	    });
+    } 
+
+	$('[data-grid-control]').click(function () {
+    	switch (this.getAttribute("data-grid-control")) {
+        case "update":
+            var updateList = firstGrid2.getList("modified");
+            if(updateList.length == 0){
+            	dialog.alert("변경된 사항이 없습니다.");
+            }else{
+            	dialog.confirm({
+                    title: "Message",
+                    msg: '저장하시겠습니까?'
+                }, function(){
+                    if(this.key == "ok"){
+                    	var upList = [];
+                        for(var i=0;i<updateList.length;i++){
+                        	upList.push(updateList[i]);
+                        }
+                        var lic = updateList[0].licserver;
+                    	exSave(upList, lic);
+                    }else if(this.key == "cancel"){
+                        dialog.close();
+                    }
+                });
+            }            
+            break;             
+    	}        
+    	            
+    });
 });	 
 </script>
 <body>
@@ -165,10 +226,7 @@ $(document.body).ready(function () {
 			</div>
 		 	<div class="col-sm-6">
 				<div style="padding: 10px;" align="right">
-				    <button class="btn btn-sm btn-primary" data-grid-control="add">Add</button>
-				    <button class="btn btn-sm btn-primary" data-grid-control="remove">Delete</button>
 				    <button class="btn btn-sm btn-primary" data-grid-control="update">Save</button>
-				    <button class="btn btn-sm btn-primary" data-grid-control="excel-export">Excel Export</button>
 				</div>
 			</div>
 		</div>

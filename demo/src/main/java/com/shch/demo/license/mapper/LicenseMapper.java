@@ -40,4 +40,6 @@ public interface LicenseMapper {
 	public void insertLicTotalAmtLog(Map<String, Object> param);
 	
 	public void insertLicExpire(Map<String, Object> param);
+	
+	public void updateExpirDt(Map<String, Object> param);
 }

@@ -12,7 +12,7 @@ public class SchedulerController {
 	@Autowired
 	LicenseService licenseService;
 	
-	@Scheduled(cron = "0 30 19 22 4 ?")
+	//@Scheduled(cron = "0 30 19 22 4 ?")
 	public void miglogFileReadWrite()  throws Exception {
 		licenseService.miglogFileReadWrite();
 	}

@@ -3,25 +3,18 @@
 <mapper namespace="com.shch.demo.board.mapper.BoardMapper">
 
 	<select id="getBoardList" resultType="com.shch.demo.board.dto.Board">
-		select z.*
-		     , @rownum := @rownum+1 AS RNUM
-		from (
-				SELECT BID
-				     , CATECD
-				     , TITLE
-				     , CONTENT
-				     , TAG
-				     , VIEWCNT
-				     , REGCD
-				     , REGDT
-				     , MODCD
-				     , MODDT
-				     , row_number() over() as rn		     
-				FROM BOARD
-				ORDER BY BID DESC
-		) z, (SELECT @rownum :=0) AS R
-		order by z.rn desc
-		
+		SELECT BID
+		     , CATECD
+		     , TITLE
+		     , CONTENT
+		     , TAG
+		     , VIEWCNT
+		     , REGCD
+		     , REGDT
+		     , MODCD
+		     , MODDT
+		     , ROW_NUMBER() OVER(ORDER BY BID DESC) AS RNUM		     
+		FROM BOARD
 	</select>
 	
 	<select id="getBoardView" resultType="com.shch.demo.board.dto.Board" parameterType="com.shch.demo.board.dto.Board">
@@ -53,26 +46,26 @@
 			, MODDT
 		) VALUES (
 			  #{bid}
-			, #{catecd}
+			, isnull(#{catecd},'BOARD')
 			, #{title}
 			, replace(replace(replace(#{content}, '\r\n', ''), char(10), ''), char(13), '')
 			, #{tag}
 			, 0
 			, #{sid}
-			, now()
+			, getdate()
 			, #{sid}
-			, now()
+			, getdate()
 		)
 	</insert>
 
 	<update id="updateBoard" parameterType="com.shch.demo.board.dto.Board">
 		UPDATE BOARD SET
-			  CATECD = #{catecd}
+			  CATECD = isnull(#{catecd},'BOARD')
 			, TITLE = #{title}
 			, CONTENT = replace(replace(replace(#{content}, '\r\n', ''), char(10), ''), char(13), '')
 			, TAG = #{tag}
 			, MODCD = #{sid}
-			, MODDT = now()
+			, MODDT = getdate()
 		WHERE BID = #{bid}
 	</update>
 

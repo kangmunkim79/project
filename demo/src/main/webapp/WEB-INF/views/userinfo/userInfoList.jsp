@@ -236,8 +236,9 @@ $(document.body).ready(function () {
         	saveUserInfo();
             break;
         case "btnAuthSave":
+        	var modList = firstGrid2.getList("modified");
             var updateList = firstGrid2.list;
-            if(updateList.length == 0){
+            if(modList.length == 0){
             	dialog.alert("변경된 사항이 없습니다.");
             }else{
             	dialog.confirm({
@@ -265,7 +266,7 @@ $(document.body).ready(function () {
 	<div class="container tb-basic">
 		<div class="row">
 			<div class="col-sm-2">
-				<h2>User list</h2>
+				<h2>User Management</h2>
 			</div>
 			<div class="col-sm-4">
 				<div style="padding: 10px;" align="right">

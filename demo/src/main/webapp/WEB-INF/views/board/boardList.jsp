@@ -137,20 +137,30 @@ $(document.body).ready(function () {
 </script>
 <body>
 	<div class="container tb-basic">
-		<h2>board List</h2>
-		<div style="position: relative;height:400px;" id="grid-parent">
-		    <div data-ax5grid="first-grid" data-ax5grid-config="{
-			                    showLineNumber: true,
-			                    showRowSelector: true,
-			                    sortable: true,
-			                    header: {align:'center'}
-			                    }" style="height: 100%;"></div>
+		<div class="row">
+			<div class="col-sm-6">
+				<h2>board List</h2>
+			</div>
+			<div class="col-sm-6">
+				<div style="padding: 10px;" align="right">
+				    <button class="btn btn-sm btn-primary" data-grid-control="btnWriteForm">Write</button>
+				    <button class="btn btn-sm btn-primary" data-grid-control="remove">Delete</button>
+				    <button class="btn btn-sm btn-primary" data-grid-control="excel-export">Excel Export</button>
+				</div>			
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<div style="position: relative;height:500px;" id="grid-parent">
+				    <div data-ax5grid="first-grid" data-ax5grid-config="{
+					                    showLineNumber: true,
+					                    showRowSelector: true,
+					                    sortable: true,
+					                    header: {align:'center'}
+					                    }" style="height:500px;"></div>
+				</div>			
+			</div>
 		</div>	
-		<div style="padding: 10px;" align="right">
-		    <button class="btn btn-sm btn-primary" data-grid-control="btnWriteForm">Write</button>
-		    <button class="btn btn-sm btn-primary" data-grid-control="remove">Delete</button>
-		    <button class="btn btn-sm btn-primary" data-grid-control="excel-export">Excel Export</button>
-		</div>							
 	</div>
 </body>
 </html>

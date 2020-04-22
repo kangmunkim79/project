@@ -487,7 +487,7 @@
 		select a.licserver
 			  ,a.modulenm
 			  ,isnull((select max(c.maxcredit) from tb_lic_cae_korea_total_amt_v2 c where c.licserver = a.licserver and c.modulenm = a.modulenm group by c.modulenm),0) as unit
-			  ,a.expiredt
+			  ,convert(char(10), a.expiredt, 23) as expiredt
 			  ,a.remark
 			  ,case when convert(varchar(10),dateadd(m,2,getdate()),120) <![CDATA[<]]> convert(varchar(10),a.expiredt,120) then 'G' 
 			   else case when convert(varchar(10),dateadd(m,2,getdate()),120) >= convert(varchar(10),a.expiredt,120) and 
@@ -500,5 +500,13 @@
 		from tb_lic_expire_dt_mgt a
 		where a.licserver = #{licserver}
 	</select>	
+	
+	<update id="updateExpirDt">
+		update tb_lic_expire_dt_mgt set
+			expiredt = #{expiredt}
+		   ,remark = #{remark}
+		where licserver = #{licserver}
+		  and modulenm = #{modulenm}
+	</update>
 	
 </mapper>
