@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>사용자관리</title>
+<title>Menu Mgt</title>
 </head>
 <script> 
 $(document.body).ready(function () {
@@ -267,9 +267,8 @@ $(document.body).ready(function () {
     }
 }); 
 </script> 
-<body style="padding-top: 0px;">
-<article> 
-	<div class="container"> 
+<body> 
+	<div class="container tb-basic">
 		<h2>Menu list</h2> 	
 		<div style="position: relative;height:400px;" id="grid-parent">
 		    <div data-ax5grid="first-grid" data-ax5grid-config="{showLineNumber: true,showRowSelector: true,header: {selector: false, align:'center'}}" style="height: 100%;"></div>
@@ -282,6 +281,5 @@ $(document.body).ready(function () {
 		    <button class="btn btn-sm btn-primary" data-grid-control="excel-export">Excel Export</button>
 		</div>					
 	</div> 
-</article>
 </body>
 </html>

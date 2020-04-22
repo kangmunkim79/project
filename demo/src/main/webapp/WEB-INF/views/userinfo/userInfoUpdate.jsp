@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>userInfo</title>
+<title>User Mgt</title>
 </head>
 <script> 
 $(document).ready(function(){
@@ -27,9 +27,8 @@ function init(){
 	$('#email').val('');
 }
 </script> 
-<body style="padding-top: 0px;">
-<article> 
-	<div class="container col-md-6" role="main"> 
+<body> 
+	<div class="container tb-basic" role="main"> 
 		<div class="card"> 
 			<div class="card-header">Register</div> 
 			<div class="card-body"> 
@@ -75,6 +74,5 @@ function init(){
 			<button type="button" class="btn btn-sm btn-primary" id="btnCancel">Cancel</button> 
 		</div> 
 	</div> 
-</article>
 </body>
 </html>

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>userInfo</title>
+<title>User Mgt</title>
 </head>
 <script> 
 $(document.body).ready(function () {
@@ -261,9 +261,8 @@ $(document.body).ready(function () {
     });        
 }); 
 </script> 
-<body style="padding-top: 0px;">
-<article> 
-	<div class="container">
+<body>
+	<div class="container tb-basic">
 		<div class="row">
 			<div class="col-sm-2">
 				<h2>User list</h2>
@@ -362,6 +361,5 @@ $(document.body).ready(function () {
 			</div>
 		</div>						
 	</div> 
-</article>
 </body>
 </html>

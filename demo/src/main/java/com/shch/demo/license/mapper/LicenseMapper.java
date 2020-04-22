@@ -27,6 +27,10 @@ public interface LicenseMapper {
 	
 	public List<Map<String, Object>> reportDownUserList(Map<String, Object> param);
 	
+	public List<Map<String, Object>> selectExpirLicList();
+	
+	public List<Map<String, Object>> selectExpirModuleList(Map<String, Object> param);
+	
 	public Map<String, Object> selectDetail(Map<String, Object> param);
 	
 	public void saveLic(Map<String, Object> param);
@@ -35,4 +39,5 @@ public interface LicenseMapper {
 	
 	public void insertLicTotalAmtLog(Map<String, Object> param);
 	
+	public void insertLicExpire(Map<String, Object> param);
 }

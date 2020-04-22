@@ -47,7 +47,8 @@ $(document).ready(function () {
 
 });
 </script>
-<nav class="navbar navbar-expand-sm navbar-fixed-top  navbar-dark bg-dark">
+<!-- header -->
+<nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-dark">
     <a class="navbar-brand" href="${pageContext.request.contextPath}/">DILMS</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -66,3 +67,9 @@ $(document).ready(function () {
         </ul>    
     </div>
 </nav>
+<!-- header -->
+<!-- Footer -->
+<nav class="navbar navbar-expand-sm navbar-dark fixed-bottom bg-dark">
+  	<a class="navbar-brand navbar-center" href="#">© 2020 Doosan Corporation</a>     
+</nav>
+<!-- Footer -->

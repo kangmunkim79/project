@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>License Server 관리</title>
+<title>License Mgt</title>
 </head>
 <script> 
 $(document.body).ready(function () {
@@ -195,20 +195,28 @@ $(document.body).ready(function () {
     }
 }); 
 </script> 
-<body style="padding-top: 0px;">
-<article> 
-	<div class="container"> 
-		<h2>License Server 관리</h2> 	
-		<div style="position: relative;height:400px;" id="grid-parent">
-		    <div data-ax5grid="first-grid" data-ax5grid-config="{showLineNumber: true,showRowSelector: true,header: {align:'center'}}" style="height: 100%;"></div>
-		</div>	
-		<div style="padding: 10px;" align="right">
-		    <button class="btn btn-sm btn-primary" data-grid-control="add">Add</button>
-		    <button class="btn btn-sm btn-primary" data-grid-control="remove">Delete</button>
-		    <button class="btn btn-sm btn-primary" data-grid-control="update">Save</button>
-		    <button class="btn btn-sm btn-primary" data-grid-control="excel-export">Excel Export</button>
-		</div>					
+<body> 
+	<div class="container tb-basic">
+		<div class="row">
+			<div class="col-sm-6">
+				<h2>Server Management</h2>
+			</div>
+		 	<div class="col-sm-6">
+				<div style="padding: 10px;" align="right">
+				    <button class="btn btn-sm btn-primary" data-grid-control="add">Add</button>
+				    <button class="btn btn-sm btn-primary" data-grid-control="remove">Delete</button>
+				    <button class="btn btn-sm btn-primary" data-grid-control="update">Save</button>
+				    <button class="btn btn-sm btn-primary" data-grid-control="excel-export">Excel Export</button>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<div style="position: relative;height:500px;" id="grid-parent">
+				    <div data-ax5grid="first-grid" data-ax5grid-config="{showLineNumber: true,showRowSelector: true,header: {align:'center'}}" style="height:500px;"></div>
+				</div>				
+			</div>
+		</div>									
 	</div> 
-</article>
 </body>
 </html>

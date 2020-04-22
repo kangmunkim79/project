@@ -44,6 +44,11 @@ public class LicenseController {
 		return "license/licServerMgtList";
 	}
 	
+	@RequestMapping(value = "/licExpirDtMgtList", method = RequestMethod.GET)
+	public String licExpirDtMgtList(Model model) throws Exception {
+		return "license/licExpirDtMgtList";
+	}	
+	
 	@RequestMapping(value = "/getGridLicenseList", method = RequestMethod.POST) 
 	public @ResponseBody Map<String, Object> getGridLicenseList(@RequestBody Map<String, Object> param) throws Exception { 
 		Map<String, Object> result = new HashMap<String, Object>(); 
@@ -98,6 +103,30 @@ public class LicenseController {
 		try { 
 			List<Map<String, Object>> list = licenseService.getGridLicServerList();
 			result.put("mList", list);
+		} catch (Exception e) { 
+			result.put("status", "False"); 
+		} 
+		return result; 
+	}
+	
+	@RequestMapping(value = "/getExpirLicList", method = RequestMethod.GET) 
+	public @ResponseBody Map<String, Object> getExpirLicList() throws Exception { 
+		Map<String, Object> result = new HashMap<String, Object>(); 
+		try { 
+			List<Map<String, Object>> list = licenseService.getExpirLicList();
+			result.put("eList", list);
+		} catch (Exception e) { 
+			result.put("status", "False"); 
+		} 
+		return result; 
+	}
+	
+	@RequestMapping(value = "/getExpirModuleList", method = RequestMethod.POST) 
+	public @ResponseBody Map<String, Object> getExpirModuleList(@RequestBody Map<String, Object> param) throws Exception { 
+		Map<String, Object> result = new HashMap<String, Object>();
+		try { 
+			List<Map<String, Object>> list = licenseService.getExpirModuleList(param);
+			result.put("eList", list);
 		} catch (Exception e) { 
 			result.put("status", "False"); 
 		} 

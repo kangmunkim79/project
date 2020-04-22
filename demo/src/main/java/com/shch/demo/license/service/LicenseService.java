@@ -53,6 +53,14 @@ public class LicenseService {
 		return licenseMapper.getGridLicServerList();
 	}
 	
+	public List<Map<String, Object>> getExpirLicList(){ 
+		return licenseMapper.selectExpirLicList();
+	}
+	
+	public List<Map<String, Object>> getExpirModuleList(Map<String, Object> param){
+		return licenseMapper.selectExpirModuleList(param);
+	}
+	
 	public void saveLicList(List<Map<String, Object>> saveList, Session user) {
 		for(Map<String, Object> data: saveList) {
 			String oid = StringUtils.nvl(data.get("oid"),"");
@@ -68,7 +76,7 @@ public class LicenseService {
 	public void miglogFileReadWrite() throws Exception  {
 		// TODO Auto-generated method stub
         final String DATE_PATTERN = "yyyy_MM_dd_HH";
-        String inputStartDate = "2017_01_01_00";
+        String inputStartDate = "2018_03_25_00";
         String inputEndDate = "2020_04_17_23";
         SimpleDateFormat sdf = new SimpleDateFormat(DATE_PATTERN);
         Date startDate = sdf.parse(inputStartDate);
@@ -130,15 +138,18 @@ public class LicenseService {
     				}*/
     			}
     		}
+    		Map<String, Object> expMap = new HashMap<String, Object>();
+    		expMap.put("timename", timename);
+    		licenseMapper.insertLicExpire(expMap);
         }
 	}	
 	
 	public void logFileReadWrite() throws Exception  {
 		List<Map<String, Object>> logFileNameUrlList = licenseMapper.getLogFileNameUrlList();
+		String timename = StringUtils.nvl(logFileNameUrlList.get(0).get("timename"), "");;
 		for(Map<String, Object> map : logFileNameUrlList) {
 			String filename = StringUtils.nvl(map.get("filename"), "");
 			String functionurl = StringUtils.nvl(map.get("functionurl"), "");
-			String timename = StringUtils.nvl(map.get("timename"), "");
 			if("LM_Tools".equals(functionurl)) {
 				try {
 					readFileLM(filename,timename);
@@ -177,6 +188,9 @@ public class LicenseService {
 				}
 			}
 		}
+		Map<String, Object> expMap = new HashMap<String, Object>();
+		expMap.put("timename", timename);
+		licenseMapper.insertLicExpire(expMap);
 	}
 	
 	public void readFileGPDM(String fileName, String timeName) throws Exception {

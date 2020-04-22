@@ -70,7 +70,7 @@
 		order by z.modulenm asc
 	</select>
 	
-	<select id="getGridLicUserList" parameterType="hashmap" resultType="hashmap">
+	<select id="getGridLicUserList" parameterType="HashMap" resultType="HashMap">
 		select a.licserver
 		     , a.modulenm as modulenm
 		     , a.id as id
@@ -109,7 +109,7 @@
 
 	</select>	
 
-	<select id="getlicchartList" parameterType="hashmap" resultType="hashmap">
+	<select id="getlicchartList" parameterType="HashMap" resultType="HashMap">
 		<choose>
 			<when test='datetype == "day"'>
 			WITH DateRange(Dates, DateWD) AS (
@@ -196,13 +196,13 @@
 		</choose>
 	</select>
 	
-	<select id="getGridLicServerList" parameterType="hashmap" resultType="hashmap">
+	<select id="getGridLicServerList" resultType="HashMap">
 		select *
 		from tb_lic_server_info
 		order by sort
 	</select>
 
-	<select id="getLogFileNameUrlList" resultType="hashmap">
+	<select id="getLogFileNameUrlList" resultType="HashMap">
 		select z.fileurl
 		      ,z.filenmtype
 		      ,z.timename
@@ -229,7 +229,7 @@
 	<insert id="saveLic">	
 		merge tb_lic_server_info as t
 		using (select #{oid}        as oid
-				 	 ,#{licserver}  as licserver
+				 	 ,upper(#{licserver})  as licserver
 					 ,#{licnm}      as licnm
 					 ,#{fileurl}    as fileurl
 					 ,#{filenmtype} as filenmtype
@@ -285,7 +285,7 @@
 	<insert id="insertLicUserLog">
 		merge tb_lic_cae_user_log_v2 as t
 		using (select #{id}        as id
-				 	 ,#{licserver} as licserver
+				 	 ,upper(#{licserver}) as licserver
 					 ,#{modulenm}  as modulenm
 					 ,#{logintime} as logintime
 					 ,#{logedtime} as logedtime					 
@@ -312,11 +312,12 @@
 
 	<insert id="insertLicTotalAmtLog">   	
 		merge tb_lic_cae_korea_total_amt_v2 as t
-		using (select #{licserver}        as licserver
+		using (select upper(#{licserver}) as licserver
 				 	 ,#{modulenm} as modulenm
 					 ,#{maxcredit}  as maxcredit
 					 ,#{usage} as usage
-					 ,cast(#{usage} as int)/cast(#{maxcredit} as int)*100 as percentage
+					 ,case when cast(#{maxcredit} as int) = 0 then 0
+					  else cast(#{usage} as int)/cast(#{maxcredit} as int)*100 end as percentage
 					 ,#{logedtime} as logedtime				 
 		) s on t.licserver = s.licserver
 		   and t.modulenm = s.modulenm
@@ -342,7 +343,25 @@
 			);					
 	</insert>	
 
-	<select id="rawDataDownList" resultType="Map">
+	<insert id="insertLicExpire">
+		merge tb_lic_expire_dt_mgt as t
+		using (select licserver
+				     ,modulenm
+			   from tb_lic_cae_korea_total_amt_v2
+			   where logedtime = #{timename}
+		) s on t.licserver = s.licserver
+		   and t.modulenm = s.modulenm
+		when not matched then	   
+			INSERT (
+				 licserver
+				,modulenm
+			)VALUES(
+				 s.licserver
+				,s.modulenm
+			);		
+	</insert>
+
+	<select id="rawDataDownList" resultType="HashMap">
 		select b.licnm
 		     , a.modulenm
 		     , a.logedtime
@@ -358,7 +377,7 @@
 		order by a.logedtime
 	</select>	
 	
-	<select id="sheetCheckDateList"  resultType="Map">
+	<select id="sheetCheckDateList"  resultType="HashMap">
 		select substring(logedtime,1,8) as checkdt
 		from tb_lic_cae_korea_total_amt_v2
 		where licserver = #{licserver}
@@ -369,7 +388,7 @@
 		order by substring(logedtime,1,8)
 	</select>	
 
-	<select id="excelDownUserList" resultType="Map">
+	<select id="excelDownUserList" resultType="HashMap">
 		select a.id
 		      ,b.user_nm as name
 		      ,b.dept_nm as deptnm
@@ -384,7 +403,7 @@
 		order by a.logedtime 
 	</select>	
 	
-	<select id="reportDownMap" resultType="Map">
+	<select id="reportDownMap" resultType="HashMap">
 		select b.licnm as lic
 		     , a.modulenm as mod
 		     , max(convert(integer,usage)) as pc
@@ -404,7 +423,7 @@
 		group by a.licserver, b.licnm, a.modulenm		
 	</select>	
 	
-	<select id="reportDownUserList" resultType="Map">
+	<select id="reportDownUserList" resultType="HashMap">
 		select a.id
 		      ,b.user_nm as name
 		      ,b.dept_nm as deptnm
@@ -421,7 +440,7 @@
 		
 	</select>	
 	
-	<select id="selectDetail" resultType="Map">
+	<select id="selectDetail" resultType="HashMap">
 		select b.licnm
 		     , a.modulenm
 		     , max(convert(integer,usage)) as peakcnt
@@ -439,5 +458,47 @@
 		  and substring(a.logedtime,9,2) > 7
    		  and substring(a.logedtime,9,2) <![CDATA[<]]> 19
 		group by a.licserver, b.licnm, a.modulenm	
-	</select>		
+	</select>	
+	
+	<select id="selectExpirLicList" resultType="HashMap">
+		select a.licserver
+		      ,a.licnm
+			  ,isnull((select case when z.r_state > 0 then 'R'
+							   else case when z.y_state > 0 then 'Y' 
+									else case when z.g_state > 0 then 'G'
+										 else 'X' end
+									end
+								end as state
+						from (				  
+								select sum(case when convert(varchar(10),dateadd(m,2,getdate()),120) <![CDATA[<]]> convert(varchar(10),b.expiredt,120) then 1 else 0 end) as g_state
+									  ,sum(case when convert(varchar(10),dateadd(m,2,getdate()),120) >= convert(varchar(10),b.expiredt,120) and 
+													 convert(varchar(10),dateadd(m,0,getdate()),120) <![CDATA[<=]]> convert(varchar(10),b.expiredt,120) then 1 else 0 end) as y_state
+									  ,sum(case when convert(varchar(10),dateadd(m,0,getdate()),120) > convert(varchar(10),b.expiredt,120) then 1 else 0 end) as r_state
+								from tb_lic_expire_dt_mgt b
+								where b.licserver = a.licserver
+								group by b.licserver
+						) z),'X') as status
+		from tb_lic_server_info a
+		where a.useflag = 'Y'
+		order by a.sort
+	</select>	
+
+	<select id="selectExpirModuleList" parameterType="HashMap" resultType="HashMap">
+		select a.licserver
+			  ,a.modulenm
+			  ,isnull((select max(c.maxcredit) from tb_lic_cae_korea_total_amt_v2 c where c.licserver = a.licserver and c.modulenm = a.modulenm group by c.modulenm),0) as unit
+			  ,a.expiredt
+			  ,a.remark
+			  ,case when convert(varchar(10),dateadd(m,2,getdate()),120) <![CDATA[<]]> convert(varchar(10),a.expiredt,120) then 'G' 
+			   else case when convert(varchar(10),dateadd(m,2,getdate()),120) >= convert(varchar(10),a.expiredt,120) and 
+							  convert(varchar(10),dateadd(m,0,getdate()),120) <![CDATA[<=]]> convert(varchar(10),a.expiredt,120) then 'Y' 
+					else case when convert(varchar(10),dateadd(m,0,getdate()),120) > convert(varchar(10),a.expiredt,120) then 'R' 
+						 else 'X' 
+						 end
+					end
+				end as status
+		from tb_lic_expire_dt_mgt a
+		where a.licserver = #{licserver}
+	</select>	
+	
 </mapper>

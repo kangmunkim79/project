@@ -16,7 +16,8 @@
 								   from role_menu a, user_auth b
 								   where a.rolecd = b.rolecd
 									 and b.roleuser = #{sid}
-								   group by a.menucd) 
+								   group by a.menucd)
+		          and a.useflag = 'Y'						    
 		) z
 		where z.depth = '1'
 		group by z.menucd,z.menunm,z.urlpath,z.sortseq
@@ -31,7 +32,8 @@
 					   from role_menu a, user_auth b
 					   where a.rolecd = b.rolecd
 						 and b.roleuser = #{sid}
-					   group by a.menucd)        
+					   group by a.menucd) 
+		and useflag = 'Y'			          
         order by sortseq
     </select>
     
