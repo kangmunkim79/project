@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>User Mgt</title>
+<title>사용자 관리</title>
 </head>
 <script> 
 $(document.body).ready(function () {
@@ -266,7 +266,7 @@ $(document.body).ready(function () {
 	<div class="container tb-basic">
 		<div class="row">
 			<div class="col-sm-2">
-				<h2>User Management</h2>
+				<h3>사용자 관리</h3>
 			</div>
 			<div class="col-sm-4">
 				<div style="padding: 10px;" align="right">

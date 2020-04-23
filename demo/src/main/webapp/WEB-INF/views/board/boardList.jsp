@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>board</title>
+<title>게시판</title>
 </head>
 <script type="text/javascript">
 $(document.body).ready(function () {
@@ -139,7 +139,7 @@ $(document.body).ready(function () {
 	<div class="container tb-basic">
 		<div class="row">
 			<div class="col-sm-6">
-				<h2>board List</h2>
+				<h3>게시판</h3>
 			</div>
 			<div class="col-sm-6">
 				<div style="padding: 10px;" align="right">

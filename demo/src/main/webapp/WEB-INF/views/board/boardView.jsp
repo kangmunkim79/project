@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>board</title>
+<title>게시판 상세</title>
 </head>
 <script>
 $(document).on('click', '#btnList', function(){
@@ -25,7 +25,7 @@ $(document).on('click', '#btnDelete', function(){
 </script>
 <body>
 	<div class="container tb-basic" role="main">
-		<h2>board View</h2>
+		<h3>게시판 상세</h3>
 		<div class="bg-white rounded shadow-sm">
 			<div class="board_title"><c:out value="${boardView.title}"/></div>
 			<div class="board_info_box">

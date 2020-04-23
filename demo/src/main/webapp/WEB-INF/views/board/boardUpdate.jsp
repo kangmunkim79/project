@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>board</title>
+<title>게시판 추가 및 수정</title>
 <script>
 $(document).ready(function(){
 	var mode = '<c:out value="${mode}"/>';
@@ -31,7 +31,7 @@ $(document).on('click', '#btnList', function(e){
 </head>
 <body>
 	<div class="container tb-basic" role="main">
-		<h2>board Update</h2>
+		<h3>게시판 추가 및 수정</h3>
 		<form:form name="form" id="form" role="form" modelAttribute="board" method="post" action="${pageContext.request.contextPath}/board/saveBoard">
 			<form:hidden path="bid" />
 			<form:hidden path="catecd" value="BOARD" />

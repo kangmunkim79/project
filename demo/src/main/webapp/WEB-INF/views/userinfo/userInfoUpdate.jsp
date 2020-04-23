@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>User Mgt</title>
+<title>사용자 관리</title>
 </head>
 <script> 
 $(document).ready(function(){
@@ -30,7 +30,7 @@ function init(){
 <body> 
 	<div class="container tb-basic" role="main"> 
 		<div class="card"> 
-			<div class="card-header">Register</div> 
+			<div class="card-header">사용자 추가</div> 
 			<div class="card-body"> 
 				<form:form name="form" id="form" class="form-signup" role="form" modelAttribute="userInfo" method="post" action="${pageContext.request.contextPath}/userInfo/insertUser"> 
 					<div class="form-group row"> 

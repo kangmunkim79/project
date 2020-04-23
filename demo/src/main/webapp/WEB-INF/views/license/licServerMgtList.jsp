@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>License Mgt</title>
+<title>라이선스 서버 관리</title>
 </head>
 <script> 
 $(document.body).ready(function () {
@@ -199,7 +199,7 @@ $(document.body).ready(function () {
 	<div class="container tb-basic">
 		<div class="row">
 			<div class="col-sm-6">
-				<h2>Server Management</h2>
+				<h3>라이선스 서버 관리</h3>
 			</div>
 		 	<div class="col-sm-6">
 				<div style="padding: 10px;" align="right">

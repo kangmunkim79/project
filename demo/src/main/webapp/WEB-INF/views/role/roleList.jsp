@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Role Mgt</title>
+<title>권한 관리</title>
 </head>
 <script> 
 $(document.body).ready(function () {
@@ -296,7 +296,7 @@ $(document.body).ready(function () {
 	<div class="container tb-basic">
 		<div class="row">
 			<div class="col-sm-2">
-				<h2>Role Management</h2>
+				<h3>권한 관리</h3>
 			</div>
 			<div class="col-sm-4">
 				<div style="padding: 10px;" align="right"> 

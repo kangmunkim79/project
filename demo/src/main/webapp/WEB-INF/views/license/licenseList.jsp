@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>License Monitoring</title>
+<title>라이선스 모니터링</title>
 </head>
 <script type="text/javascript">
 var firstGrid = new ax5.ui.grid();
@@ -459,7 +459,7 @@ function validationCheck(){
 	<div class="container tb-basic">
 		<div class="row">
 			<div class="col-sm-6">
-				<h2>License Monitoring</h2>
+				<h3>라이선스 모니터링</h3>
 			</div>
 			<div class="col-sm-6">
 				<div style="padding: 10px;" align="right">
