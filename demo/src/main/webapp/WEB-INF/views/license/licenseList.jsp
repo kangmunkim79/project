@@ -360,12 +360,12 @@ function rawDataDown(){
         contentType: "application/json",
         url: "/license/rawDataDown",
         data: JSON.stringify(param),
-        success: function (res) {
-        	dialog.alert("Success Rawdata Download!!!!");
+        success: function (response) {
+        	location.href = "/common/license/download?fileUrlName="+response;
         	common_gridloading_close();
         },
-        error: function (e) {
-        	dialog.alert("Success Rawdata Download!!");
+        error: function (request, status, error) {
+        	dialog.alert("Failed Report Download!!");
         	common_gridloading_close();
         }
     });		
@@ -387,7 +387,7 @@ function reportDown(){
         url: "/license/reportDown",
         data: JSON.stringify(param),
         success: function (response) {
-        	dialog.alert("Success Report Download!!!!--> " + response);
+        	location.href = "/common/license/download?fileUrlName="+response;
         	common_gridloading_close();
         },
         error: function (request, status, error) {

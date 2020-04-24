@@ -284,7 +284,7 @@ $(document.body).ready(function () {
 			</div>
 		</div>	
 		<div class="row">
-			<div class="col-sm-6">
+			<div class="col-sm-12">
 				<div style="position: relative;height:500px;" id="grid-parent">
 				    <div data-ax5grid="first-grid" data-ax5grid-config="{showLineNumber: true,showRowSelector: true,header: {selector: false, align:'center'}}" style="height:500px;"></div>
 				</div>			

@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,7 +12,6 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.io.FileUtils;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,9 +22,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.shch.demo.license.service.LicenseService;
-import com.shch.demo.menu.dto.Menu;
 import com.shch.demo.security.Session;
-import com.shch.demo.utils.keyGeneratorUtils;
 
 @Controller
 @RequestMapping(value = "license")
@@ -152,8 +148,7 @@ public class LicenseController {
 		PrintWriter out = response.getWriter();
 		try { 
 			String url = "D:/excel/";
-			String filenm = keyGeneratorUtils.timeKey("RawData_") + ".xls";
-			String fileUrlName = url + filenm;		
+    		String fileUrlName = "D:/excel/RawData.xls";
 			File file = new File(url);
 	        if(!file.exists()){
 	            file.mkdirs();
@@ -176,8 +171,7 @@ public class LicenseController {
 		PrintWriter out = response.getWriter();
         try {
         	String url = "D:/excel/";
-    		String filenm = keyGeneratorUtils.timeKey("ReportData_") + ".xls";
-    		String fileUrlName = url + filenm;		
+    		String fileUrlName = "D:/excel/ReportData.xls";		
     		File file = new File(url);
             if(!file.exists()){
                 file.mkdirs();

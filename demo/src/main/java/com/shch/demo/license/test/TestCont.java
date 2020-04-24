@@ -1,30 +1,14 @@
 package com.shch.demo.license.test;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import com.shch.demo.utils.StringUtils;
-
 public class TestCont {
 
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
-		String string1 = "' unlimited '";
-		String string2 = "' unlimited '";
-		String string3 = "' unlimited '";
-		String clean1 = string1.replaceAll("unlimited","9999999").replaceAll("[^0-9]", "");
+		String fileUrlName = "D:/excel/ReportData.xls";
+		String fname = fileUrlName.substring(fileUrlName.lastIndexOf("/")+1, fileUrlName.lastIndexOf("."));
+		
+		System.out.println(fname);
 
-		String clean2 = string2.replaceAll("unlimited","9999999").replaceAll("[^\\d]", "");
-
-		String clean3 = string3.replaceAll("unlimited","9999999").replaceAll("\\D", "");
-		System.out.println(clean1);
-		System.out.println(clean2);
-		System.out.println(clean3);
 	}
 }
 /*
