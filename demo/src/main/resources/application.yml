@@ -7,6 +7,14 @@ spring:
       prefix: /WEB-INF/views/
       suffix: .jsp
 ---
+spring:
+  servlet:
+    multipart:
+      file-size-threshold: 1MB
+      location: D:/uploads
+      max-file-size: 1000MB
+      max-request-size: 1000MB
+---
 spring.profiles: logging-info
 logging:
   file: d:/shch/logs/log-file.log

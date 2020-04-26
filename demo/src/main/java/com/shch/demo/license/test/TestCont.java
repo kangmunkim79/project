@@ -5,7 +5,7 @@ public class TestCont {
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 		String fileUrlName = "D:/excel/ReportData.xls";
-		String fname = fileUrlName.substring(fileUrlName.lastIndexOf("/")+1, fileUrlName.lastIndexOf("."));
+		String fname = fileUrlName.substring(fileUrlName.lastIndexOf(".")+1);
 		
 		System.out.println(fname);
 

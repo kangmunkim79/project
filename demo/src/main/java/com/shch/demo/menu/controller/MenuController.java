@@ -16,7 +16,7 @@ import com.shch.demo.menu.dto.Menu;
 import com.shch.demo.menu.service.MenuService;
 
 @Controller
-@RequestMapping(value = "/menu")
+@RequestMapping(value = "menu")
 public class MenuController {
 
 	@Autowired

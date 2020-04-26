@@ -10,7 +10,7 @@
 			<maxHistory>30</maxHistory>
 		</rollingPolicy>
 		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-			<level>WARN</level>
+			<level>INFO</level>
 		</filter>
  
 		<encoder>
@@ -18,13 +18,14 @@
 		</encoder>
 	</appender>
  
-	<logger name="org.springframework.web" level="WARN"/>
-	<logger name="org.thymeleaf" level="WARN"/>
-	<logger name="org.hibernate.SQL" level="WARN"/>
-	<logger name="org.quartz.core" level="WARN"/>
-	<logger name="org.h2.server.web" level="WARN"/>
+	<logger name="jdbc.sqlonly" level="OFF"/>
+  	<logger name="jdbc.sqltiming" level="DEBUG"/>
+  	<logger name="jdbc.audit" level="OFF"/>
+  	<logger name="jdbc.resultset" level="OFF"/>
+  	<logger name="jdbc.resultsettable" level="OFF"/>
+  	<logger name="jdbc.connection" level="OFF"/>
  
-	<root level="WARN">
+	<root level="INFO">
 		<appender-ref ref="dailyRollingFileAppender" />
 	</root>
 </configuration>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shch.demo.attach.mapper.AttachMapper">
+	
+	<select id="getFileList" resultType="com.shch.demo.attach.dto.Attach">
+		select   row_number() over(order by regdt desc) as rnum
+		        ,filecd
+				,filegrpcd
+				,orgfilename
+				,orgfilename + '.' + ext as filename
+				,uploadfilename
+				,filesize
+				,fileurl
+				,ext
+		from attachfile
+		where filegrpcd = #{filegrpcd}
+		  and delyn = 'N'
+	</select>
+
+	<insert id="insertFileInfo">
+		insert into attachfile (
+			 filecd
+			,filegrpcd
+			,orgfilename
+			,uploadfilename
+			,filesize
+			,fileurl
+			,ext
+			,regcd
+			,regdt			
+		)values(
+			 #{filecd}
+			,#{filegrpcd}
+			,#{orgfilename}
+			,#{uploadfilename}
+			,#{filesize}
+			,#{fileurl}
+			,#{ext}
+			,#{sid}
+			,getdate()
+		)
+	</insert>
+	
+	<update id="deleteFile">
+		update attachfile set
+			delyn = 'Y'
+		where filecd = #{filecd}	
+	</update>
+	
+</mapper>

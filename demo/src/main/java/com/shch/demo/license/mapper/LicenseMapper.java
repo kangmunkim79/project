@@ -42,4 +42,6 @@ public interface LicenseMapper {
 	public void insertLicExpire(Map<String, Object> param);
 	
 	public void updateExpirDt(Map<String, Object> param);
+	
+	public void deleteLic(Map<String, Object> param);
 }

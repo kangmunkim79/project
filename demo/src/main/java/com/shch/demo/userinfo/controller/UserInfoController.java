@@ -20,7 +20,7 @@ import com.shch.demo.userinfo.dto.UserParam;
 import com.shch.demo.userinfo.service.UserInfoService;
 
 @Controller
-@RequestMapping(value = "/userInfo")
+@RequestMapping(value = "userInfo")
 public class UserInfoController {
 
     @Autowired

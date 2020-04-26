@@ -15,7 +15,7 @@ import com.shch.demo.auth.dto.Auth;
 import com.shch.demo.auth.service.AuthService;
 
 @Controller
-@RequestMapping(value = "/auth")
+@RequestMapping(value = "auth")
 public class AuthController {
 
 	@Autowired

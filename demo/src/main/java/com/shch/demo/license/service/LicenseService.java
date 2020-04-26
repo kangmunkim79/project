@@ -831,4 +831,11 @@ public class LicenseService {
 			licenseMapper.updateExpirDt(param);
 		}
 	}
+	
+	public void deleteLicList(List<Map<String, Object>> dList) {
+		for(Map<String, Object> param:dList) {
+			licenseMapper.deleteLic(param);
+		}
+	}
+	
 }

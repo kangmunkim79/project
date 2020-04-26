@@ -17,7 +17,7 @@ import com.shch.demo.role.dto.Role;
 import com.shch.demo.role.service.RoleService;
 
 @Controller
-@RequestMapping(value = "/role")
+@RequestMapping(value = "role")
 public class RoleController {
 
 	@Autowired

@@ -509,4 +509,8 @@
 		  and modulenm = #{modulenm}
 	</update>
 	
+	<delete id="deleteLic">
+		delete from tb_lic_server_info where licserver = #{licserver}
+	</delete>
+	
 </mapper>

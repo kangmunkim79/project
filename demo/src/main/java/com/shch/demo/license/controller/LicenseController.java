@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.shch.demo.license.service.LicenseService;
+import com.shch.demo.menu.dto.Menu;
 import com.shch.demo.security.Session;
 
 @Controller
@@ -206,6 +207,18 @@ public class LicenseController {
 		Map<String, Object> result = new HashMap<String, Object>();
 		try { 
 			licenseService.mergeExpirDt(updateList);
+			result.put("status", "Ok");
+		} catch (Exception e) { 
+			result.put("status", "False"); 
+		}
+		return result;		
+	}
+	
+	@RequestMapping(value = "/deleteLicList", method = RequestMethod.POST) 
+	public @ResponseBody Map<String, Object> deleteLicList(@RequestBody List<Map<String, Object>> deleteList) throws Exception {
+		Map<String, Object> result = new HashMap<String, Object>();
+		try { 
+			licenseService.deleteLicList(deleteList);
 			result.put("status", "Ok");
 		} catch (Exception e) { 
 			result.put("status", "False"); 

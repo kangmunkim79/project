@@ -115,7 +115,7 @@ $(document.body).ready(function () {
                         for(var i=0;i<deleteCnt;i++){
                         	delArrayList.push(deleteList[i]);
                         }
-                    	menuDelete(delArrayList, deleteCnt);
+                    	licDelete(delArrayList, deleteCnt);
                     }else if(this.key == "cancel"){
                         dialog.close();
                     }
@@ -161,11 +161,11 @@ $(document.body).ready(function () {
 	    });
     }
 
-    function menuDelete(delList, delCnt){
+    function licDelete(delList, delCnt){
 	    $.ajax({
 	        type: "POST",
 	        contentType: "application/json",
-	        url: "/license/deleteLicenseList",
+	        url: "/license/deleteLicList",
 	        data: JSON.stringify(delList),
 	        dataType: 'json',
 	        cache: false,
