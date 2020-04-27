@@ -20,7 +20,11 @@ $(document.body).ready(function () {
         body: {
             onClick: function () {
                 if (this.column.key == "filename"){
-                  	fileDownload(this.item.filecd);
+                    if(this.item.filecd == null){
+                    	dialog.alert("저장되지 않은 파일이거나 없는 파일입니다.");
+                    	return;
+                    }
+                	location.href = "/attach/download?filecd="+this.item.filecd;
                 }
             }
         }                  
@@ -38,7 +42,7 @@ $(document.body).ready(function () {
                 }, function(){
                     if(this.key == "ok"){                        
                     	fileGrid.deleteRow("selected");
-                    	var deleteList = firstGrid.getList("deleted");
+                    	var deleteList = fileGrid.getList("deleted");
                     	var deleteCnt = deleteList.length; 
                     	var delArrayList = [];
                         for(var i=0;i<deleteCnt;i++){
@@ -87,7 +91,8 @@ function fileDelete(delList, delCnt){
         cache: false,
         timeout: 600000,
         success: function (data) {
-            dialog.alert(delCnt+"건의 데이터가 삭제되었습니다.");
+        	reset();
+            dialog.alert(delCnt+"건의 데이터가 삭제되었습니다.");            
             fileList();
         }
 
@@ -113,7 +118,11 @@ function changeFile() {
 }
 
 function uploadFile() {
-	var cnt = fileGrid.list.length;
+	var fcnt = $('#upload-file-input')[0].files.length;
+	if(fcnt == 0){
+		dialog.alert("첨부할 파일이 없습니다.");
+		return;
+	}
 	var formData = new FormData($("#upload-file-form")[0]);
 	formData.append('filegrpcd', $('#filegrpcd').val());
 	common_gridloading_open("file-grid-parent");
@@ -126,15 +135,24 @@ function uploadFile() {
 	    contentType: false,
 	    cache: false,
 	    success: function () {
-		    alert("성공");
+	    	reset();
+	    	dialog.alert("파일이 저장되었습니다.");
 		    fileList();
 		    common_gridloading_close();
 	    },
 	    error: function () {
-	    	alert("실패");
+	    	reset();
+	    	dialog.alert("실패");
 	    	common_gridloading_close();
 	    }
 	});
+}
+
+function reset() {
+	var $el = $('#upload-file-input'); 
+    $el.wrap('<form>').closest( 
+      'form').get(0).reset(); 
+    $el.unwrap();
 }
 </script>
 <body>
@@ -144,16 +162,16 @@ function uploadFile() {
 				<h3>파일 업로드</h3>
 			</div>
 		 	<div class="col-sm-6">
-		 		<form class="md-form" id="upload-file-form">
-		 			<input type="hidden" id="filegrpcd" value="${filegrpcd}">
 				 	<div style="padding: 10px;" align="right">
-						<label class="btn btn-sm btn-primary" style="margin-bottom:0;">Browse
-							<input multiple="multiple" id="upload-file-input" type="file" name="uploadfile" style="display: none;" onchange="changeFile();">
-						</label>		
+				 		<form class="md-form" id="upload-file-form">
+		 					<input type="hidden" id="filegrpcd" value="${filegrpcd}">
+							<label class="btn btn-sm btn-primary file-btn-label">Browse
+								<input multiple="multiple" id="upload-file-input" type="file" name="uploadfile" style="display: none;" onchange="changeFile();">
+							</label>
+						</form>			
 						<button class="btn btn-sm btn-primary" data-grid-control="del">Delete</button>		
 						<button class="btn btn-sm btn-primary" data-grid-control="save">Save</button>
-					</div>	
-				</form>
+					</div>					
 			</div>
 		</div>
 		<div class="row">

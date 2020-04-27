@@ -1,5 +1,12 @@
 var picker = new ax5.ui.picker();
 var mask = new ax5.ui.mask();
+var API_SERVER = "http://api-demo.ax5.io";  	
+var dialog = new ax5.ui.dialog({
+    title: "Message"
+});    
+$('#alert-close').click(function () {
+    dialog.close();
+});
 function common_gridloading_open(id){	
 	var gridid = "#"+id;
 	mask.open({

@@ -6,16 +6,10 @@
 <meta charset="UTF-8">
 <title>라이선스 서버 관리</title>
 </head>
-<script> 
+<script>
+var firstGrid = new ax5.ui.grid();
 $(document.body).ready(function () {
-	var API_SERVER = "http://api-demo.ax5.io";
-	var dialog = new ax5.ui.dialog({
-	    title: "Message"
-	});    
-	$('#alert-close').click(function () {
-	    dialog.close();
-	});
-    var firstGrid = new ax5.ui.grid({        
+    firstGrid = new ax5.ui.grid({        
         target: $('[data-ax5grid="first-grid"]'),
         columns: [
             {key: "licserver", label: "라이선스 서버", width: 150, align: "left",

@@ -10,6 +10,8 @@ public interface AttachMapper {
 	
 	public List<Attach> getFileList(Attach fileVO);
 	
+	public Attach getFile(String filecd);
+	
 	public void deleteFile(Attach fileVO);
 	
 }

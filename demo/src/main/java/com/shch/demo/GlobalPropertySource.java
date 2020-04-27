@@ -40,8 +40,6 @@ public class GlobalPropertySource {
         return password;
     }
     
-    
-    
     @Value("${spring.maria.datasource.driverClassName}")
     private String mariadriverClassName;
     
@@ -70,8 +68,6 @@ public class GlobalPropertySource {
         return mariapassword;
     }
 
-    
-    
     @Value("${spring.ms.datasource.driverClassName}")
     private String msdriverClassName;
     
@@ -98,6 +94,20 @@ public class GlobalPropertySource {
 
 	public String getMspassword() {
 		return mspassword;
+	}
+
+    @Value("${spring.file.upload.url}")
+    private String filepath;
+    
+    @Value("${spring.excel.file.url}")
+    private String exfilepath;
+    
+	public String getFilepath() {
+		return filepath;
+	}
+
+	public String getExfilepath() {
+		return exfilepath;
 	}
 
 }

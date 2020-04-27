@@ -21,6 +21,10 @@ public class AttachService {
 	public List<Attach> getFileList(Attach fileVO) {
 		return attachMapper.getFileList(fileVO);
 	}
+
+	public Attach getFile(String filecd) {
+		return attachMapper.getFile(filecd);
+	}
 	
 	public void deleteFileList(List<Attach> delList) {
 		for(Attach fParam:delList) {

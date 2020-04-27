@@ -1,15 +1,21 @@
 package com.shch.demo.license.test;
 
+import org.quartz.Scheduler;
+
+import lombok.Getter;
+import lombok.Setter;
+
 public class TestCont {
 
+	@Getter @Setter
+	private static Scheduler scheduler;
+	
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
-		String fileUrlName = "D:/excel/ReportData.xls";
-		String fname = fileUrlName.substring(fileUrlName.lastIndexOf(".")+1);
-		
-		System.out.println(fname);
+
 
 	}
+	
 }
 /*
 		

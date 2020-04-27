@@ -62,33 +62,32 @@ public class StringUtils {
 		}
 	}
 	
-	public static String lpad(int value, int length, String prefix) {
-		try {
-			StringBuilder sb = new StringBuilder();
-			String castValue = value + "";
-
-			for (int i = castValue.length(); i< length; i++) {
-				sb.append(prefix);
+	public static String LPad(Object value, int len, String str) {
+		String rVal = value.toString();
+		int sz = len - value.toString().length();
+		if(sz <= 0) {
+			rVal = value.toString();
+		} else {		
+			rVal = str + value.toString();
+			for(int i=rVal.length();i<len;i++) {
+				rVal = str + rVal;
 			}
-			sb.append(castValue);
-			return sb.toString();
-		} catch (Exception e) {
-			return "";
 		}
+		return rVal;
 	}
 	
-	public static String rpad(int value, int length, String prefix) {
-		try {
-			StringBuilder sb = new StringBuilder();
-			String castValue = value + "";
-			sb.append(castValue);
-			for (int i = castValue.length(); i< length; i++) {
-				sb.append(prefix);
+	public static String RPad(Object value, int len, String str) {
+		String rVal = value.toString();
+		int sz = len - value.toString().length();
+		if(sz <= 0) {
+			rVal = value.toString();
+		} else {		
+			rVal = value.toString() + str;
+			for(int i=rVal.length();i<len;i++) {
+				rVal = rVal + str;
 			}
-			return sb.toString();
-		} catch (Exception e) {
-			return "";
 		}
+		return rVal;
 	}
 	
 	public static String cutText(String text, int length, String suffix) {

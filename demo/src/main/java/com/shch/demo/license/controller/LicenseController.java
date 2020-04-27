@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.shch.demo.GlobalPropertySource;
 import com.shch.demo.license.service.LicenseService;
 import com.shch.demo.menu.dto.Menu;
 import com.shch.demo.security.Session;
@@ -28,6 +29,9 @@ import com.shch.demo.security.Session;
 @Controller
 @RequestMapping(value = "license")
 public class LicenseController {
+
+	@Autowired
+    GlobalPropertySource globalPropertySource;
 	
 	@Autowired
 	LicenseService licenseService;
@@ -148,8 +152,8 @@ public class LicenseController {
 	public void rawDataDown(@RequestBody Map<String, Object> param, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		PrintWriter out = response.getWriter();
 		try { 
-			String url = "D:/excel/";
-    		String fileUrlName = "D:/excel/RawData.xls";
+			String url = globalPropertySource.getExfilepath();
+    		String fileUrlName = url + "RawData.xls";
 			File file = new File(url);
 	        if(!file.exists()){
 	            file.mkdirs();
@@ -171,8 +175,8 @@ public class LicenseController {
 	public void reportDown(@RequestBody Map<String, Object> param, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		PrintWriter out = response.getWriter();
         try {
-        	String url = "D:/excel/";
-    		String fileUrlName = "D:/excel/ReportData.xls";		
+        	String url = globalPropertySource.getExfilepath();
+    		String fileUrlName = url + "ReportData.xls";		
     		File file = new File(url);
             if(!file.exists()){
                 file.mkdirs();

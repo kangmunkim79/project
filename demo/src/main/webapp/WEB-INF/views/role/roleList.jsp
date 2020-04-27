@@ -7,15 +7,10 @@
 <title>권한 관리</title>
 </head>
 <script> 
+var firstGrid = new ax5.ui.grid();
+var firstGrid2 = new ax5.ui.grid();
 $(document.body).ready(function () {
-	var API_SERVER = "http://api-demo.ax5.io";
-	var dialog = new ax5.ui.dialog({
-	    title: "Message"
-	});    
-	$('#alert-close').click(function () {
-	    dialog.close();
-	});
-    var firstGrid = new ax5.ui.grid({
+    firstGrid = new ax5.ui.grid({
         target: $('[data-ax5grid="first-grid"]'),
         columns: [
             {key: "rolecd", label: "권한코드", width: 120, align: "center"},
@@ -78,7 +73,7 @@ $(document.body).ready(function () {
             }
         }                   
     });
-    var firstGrid2 = new ax5.ui.grid({        
+    firstGrid2 = new ax5.ui.grid({        
         target: $('[data-ax5grid="first-grid2"]'),
         columns: [
             {key: "menunm", label: "Name", width: 120, align: "left", treeControl: true},            

@@ -10,16 +10,8 @@
 var firstGrid = new ax5.ui.grid();
 var firstGrid2 = new ax5.ui.grid();
 var firstGrid3 = new ax5.ui.grid();
-var API_SERVER = "http://api-demo.ax5.io";  	
-var dialog = new ax5.ui.dialog({
-    title: "Message"
-});    
-$('#alert-close').click(function () {
-    dialog.close();
-});
-$(document.body).ready(function () {
 
-    
+$(document.body).ready(function () {
     picker.bind({
         target: $('[data-ax5picker="basic"]'),
         direction: "top",

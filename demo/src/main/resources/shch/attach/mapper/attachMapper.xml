@@ -17,6 +17,20 @@
 		  and delyn = 'N'
 	</select>
 
+	<select id="getFile" resultType="com.shch.demo.attach.dto.Attach">
+		select   row_number() over(order by regdt desc) as rnum
+		        ,filecd
+				,filegrpcd
+				,orgfilename
+				,orgfilename + '.' + ext as filename
+				,uploadfilename
+				,filesize
+				,fileurl
+				,ext
+		from attachfile
+		where filecd = #{filecd}
+	</select>
+
 	<insert id="insertFileInfo">
 		insert into attachfile (
 			 filecd
