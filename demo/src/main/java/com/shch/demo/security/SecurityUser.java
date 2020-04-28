@@ -10,6 +10,8 @@ public class SecurityUser extends User {
     
     private String ip;
     
+    private String name;
+    
     public SecurityUser(UserInfo user) {
         super(user.getUsername(), user.getPassword(), user.getAuthorities());
     }
@@ -20,6 +22,14 @@ public class SecurityUser extends User {
  
     public void setIp(String ip) {
         this.ip = ip;
+    }
+    
+    public String getName() {
+        return name;
+    }
+    
+    public void setName(String name) {
+        this.name = name;
     }
 
 }

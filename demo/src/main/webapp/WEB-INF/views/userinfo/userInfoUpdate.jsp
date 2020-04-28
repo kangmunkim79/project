@@ -20,7 +20,7 @@ $(document).on('click', '#btnCancel', function(e){
 	location.href="${pageContext.request.contextPath}/userInfo/getUserList"; 
 });
 function init(){ 
-	$('#uid').val('');
+	$('#username').val('');
 	$('#name').val(''); 
 	$('#password').val(''); 
 	$('#repassword').val(''); 
@@ -36,7 +36,7 @@ function init(){
 					<div class="form-group row"> 
 						<label for="uid" class="col-md-3 col-form-label text-md-right">아이디</label> 
 						<div class="col-md-5"> 
-							<form:input path="uid" id="uid" class="form-control" placeholder="아이디을 입력해 주세요" /> 
+							<form:input path="username" id="username" class="form-control" placeholder="아이디을 입력해 주세요" /> 
 						</div> 
 					</div> 
 					<div class="form-group row"> 

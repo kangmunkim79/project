@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>파일 관리</title>
 </head>
 <script type="text/javascript">
 var fileGrid = new ax5.ui.grid();
@@ -29,7 +29,7 @@ $(document.body).ready(function () {
             }
         }                  
     });
-
+	fileList();
 	$('[data-grid-control]').click(function () {
 	  	switch (this.getAttribute("data-grid-control")) {
 	    case "del":
@@ -159,12 +159,12 @@ function reset() {
 	<div class="container tb-basic">
 		<div class="row">
 			<div class="col-sm-6">
-				<h3>파일 업로드</h3>
+				<h3>파일 관리</h3>
 			</div>
 		 	<div class="col-sm-6">
 				 	<div style="padding: 10px;" align="right">
 				 		<form class="md-form" id="upload-file-form">
-		 					<input type="hidden" id="filegrpcd" value="${filegrpcd}">
+		 					<input type="hidden" id="filegrpcd" value="FILEGRP2020042810431111">
 							<label class="btn btn-sm btn-primary file-btn-label">Browse
 								<input multiple="multiple" id="upload-file-input" type="file" name="uploadfile" style="display: none;" onchange="changeFile();">
 							</label>
@@ -176,13 +176,13 @@ function reset() {
 		</div>
 		<div class="row">
 			<div class="col-sm-12">
-				<div style="position: relative;height:300px;" id="file-grid-parent">
+				<div style="position: relative;height:500px;" id="file-grid-parent">
 				    <div data-ax5grid="file-grid" data-ax5grid-config="{
 					                    showLineNumber: true,
 					                    showRowSelector: true,
 					                    sortable: true,
 					                    header: {align:'center'}
-					                    }" style="height:300px;"></div>
+					                    }" style="height:500px;"></div>
 				</div>				
 			</div>
 		</div>			

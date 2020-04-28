@@ -59,8 +59,9 @@ $(document).ready(function () {
 	    </ul>
         <ul class="navbar-nav navbar-right top-nav">
             <li class="nav-item dropdown">
-            	<a class="nav-link dropdown-toggle" href="#" id="userMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><sec:authentication property="principal.username"/></a>
+            	<a class="nav-link dropdown-toggle" href="#" id="userMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><sec:authentication property="principal.name"/></a>
                 <div class="dropdown-menu" aria-labelledby="userMenu">
+                	<a class="dropdown-item" href="${pageContext.request.contextPath}/userInfo/userInfoUpdate">Add User</a>
                 	<a class="dropdown-item" href="${pageContext.request.contextPath}/logout">Logout</a>
                 </div>
             </li>        
@@ -70,6 +71,6 @@ $(document).ready(function () {
 <!-- header -->
 <!-- Footer -->
 <nav class="navbar navbar-expand-sm navbar-dark fixed-bottom bg-dark">
-  	<a class="navbar-brand navbar-center" href="#">© 2020 Doosan Corporation</a>     
+  	<a class="navbar-brand navbar-center" href="#">Â© 2020 Doosan Corporation</a>     
 </nav>
 <!-- Footer -->

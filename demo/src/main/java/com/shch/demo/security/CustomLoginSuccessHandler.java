@@ -16,6 +16,8 @@ import org.springframework.security.web.authentication.SavedRequestAwareAuthenti
 import com.shch.demo.GlobalPropertySource;
 import com.shch.demo.loginhistory.mapper.LoginhistoryMapper;
 import com.shch.demo.loginhistory.mssql.mapper.MsLoginhistoryMapper;
+import com.shch.demo.userinfo.dto.UserInfo;
+import com.shch.demo.userinfo.mapper.UserInfoMapper;
 
 public class CustomLoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {
     
@@ -28,6 +30,9 @@ public class CustomLoginSuccessHandler extends SavedRequestAwareAuthenticationSu
 	@Autowired
 	MsLoginhistoryMapper msloginhistoryMapper;
 	
+	@Autowired
+	UserInfoMapper userInfoMapper;
+	
 	public CustomLoginSuccessHandler(String defaultTargetUrl) {
         setDefaultTargetUrl(defaultTargetUrl);
     }
@@ -36,11 +41,12 @@ public class CustomLoginSuccessHandler extends SavedRequestAwareAuthenticationSu
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, 
         Authentication authentication) throws ServletException, IOException {
         String ip = getClientIp(request);        
-        ((SecurityUser)authentication.getPrincipal()).setIp(ip);
-        
+        ((SecurityUser)authentication.getPrincipal()).setIp(ip);                 
         HttpSession session = request.getSession();
         if (session != null) {
         	String username = ((SecurityUser)authentication.getPrincipal()).getUsername();
+        	UserInfo user = userInfoMapper.readUser(username);
+        	((SecurityUser)authentication.getPrincipal()).setName(user.getName());
             String redirectUrl = (String) session.getAttribute("prevPage");
             Map<String, Object> param = new HashMap<String, Object>();
             param.put("username", username);
