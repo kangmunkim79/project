@@ -28,4 +28,6 @@ public interface UserInfoMapper {
 	
 	public void deleteUser(String username);
 	
+	public void userUpdateBatch(UserInfo param);
+	
 }

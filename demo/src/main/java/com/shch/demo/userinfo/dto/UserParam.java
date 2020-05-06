@@ -29,6 +29,9 @@ public class UserParam extends Session{
 	private String modcd;
 	private String moddt;
 	
+	private String deptnm;
+	private String usersts;
+	
 	private Collection<? extends GrantedAuthority> authorities;
 	
 	public String getUserno() {
@@ -162,6 +165,18 @@ public class UserParam extends Session{
 	}
 	public void setAuthorities(Collection<? extends GrantedAuthority> authorities) {
 		this.authorities = authorities;
+	}
+	public String getDeptnm() {
+		return deptnm;
+	}
+	public void setDeptnm(String deptnm) {
+		this.deptnm = deptnm;
+	}
+	public String getUsersts() {
+		return usersts;
+	}
+	public void setUsersts(String usersts) {
+		this.usersts = usersts;
 	}
 	
 }

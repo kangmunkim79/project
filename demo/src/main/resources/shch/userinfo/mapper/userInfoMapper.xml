@@ -18,6 +18,8 @@
 		     , password
              , email
              , deptcd
+             , deptnm
+             , usersts
              , poscd
              , tel
              , addr
@@ -41,6 +43,8 @@
 		     , name
              , email
              , deptcd
+             , deptnm
+             , usersts
              , poscd
              , tel
              , addr
@@ -64,6 +68,8 @@
 		     , name
              , email
              , deptcd
+             , deptnm
+             , usersts
              , poscd
              , tel
              , addr
@@ -97,6 +103,8 @@
 				     , #{password} as password
 		             , #{email} as email
 		             , #{deptcd} as deptcd
+		             , #{deptnm} as deptnm
+                     , '2' as usersts
 		             , #{poscd} as poscd
 		             , #{tel} as tel
 		             , #{addr} as addr
@@ -114,7 +122,9 @@
 		      , name      = s.name        
 		      , password  = s.password    
               , email     = s.email       
-              , deptcd    = s.deptcd      
+              , deptcd    = s.deptcd
+              , deptnm    = s.deptnm   
+              , usersts    = s.usersts         
               , poscd     = s.poscd       
               , tel       = s.tel         
               , addr      = s.addr        
@@ -132,6 +142,8 @@
 		     , password
              , email
              , deptcd
+             , deptnm   
+             , usersts
              , poscd
              , tel
              , addr
@@ -148,6 +160,8 @@
 		     , s.password
              , s.email
              , s.deptcd
+             , s.deptnm   
+             , s.usersts
              , s.poscd
              , s.tel
              , s.addr
@@ -168,6 +182,8 @@
 		     , password
              , email
              , deptcd
+             , deptnm   
+             , usersts
              , poscd
              , tel
              , addr
@@ -184,6 +200,8 @@
 		      , #{password}
 		      , #{email}
 		      , #{deptcd}
+		      , #{deptnm}   
+              , #{usersts}
 		      , #{poscd}
 		      , #{tel}
 		      , #{addr} 
@@ -207,4 +225,59 @@
 		DELETE FROM USER_INFO WHERE userno = #{userno} 
 	</delete>
     
+    <update id="userUpdateBatch">
+	    merge user_info as t
+		using (select #{userno} as userno
+		             ,#{username} as username
+				     ,#{name} as name
+				     ,#{deptcd} as deptcd
+					 ,#{deptnm} as deptnm
+					 ,#{email} as email
+				     ,#{usersts} as usersts
+				     ,'batch' as regcd
+				     ,'batch' as modcd
+				     ,getdate() as regdt
+				     ,getdate() as moddt
+		) as s
+		on (t.username = s.username)
+		when matched then
+			update set 
+				deptcd = s.deptcd
+			   ,deptnm = s.deptnm		
+			   ,usersts = s.usersts
+			   ,modcd = s.modcd
+			   ,moddt = s.moddt
+		when not matched then
+			insert (
+				userno
+			   ,username
+			   ,usertype	
+			   ,name
+			   ,deptcd
+			   ,deptnm
+			   ,email
+			   ,usersts
+			   ,useflag
+               ,langcd
+			   ,regcd
+			   ,regdt
+			   ,modcd
+			   ,moddt
+			) values (
+			    s.userno
+			   ,s.username
+			   ,'IN'	
+			   ,s.name
+			   ,s.deptcd
+			   ,s.deptnm
+			   ,s.email
+			   ,s.usersts
+			   ,'Y'
+			   ,'KO'
+			   ,s.regcd
+			   ,s.regdt
+			   ,s.modcd
+			   ,s.moddt
+			);
+    </update>
 </mapper>

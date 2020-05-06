@@ -6,8 +6,9 @@ import java.time.format.DateTimeFormatter;
 public class keyGeneratorUtils {
 
 	public static String timeKey(String type) {
-		String timeKey = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmssSS"));
+		String timeKey = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmssSSS"));
 		String key = type + timeKey;
 		return key;
 	}
+	
 }

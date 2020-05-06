@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shch.demo.inf.enportal.mapper.EnportalMapper">
+
+	<select id="getEnportalUserList" resultType="com.shch.demo.userinfo.dto.UserInfo">
+		select user_id as username
+		      ,user_nm as name
+		      ,email
+		      ,dept_cd as deptcd
+		      ,dept_nm as deptnm
+		      ,update_state as usersts 
+		from tb_com_user
+		where case when dept_cd = '       ' then null
+                   when dept_cd = '0000000' then null
+	  		  else dept_cd end is not null
+	</select>
+
+</mapper>

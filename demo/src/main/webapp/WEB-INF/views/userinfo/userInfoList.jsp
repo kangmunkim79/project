@@ -186,6 +186,7 @@ $(document.body).ready(function () {
         	        timeout: 600000,
         	        success: function (result) {
         	        	dialog.alert("저장되었습니다.");
+        	        	$('#userno').val(result.uInfo.userno);
         	        	$('#username').val(result.uInfo.username);
         	        	$('#name').val(result.uInfo.name); 
         	        	$('#password').val(result.uInfo.password); 

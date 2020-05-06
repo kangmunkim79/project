@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import com.shch.demo.GlobalPropertySource;
 
 @Configuration
-@MapperScan(value="com.shch.demo.*.mssql.mapper", sqlSessionFactoryRef="msSqlSessionFactory")
+@MapperScan(value="com.shch.demo.inf.enportal.mapper", sqlSessionFactoryRef="msSqlSessionFactory")
 @EnableTransactionManagement
 public class MssqlDatabaseConfig {
 
@@ -41,7 +41,7 @@ public class MssqlDatabaseConfig {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(msDataSource);
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-        sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath:shch/**/mssql/mapper/*.xml"));
+        sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath:shch/inf/enportal/mapper/*.xml"));
         return sqlSessionFactoryBean.getObject();
     }
     

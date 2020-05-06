@@ -7,8 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.shch.demo.auth.dto.Auth;
-import com.shch.demo.menu.dto.Menu;
+import com.shch.demo.inf.enportal.service.EnportalService;
 import com.shch.demo.role.dto.Role;
 import com.shch.demo.userinfo.dto.UserInfo;
 import com.shch.demo.userinfo.dto.UserParam;
@@ -24,6 +23,9 @@ public class UserInfoService {
     
 	@Autowired
 	BCryptPasswordEncoder passwordEncoder;
+	
+	@Autowired
+	EnportalService enportalService;
 	
 	@Bean
 	public BCryptPasswordEncoder getPasswordEncoder()
@@ -71,6 +73,14 @@ public class UserInfoService {
 
 	public void deleteUser(String username) throws Exception { 
 		userInfoMapper.deleteUser(username); 
+	}
+	
+	public void userUpdateBatch() {
+		List<UserInfo> uList = enportalService.getEnportalUserList();
+		for(UserInfo param : uList) {
+			param.setUserno(keyGeneratorUtils.timeKey("USER"));
+			userInfoMapper.userUpdateBatch(param);
+		}
 	}
 	
 }

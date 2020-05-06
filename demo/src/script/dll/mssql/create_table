@@ -1,103 +1,156 @@
-
-CREATE TABLE user_info (
-  userno int NOT NULL,
-  usertype varchar(5) NOT NULL,
-  username nvarchar(30) NOT NULL,
-  name nvarchar(100) NOT NULL,
-  password varchar(1000),
-  email varchar(100),
-  deptcd varchar(10),
-  poscd varchar(10),
-  tel varchar(15),
-  addr varchar(1000),
-  addrdtl varchar(1000),
-  useflag varchar(1),
-  langcd varchar(2),
-  lastlogindt datetime,
-  lastloginip varchar(30),
-  regcd varchar(30),
-  regdt datetime DEFAULT(GETDATE()),
-  modcd varchar(30),
-  moddt datetime DEFAULT(GETDATE()),
-  CONSTRAINT pk_user_info PRIMARY KEY(userno)
-)
-
-CREATE TABLE user_auth (
-  username nvarchar(30) NOT NULL,
-  authorityname nvarchar(20) NOT NULL
-)
-
-CREATE TABLE user_login_hist (
-  id int NOT NULL,
-  username nvarchar(30) NOT NULL,
-  logindt datetime DEFAULT(GETDATE()),
-  loginip nvarchar(30) NOT NULL,
-  regdt datetime DEFAULT(GETDATE()),
-  CONSTRAINT pk_user_login_hist PRIMARY KEY(id)
-)
-
-create table menu (	
-	menucd nvarchar(50) not null, 
-	pmenucd varchar(50), 
-	depth varchar(10),
-	menunm nvarchar(100),
-	urlpath varchar(2000), 
-	param varchar(2000), 
-	usrtype varchar(100), 
-	sortseq int, 
-	useflag varchar(1) default('Y'), 
-	sts varchar(1) default('C'), 
-	regcd varchar(50), 
-	regdt datetime DEFAULT(GETDATE()),
-	modcd varchar(50), 
-	moddt datetime DEFAULT(GETDATE()),
-	CONSTRAINT pk_menu PRIMARY KEY(menucd)
+/*파일관리 테이블*/
+CREATE TABLE [plmhdesk].[attachfile](
+	[filecd] [nvarchar](100) PRIMARY KEY,
+	[filegrpcd] [nvarchar](100) NULL,
+	[orgfilename] [nvarchar](100) NULL,
+	[uploadfilename] [nvarchar](100) NULL,
+	[fileurl] [nvarchar](100) NULL,
+	[ext] [nvarchar](100) NULL,
+	[filesize] [bigint] NULL,
+	[delyn] [nvarchar](1) DEFAULT ('N'),
+	[regcd] [nvarchar](100) NULL,
+	[regdt] [datetime] DEFAULT (getdate())
 ) 
 
-create table board (
-  bid nvarchar(60) not null,
-  cate_cd nvarchar(20) not null,
-  title nvarchar(200) not null,
-  content text,
-  tag varchar(1000),
-  view_cnt int default(0),
-  reg_cd varchar(45),
-  reg_dt datetime DEFAULT(GETDATE()),
-  mod_cd varchar(45),
-  mod_dt datetime DEFAULT(GETDATE()),
-  CONSTRAINT pk_board PRIMARY KEY(bid)
+/*게시판 테이블*/
+CREATE TABLE [plmhdesk].[board](
+	[bid] [nvarchar](60) PRIMARY KEY,
+	[cate_cd] [nvarchar](20) NOT NULL,
+	[title] [nvarchar](200) NOT NULL,
+	[content] [text] NULL,
+	[tag] [varchar](1000) NULL,
+	[view_cnt] [int] DEFAULT ((0)),
+	[reg_cd] [varchar](45) NULL,
+	[reg_dt] [datetime] DEFAULT (getdate()),
+	[mod_cd] [varchar](45) NULL,
+	[mod_dt] [datetime] DEFAULT (getdate())
+)
+
+/*메뉴관리 테이블*/
+CREATE TABLE [plmhdesk].[menu](
+	[menucd] [nvarchar](50) PRIMARY KEY,
+	[pmenucd] [varchar](50) NULL,
+	[depth] [varchar](10) NULL,
+	[menunm] [nvarchar](100) NULL,
+	[urlpath] [varchar](2000) NULL,
+	[param] [varchar](2000) NULL,
+	[usrtype] [varchar](100) NULL,
+	[sortseq] [int] NULL,
+	[useflag] [varchar](1) DEFAULT ('Y'),
+	[sts] [varchar](1) DEFAULT ('C'),
+	[regcd] [varchar](50) NULL,
+	[regdt] [datetime] DEFAULT (getdate()),
+	[modcd] [varchar](50) NULL,
+	[moddt] [datetime] DEFAULT (getdate())
+)
+
+/*권한관리 롤*/
+CREATE TABLE [plmhdesk].[role](
+	[rolecd] [nvarchar](100) PRIMARY KEY,
+	[rolenm] [nvarchar](100) NULL,
+	[useflag] [nvarchar](1) DEFAULT ('Y'),
+	[regcd] [nvarchar](100) NULL,
+	[regdt] [datetime] DEFAULT (getdate()),
+	[modcd] [nvarchar](100) NULL,
+	[moddt] [datetime] DEFAULT (getdate())
+)
+
+/*권한관리 롤과 메뉴 연결*/
+CREATE TABLE [plmhdesk].[role_menu](
+	[menucd] [nvarchar](100) NULL,
+	[rolecd] [nvarchar](100) NULL,
+	[regcd] [nvarchar](100) NULL,
+	[regdt] [datetime] DEFAULT (getdate())
+)
+
+/*권한관리 롤과 유저 연결*/
+CREATE TABLE [plmhdesk].[user_auth](
+	[roleuser] [nvarchar](200) NULL,
+	[rolecd] [nvarchar](10) NULL,
+	[regcd] [nvarchar](200) NULL,
+	[regdt] [datetime] NULL
+)
+
+/*사용자관리*/
+CREATE TABLE [plmhdesk].[user_info](
+	[userno] [nvarchar](200) PRIMARY KEY,
+	[usertype] [varchar](5) NOT NULL,
+	[username] [nvarchar](30) NOT NULL,
+	[name] [nvarchar](100) NOT NULL,
+	[password] [varchar](1000) NULL,
+	[email] [varchar](100) NULL,
+	[deptcd] [varchar](10) NULL,
+	[poscd] [varchar](10) NULL,
+	[tel] [varchar](15) NULL,
+	[addr] [varchar](1000) NULL,
+	[addrdtl] [varchar](1000) NULL,
+	[useflag] [varchar](1) NULL,
+	[langcd] [varchar](2) NULL,
+	[lastlogindt] [datetime] NULL,
+	[lastloginip] [varchar](30) NULL,
+	[regcd] [varchar](30) NULL,
+	[regdt] [datetime] DEFAULT (getdate()),
+	[modcd] [varchar](30) NULL,
+	[moddt] [datetime] DEFAULT (getdate())
+)
+ALTER TABLE user_info ADD deptnm nvarchar(100)
+ALTER TABLE user_info ADD usersts nvarchar(100)
+
+/*사용자 로그인 이력 관리*/
+CREATE TABLE [plmhdesk].[user_login_hist](
+	[username] [nvarchar](30) NOT NULL,
+	[logindt] [datetime] DEFAULT (getdate()),
+	[loginip] [nvarchar](30) NOT NULL,
+	[regdt] [datetime] DEFAULT (getdate())
+)
+
+/*라이선스관리 테이블 라이선스 모듈 사용 로그*/
+CREATE TABLE [plmhdesk].[tb_lic_cae_korea_total_amt_v2](
+	[licserver] [nvarchar](200) NULL,
+	[modulenm] [nvarchar](200) NULL,
+	[maxcredit] [nvarchar](200) NULL,
+	[usage] [nvarchar](200) NULL,
+	[percentage] [nvarchar](10) NULL,
+	[logedtime] [nvarchar](50) NULL,
+	[regdt] [datetime] DEFAULT (getdate())
+)
+
+/*라이선스관리 테이블 라이선스 모듈 유저별 사용 로그*/
+CREATE TABLE [plmhdesk].[tb_lic_cae_user_log_v2](
+	[id] [nvarchar](200) NULL,
+	[licserver] [nvarchar](200) NULL,
+	[modulenm] [nvarchar](200) NULL,
+	[logintime] [nvarchar](50) NULL,
+	[logedtime] [nvarchar](50) NULL,
+	[regdt] [datetime] DEFAULT (getdate())
+)
+
+/*라이선스 모듈별 만료일자 관리*/
+CREATE TABLE [plmhdesk].[tb_lic_expire_dt_mgt](
+	[licserver] [nvarchar](200) NULL,
+	[modulenm] [nvarchar](200) NULL,
+	[expiredt] [datetime] NULL,
+	[remark] [nvarchar](1000) NULL,
+	[regcd] [nvarchar](200) NULL,
+	[regdt] [datetime] DEFAULT (getdate()),
+	[modcd] [nvarchar](200) NULL,
+	[moddt] [datetime] DEFAULT (getdate())
+)
+
+/*라이선스 서버 및 명칭 및 로그파일 경로 관리*/
+CREATE TABLE [plmhdesk].[tb_lic_server_info](
+	[oid] [nvarchar](200) NULL,
+	[licserver] [nvarchar](200) NULL,
+	[licnm] [nvarchar](200) NULL,
+	[fileurl] [nvarchar](200) NULL,
+	[filenmtype] [nvarchar](200) NULL,
+	[useflag] [nvarchar](1) NULL,
+	[sort] [int] NULL,
+	[regcd] [nvarchar](200) NULL,
+	[regdt] [datetime] NULL,
+	[modcd] [nvarchar](200) NULL,
+	[moddt] [datetime] NULL,
+	[topmodulenm] [nvarchar](200) NULL
 )
 
 
-		create table tb_lic_cae_user_log_v2(
-			id nvarchar(200),
-			licserver nvarchar(200),
-			modulenm nvarchar(200),
-			logintime nvarchar(50),
-			logedtime nvarchar(50),
-			regdt datetime default(getdate())
-		)
-
-   		create table tb_lic_cae_korea_total_amt_v2(
-			licserver nvarchar(200),
-			modulenm nvarchar(200),
-			maxcredit nvarchar(200),
-			usage nvarchar(200),
-			percentage nvarchar(10),
-			logedtime nvarchar(50),
-			regdt datetime default(getdate())
-		)
-		
-		create table tb_lic_server_info(
-			oid nvarchar(200),
-			licserver nvarchar(200),
-			licnm nvarchar(200),
-			fileurl nvarchar(200),
-			filenmtype nvarchar(200),
-			useflag nvarchar(1),
-			sort int,
-			regcd nvarchar(200),			
-			regdt datetime default(getdate()),
-			modcd nvarchar(200),
-			moddt datetime default(getdate())
-		)

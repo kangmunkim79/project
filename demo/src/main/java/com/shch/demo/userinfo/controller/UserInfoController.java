@@ -75,7 +75,8 @@ public class UserInfoController {
 		Map<String, Object> result = new HashMap<String, Object>(); 
 		try { 
 			userInfoService.mergeUserInfo(data);
-			result.put("uInfo", userInfoService.getGridUserInfo(data));
+			UserInfo info = userInfoService.getGridUserInfo(data);
+			result.put("uInfo", info);
 		} catch (Exception e) { 
 			result.put("status", "False"); 
 		} 

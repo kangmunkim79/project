@@ -15,7 +15,6 @@ import org.springframework.security.web.authentication.SavedRequestAwareAuthenti
 
 import com.shch.demo.GlobalPropertySource;
 import com.shch.demo.loginhistory.mapper.LoginhistoryMapper;
-import com.shch.demo.loginhistory.mssql.mapper.MsLoginhistoryMapper;
 import com.shch.demo.userinfo.dto.UserInfo;
 import com.shch.demo.userinfo.mapper.UserInfoMapper;
 
@@ -26,9 +25,6 @@ public class CustomLoginSuccessHandler extends SavedRequestAwareAuthenticationSu
     
 	@Autowired
 	LoginhistoryMapper loginhistoryMapper;
-
-	@Autowired
-	MsLoginhistoryMapper msloginhistoryMapper;
 	
 	@Autowired
 	UserInfoMapper userInfoMapper;

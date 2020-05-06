@@ -74,8 +74,8 @@
 		select a.licserver
 		     , a.modulenm as modulenm
 		     , a.id as id
-		     , b.user_nm AS name
-		     , b.dept_nm as deptnm
+		     , b.name
+		     , b.deptnm
 		     , count(*) AS cnt
 		     , convert(varchar,count(*))+' / '+ 
 		       convert(varchar,(select count(*)
@@ -88,7 +88,7 @@
 									and substring(logedtime,9,2) > 7
 					    			and substring(logedtimE,9,2) <![CDATA[<]]> 19	
 									</if>  )) AS usecount
-		from tb_lic_cae_user_log_v2 a left outer join tb_lic_ext_usertable b on a.id =b.user_id
+		from tb_lic_cae_user_log_v2 a left outer join user_info b on a.id =b.username
 		where a.licserver = #{licserver}
 		and   a.modulenm = #{modulenm}
 		<if test='id != null and id != ""'>
@@ -390,11 +390,11 @@
 
 	<select id="excelDownUserList" resultType="HashMap">
 		select a.id
-		      ,b.user_nm as name
-		      ,b.dept_nm as deptnm
+		      ,b.name
+		      ,b.deptnm
 		      ,a.logintime
 		      ,a.logedtime
-		from tb_lic_cae_user_log_v2 a left outer join tb_lic_ext_usertable b on a.id =b.user_id
+		from tb_lic_cae_user_log_v2 a left outer join user_info b on a.id =b.username
 		where a.licserver = #{licserver}
 		  and a.modulenm = #{modulenm}
 		  and convert(datetime, substring(a.logedtime,1,8)) >= convert(datetime,#{stDateTime}) 	
@@ -425,10 +425,10 @@
 	
 	<select id="reportDownUserList" resultType="HashMap">
 		select a.id
-		      ,b.user_nm as name
-		      ,b.dept_nm as deptnm
+		      ,b.name
+		      ,b.deptnm
 		      ,'' as companynm
-		from tb_lic_cae_user_log_v2 a left outer join tb_lic_ext_usertable b on a.id = b.user_id
+		from tb_lic_cae_user_log_v2 a left outer join user_info b on a.id = b.username
 		where a.licserver = #{licserver}
 		  and a.modulenm = #{modulenm}
 		  and convert(datetime, substring(a.logedtime,1,8)) >= convert(datetime,#{stDateTime}) 	

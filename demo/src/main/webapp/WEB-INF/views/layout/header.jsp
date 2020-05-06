@@ -71,6 +71,6 @@ $(document).ready(function () {
 <!-- header -->
 <!-- Footer -->
 <nav class="navbar navbar-expand-sm navbar-dark fixed-bottom bg-dark">
-  	<a class="navbar-brand navbar-center" href="#">© 2020 Doosan Corporation</a>     
+  	<a class="navbar-brand navbar-center" href="#">ⓒ 2020 Doosan Corporation</a>     
 </nav>
 <!-- Footer -->

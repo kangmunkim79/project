@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/layout/header.jsp"%>
 <!DOCTYPE html>
-<html style="height: 100%;">
+<html>
 <head>
 <meta charset="UTF-8">
 <title>DILMS</title>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 <script type="text/javascript">
-/* google.charts.load('current', {packages: ['corechart', 'bar']});
+google.charts.load('current', {packages: ['corechart', 'bar']});
 google.charts.setOnLoadCallback(drawAnnotations);
 
 function drawAnnotations() {
@@ -198,11 +198,11 @@ function drawChartgantt() {
   var chart = new google.visualization.Gantt(document.getElementById('chart_div3'));
 
   chart.draw(data, options);
-} */
+}
 </script>
-<body style="height: 100%;">
-<!--	<div class="container tb-basic">		
- 		<div class="row">
+<body>
+	<div class="container tb-basic">		
+		<div class="row">
 			<div class="col-lg-6">
 				<div id="chart_div"></div>
 			</div>
@@ -222,19 +222,17 @@ function drawChartgantt() {
 			<div class="col-lg-12">
 				<div id="chart_div3"></div>
 			</div>
-		</div>  
-	</div>-->		
-	<div class="container" style="height: 100%;">
-	    <div class="row h-100">
-	        <div class="col-sm-12 my-auto text-center">
-	    		<h1 class="mt-5">DILMS</h1>
-	    		<p class="lead">Doosan Infracore License Monitoring System</p>
-	    		<ul class="list-unstyled">
-	      			<li>Email : kwanghyun.l@doosan.com</li>
-	      			<li>Tel : 032-211-6843</li>
-	    		</ul>
-	        </div>
-	    </div>
+		</div> 		
+		<div class="row">
+      		<div class="col-lg-12 text-center">
+        		<h1 class="mt-5">DILMS</h1>
+        		<p class="lead">Doosan Infracore License Monitoring System</p>
+        		<ul class="list-unstyled">
+          			<li>Email : kwanghyun.l@doosan.com</li>
+          			<li>Tel : 032-211-6843</li>
+        		</ul>
+      		</div>
+    	</div>
 	</div>
 </body>
 </html>
