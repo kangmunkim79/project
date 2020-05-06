@@ -21,7 +21,7 @@ public class SchedulerController {
 		userInfoService.userUpdateBatch();
 	}
 	
-	@Scheduled(cron = "0 30 13 6 5 ?")
+	@Scheduled(cron = "0 40 16 6 5 ?")
 	public void miglogFileReadWrite() throws Exception {
 		licenseService.miglogFileReadWrite();
 	}

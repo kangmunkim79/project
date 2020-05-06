@@ -60,8 +60,8 @@ $(document).ready(function () {
         <ul class="navbar-nav navbar-right top-nav">
             <li class="nav-item dropdown">
             	<a class="nav-link dropdown-toggle" href="#" id="userMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><sec:authentication property="principal.name"/></a>
-                <div class="dropdown-menu" aria-labelledby="userMenu">
-                	<a class="dropdown-item" href="${pageContext.request.contextPath}/userInfo/userInfoUpdate">Add User</a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userMenu">
+                	<a class="dropdown-item" href="${pageContext.request.contextPath}/userInfo/userPasswordUpdate">Change Password</a>
                 	<a class="dropdown-item" href="${pageContext.request.contextPath}/logout">Logout</a>
                 </div>
             </li>        

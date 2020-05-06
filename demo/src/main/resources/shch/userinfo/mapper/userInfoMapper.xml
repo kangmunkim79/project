@@ -36,6 +36,12 @@
 		WHERE username = #{username} 	
 	</select>
 
+	<select id="getUserInfoNo" resultType="com.shch.demo.userinfo.dto.UserInfo">
+		SELECT userno		     
+		FROM USER_INFO 
+		WHERE username = #{username} 	
+	</select>
+
 	<select id="getUserInfo" resultType="com.shch.demo.userinfo.dto.UserInfo"> 
 		SELECT userno
 		     , usertype
@@ -216,7 +222,6 @@
 	<update id="updateUser" parameterType="com.shch.demo.userinfo.dto.UserInfo"> 
 		UPDATE USER_INFO SET 
 			name = #{name} 
-		  , password = #{password} 
 		  , email = #{email} 
 		WHERE userno = #{userno} 
 	</update> 
@@ -280,4 +285,11 @@
 			   ,s.moddt
 			);
     </update>
+    
+    <update id="updatePasswordUser" parameterType="com.shch.demo.userinfo.dto.UserInfo">
+		UPDATE USER_INFO SET 
+		    password = #{password}  
+		WHERE userno = #{userno}     
+    </update>
+    
 </mapper>

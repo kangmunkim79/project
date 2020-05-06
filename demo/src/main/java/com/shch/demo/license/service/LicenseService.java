@@ -76,7 +76,7 @@ public class LicenseService {
 	public void miglogFileReadWrite() throws Exception  {
 		// TODO Auto-generated method stub
         final String DATE_PATTERN = "yyyy_MM_dd_HH";
-        String inputStartDate = "2019_12_27_11";
+        String inputStartDate = "2019_12_29_14";
         String inputEndDate = "2020_05_06_11";
         SimpleDateFormat sdf = new SimpleDateFormat(DATE_PATTERN);
         Date startDate = sdf.parse(inputStartDate);

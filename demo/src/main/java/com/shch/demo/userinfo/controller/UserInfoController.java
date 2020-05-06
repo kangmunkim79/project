@@ -1,10 +1,12 @@
 package com.shch.demo.userinfo.controller;
 
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -89,5 +91,20 @@ public class UserInfoController {
 		model.addAttribute("userInfo", new UserInfo());
     	return "userinfo/userInfoUpdate"; 
     }
+    
+    @RequestMapping(value = "/userPasswordUpdate") 
+    public String userPasswordUpdate(Model model, Principal principal) throws Exception {
+    	UserInfo param = new UserInfo();
+    	param.setUsername(principal.getName());    	
+    	UserInfo info = userInfoService.getUserInfoNo(param);
+		model.addAttribute("userInfo", info);
+    	return "userinfo/userPasswordUpdate"; 
+    }
+    
+    @RequestMapping(value = "/updatePasswordUser", method = RequestMethod.POST) 
+    public String updatePasswordUser(@ModelAttribute("userInfo") UserParam userInfo , RedirectAttributes rttr) throws Exception {
+    	userInfoService.updatePasswordUser(userInfo); 
+    	return "redirect:/logout"; 
+    }    
     	
 }

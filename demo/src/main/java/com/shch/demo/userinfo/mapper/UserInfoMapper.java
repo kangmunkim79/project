@@ -30,4 +30,8 @@ public interface UserInfoMapper {
 	
 	public void userUpdateBatch(UserInfo param);
 	
+	public void updatePasswordUser(UserParam userInfo);
+	
+	public UserInfo getUserInfoNo(UserInfo userInfo);
+	
 }

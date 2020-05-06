@@ -104,7 +104,7 @@
 	    and substring(a.logedtime,9,2) > 7
 	    and substring(a.logedtimE,9,2) <![CDATA[<]]> 19			  
 		</if>	
-		group by a.licserver, a.modulenm, a.id, b.user_nm,b.dept_nm	
+		group by a.licserver, a.modulenm, a.id, b.name,b.deptnm	
 		order by cnt desc
 
 	</select>	
@@ -436,7 +436,7 @@
 		  and substring(a.logedtime,1,8) = #{checkdt}	
 		  and substring(a.logedtime,9,2) > 7
    		  and substring(a.logedtime,9,2) <![CDATA[<]]> 19		  
-		group by a.id, b.user_nm, b.dept_nm 	 
+		group by a.id, b.name, b.deptnm 	 
 		
 	</select>	
 	

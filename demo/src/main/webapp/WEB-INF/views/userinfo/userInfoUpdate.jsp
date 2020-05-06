@@ -34,7 +34,7 @@ function init(){
 			<div class="card-body"> 
 				<form:form name="form" id="form" class="form-signup" role="form" modelAttribute="userInfo" method="post" action="${pageContext.request.contextPath}/userInfo/insertUser"> 
 					<div class="form-group row"> 
-						<label for="uid" class="col-md-3 col-form-label text-md-right">아이디</label> 
+						<label for="username" class="col-md-3 col-form-label text-md-right">아이디</label> 
 						<div class="col-md-5"> 
 							<form:input path="username" id="username" class="form-control" placeholder="아이디을 입력해 주세요" /> 
 						</div> 

@@ -135,8 +135,6 @@ $(document.body).ready(function () {
 	        	$('#userno').val(result.uInfo.userno);
 	        	$('#username').val(result.uInfo.username);
 	        	$('#name').val(result.uInfo.name); 
-	        	$('#password').val(result.uInfo.password); 
-	        	$('#repassword').val(result.uInfo.password); 
 	        	$('#email').val(result.uInfo.email);
 	        }
 	    });
@@ -160,14 +158,10 @@ $(document.body).ready(function () {
 	}	
 	
 	function saveUserInfo(){
-		if($('#password').val() != $('#repassword').val()){
-			dialog.alert("비밀번호를 다시 확인하세요.");
-		}
 		var param = {
 			 "userno":$('#userno').val()	
 			,"username":$('#username').val()
 			,"name":$('#name').val()
-			,"password":$('#password').val()
 			,"email":$('#email').val()
 		};
 		dialog.confirm({
@@ -189,8 +183,6 @@ $(document.body).ready(function () {
         	        	$('#userno').val(result.uInfo.userno);
         	        	$('#username').val(result.uInfo.username);
         	        	$('#name').val(result.uInfo.name); 
-        	        	$('#password').val(result.uInfo.password); 
-        	        	$('#repassword').val(result.uInfo.password); 
         	        	$('#email').val(result.uInfo.email);
         	        }
         	    });
@@ -313,18 +305,6 @@ $(document.body).ready(function () {
 							<label for="name" class="col-md-3 col-form-label-sm text-md-right">이름</label> 
 							<div class="col-md-9"> 
 								<input type="text" id="name" class="form-control form-control-sm" placeholder="이름을 입력해 주세요" /> 
-							</div> 
-						</div> 
-						<div class="form-group row"> 
-							<label for="password" class="col-md-3 col-form-label-sm text-md-right">비밀번호</label> 
-							<div class="col-md-9"> 
-								<input type="password" id="password" class="form-control form-control-sm" placeholder="비밀번호를 입력해 주세요" /> 
-							</div> 
-						</div> 
-						<div class="form-group row"> 
-							<label for="repassword" class="col-md-3 col-form-label-sm text-md-right">비밀번호 확인</label> 
-							<div class="col-md-9"> 
-								<input type="password" id="repassword" class="form-control form-control-sm" placeholder="비밀번호를 입력해 주세요" /> 
 							</div> 
 						</div> 
 						<div class="form-group row"> 

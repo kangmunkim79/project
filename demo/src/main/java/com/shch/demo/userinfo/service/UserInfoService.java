@@ -83,4 +83,15 @@ public class UserInfoService {
 		}
 	}
 	
+	public void updatePasswordUser(UserParam userInfo) throws Exception {
+		String password = userInfo.getPassword();
+    	String encryptPassword = passwordEncoder.encode(password);
+    	userInfo.setPassword(encryptPassword);
+		userInfoMapper.updatePasswordUser(userInfo); 
+	}
+	
+	public UserInfo getUserInfoNo(UserInfo userInfo) throws Exception {
+		return userInfoMapper.getUserInfoNo(userInfo);
+	}
+	
 }
